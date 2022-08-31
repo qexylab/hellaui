@@ -1,11 +1,12 @@
 {
   "name": "hellaui",
   "version": "1.0.0",
-  "description": "description",
+  "description": "Fully accessible React UI components for your website that use Tailwind CSS",
   "license": "MIT",
   "type": "module",
   "files": [
-    "README.md"
+    "README.md",
+    "src"
   ],
   "scripts": {
     "prettier": "prettier --write ."
