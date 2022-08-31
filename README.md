@@ -1,9 +1,9 @@
 <h3 align="center">
-  HELLAUI
+  Hella UI
 </h3>
 
 <p align="center">
-  DESCRIPTION
+  Fully accessible React UI components for your website that use Tailwind CSS.
 </p>
 
 <p align="center">
@@ -12,7 +12,7 @@
   <a href="https://github.com/tailwindlabs/headlessui/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/@headlessui/react.svg" alt="License"></a>
 </p>
 
-## Documentation
+### Documentation
 
 For full documentation, visit [hellaui.pw](https://hellaui.pw).
 
