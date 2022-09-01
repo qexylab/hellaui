@@ -17,13 +17,7 @@
 
 # misc
 .DS_Store
-*.pem
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
+*.pe
 
 # local env files
 .env*.local
@@ -35,9 +29,6 @@ yarn-error.log*
 *.tsbuildinfo
 
 /vendor/
-node_modules/
-npm-debug.log
-yarn-error.log
 
 # Laravel 4 specific
 bootstrap/compiled.php
@@ -88,7 +79,6 @@ bower_components
 build/Release
 
 # Dependency directories
-node_modules/
 jspm_packages/
 
 # TypeScript v1 declaration files
@@ -109,9 +99,6 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
-.env
-
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 
@@ -121,8 +108,10 @@ typings/
 # nuxt.js build output
 .nuxt
 
-# vuepress build output
-.vuepress/dist
+node_modules
+dist
+dist-ssr
+*.local
 
 # Serverless directories
 .serverless
@@ -130,6 +119,14 @@ typings/
 # FuseBox cache
 .fusebox/
 
-# Jetbrais IDE
-.idea/
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
 yarn.lock

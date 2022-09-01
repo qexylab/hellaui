@@ -3,12 +3,15 @@
   "version": "1.0.2",
   "description": "Fully accessible React UI components for your website that use Tailwind CSS",
   "license": "MIT",
-  "type": "module",
   "files": [
     "README.md",
     "src"
   ],
   "scripts": {
+    "build": "vite build",
+    "test": "jest",
+    "test:update": "jest -u",
+    "test:watch": "jest --watch",
     "prettier": "prettier --write ."
   },
   "sideEffects": false,
@@ -24,6 +27,7 @@
     "react-dom": "^17 || ^18"
   },
   "dependencies": {
+    "@babel/core": "^7.18.13",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
@@ -33,6 +37,9 @@
     "@types/node": "18.7.6",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
+    "@types/jest": "^29.0.0",
+    "@vitejs/plugin-react": "^2.0.1",
+    "vite": "^3.0.9",
     "autoprefixer": "^10.4.8",
     "jest": "^29.0.1",
     "postcss": "^8.4.16",

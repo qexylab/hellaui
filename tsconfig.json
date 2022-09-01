@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
-    "module": "esnext",
-    "lib": ["dom", "esnext", "dom.iterable"],
+    "module": "ESNext",
+    "lib": ["dom", "ESNext", "dom.iterable"],
     "importHelpers": true,
     "declaration": true,
     "sourceMap": true,
-    "rootDir": "./src",
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
