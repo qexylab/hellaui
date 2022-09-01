@@ -1,6 +1,9 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
+import commonjs from '@rollup/plugin-commonjs';
+// @ts-ignore
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,8 +17,11 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/index.ts'),
       formats: ['es', 'cjs'],
     },
+    rollupOptions: {
+      plugins: [commonjs(), peerDepsExternal()],
+    },
     sourcemap: true,
-    target: ['ESNext'],
+    target: ['esnext'],
   },
   plugins: [react()],
 });

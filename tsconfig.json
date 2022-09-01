@@ -1,29 +1,32 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
-    "lib": ["dom", "ESNext", "dom.iterable"],
-    "importHelpers": true,
+    "target": "ESNext",
+    "module": "CommonJS",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "types": ["@types/jest"],
     "declaration": true,
-    "sourceMap": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "downlevelIteration": true,
-    "moduleResolution": "node",
-    "baseUrl": ".",
+    "moduleResolution": "Node",
+    "declarationDir": "./dist",
+    "baseUrl": "./src",
     "paths": {
-      "@/src/*": ["./src/*"]
+      "@/src/*": ["./*"]
     },
     "jsx": "preserve",
     "esModuleInterop": true,
-    "target": "ESNext",
     "allowJs": true,
-    "skipLibCheck": true,
+    "skipLibCheck": false,
+    "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true
   },
-  "exclude": ["node_modules"]
+  "plugins": [
+    { "transform": "typescript-transform-paths", "afterDeclarations": true }
+  ],
+  "include": ["./src"],
 }
