@@ -1,6 +1,6 @@
 {
   "name": "hellaui",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Fully accessible React UI components for your website that use Tailwind CSS",
   "license": "MIT",
   "files": [
@@ -55,7 +55,6 @@
     "@types/react-dom": "18.0.6",
     "@types/rollup-plugin-peer-deps-external": "^2.2.1",
     "@vitejs/plugin-react": "^2.0.1",
-
     "autoprefixer": "^10.4.8",
     "jest": "^29.0.1",
     "postcss": "^8.4.16",
