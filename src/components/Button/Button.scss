@@ -1,5 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .test {
-  background-color: red;
-  color: black;
-  padding: 15px;
+   opacity: 0;
+  &-class {
+    background-color: red;
+    color: red;
+    padding: 15px;
+  }
 }

@@ -1,8 +1,8 @@
 import React, { FC, PropsWithChildren } from 'react'
 import './Button.scss'
-import { MButton } from './Button.types'
+import { ButtonInterface } from './Button.types'
 
-export const Button: FC<PropsWithChildren<MButton>> = ({
+export const Button: FC<PropsWithChildren<ButtonInterface>> = ({
   type = 'default',
   size = 'md',
   rounding = 'md',
@@ -12,7 +12,7 @@ export const Button: FC<PropsWithChildren<MButton>> = ({
   children,
 }) => {
   return (
-      <button className='test'>
+      <button className='test-class bg-red-500'>
         {children}
       </button>
   )

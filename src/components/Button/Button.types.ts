@@ -2,7 +2,7 @@ export type ButtonSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs'
 export type ButtonRounding = 'xl' | 'lg' | 'md' | 'sm'
 export type ButtonType = | 'default' | 'primary' | 'success' | 'info' | 'warning' | 'danger'
 
-export interface MButton {
+export interface ButtonInterface {
   type?: ButtonType //Button Type
   size?: ButtonSize // Button Size,
   rounding?: ButtonRounding // Button Rounding
