@@ -1,25 +1,24 @@
 {
   "name": "hellaui",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Fully accessible React UI components for your website that use Tailwind CSS",
   "license": "MIT",
   "files": [
     "dist",
-    "src",
     "README.md"
   ],
-  "main": "./dist/hellaui.cjs.js",
-  "module": "./dist/hellaui.es.js",
+  "main": "./dist/hellaui.mjs",
+  "module": "./dist/hellaui.mjs",
   "exports": {
     "./package.json": "./package.json",
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/hellaui.cjs.js",
-      "import": "./dist/hellaui.es.js"
+      "require": "./dist/hellaui.mjs",
+      "import": "./dist/hellaui.mjs"
     }
   },
   "imports": {
-    "@/src/*": "./src/*"
+    "@src/*": "./src/*"
   },
   "types": "./dist/index.d.ts",
   "scripts": {
