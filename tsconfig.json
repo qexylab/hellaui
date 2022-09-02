@@ -14,7 +14,7 @@
     "declarationDir": "./dist",
     "baseUrl": "./src",
     "paths": {
-      "@/src/*": ["./*"]
+      "@src/*": ["./*"]
     },
     "jsx": "preserve",
     "esModuleInterop": true,

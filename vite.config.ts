@@ -9,13 +9,13 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 export default defineConfig({
   resolve: {
     alias: {
-      '@/src': resolve(__dirname, 'src'),
+      '@src': resolve(__dirname, 'src'),
     },
   },
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
-      formats: ['es', 'cjs'],
+      formats: ['es'],
     },
     rollupOptions: {
       plugins: [commonjs(), peerDepsExternal()],

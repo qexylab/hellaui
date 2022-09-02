@@ -1,8 +1,8 @@
-import { FC, PropsWithChildren } from 'react'
-import '@/src/components/Button/Button.scss'
-import { MButton } from '@/src/components/Button/Button.types'
+import React, { FC, PropsWithChildren } from 'react'
+import './Button.scss'
+import { MButton } from './Button.types'
 
-const Button: FC<PropsWithChildren<MButton>> = ({
+export const Button: FC<PropsWithChildren<MButton>> = ({
   type = 'default',
   size = 'md',
   rounding = 'md',
@@ -12,10 +12,8 @@ const Button: FC<PropsWithChildren<MButton>> = ({
   children,
 }) => {
   return (
-      <button className={`rounded-${rounding} text-${size}`}>
+      <button className='test'>
         {children}
       </button>
   )
 }
-
-export default Button
