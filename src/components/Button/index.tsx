@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import { IButton } from './Button.types'
-import './Button.scss'
+import './Button.module.scss'
 // import { Spinner } from "@src/components/Spinner";
 
 export const Button = forwardRef<HTMLButtonElement, IButton>(

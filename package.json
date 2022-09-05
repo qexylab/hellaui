@@ -7,13 +7,13 @@
     "dist",
     "README.md"
   ],
-  "main": "./dist/hellaui.mjs",
+  "main": "./dist/hellaui.js",
   "module": "./dist/hellaui.mjs",
   "exports": {
     "./package.json": "./package.json",
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/hellaui.mjs",
+      "require": "./dist/hellaui.js",
       "import": "./dist/hellaui.mjs"
     }
   },
