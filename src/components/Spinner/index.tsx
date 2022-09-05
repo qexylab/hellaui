@@ -9,4 +9,4 @@ export const Spinner: FC<ISpinner> = ({
   return <div>spinner</div>
 }
 
-Spinner.displayName = 'Index'
+Spinner.displayName = 'Spinner'
