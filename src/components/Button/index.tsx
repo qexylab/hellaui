@@ -26,7 +26,7 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
     // const spinnerSize = size === 'sm' ? 'sm' : 'md'
     return (
       <button
-        className="test test-class"
+        className="test test-class border border-blue-600"
         ref={ref}
         disabled={disabled}
         aria-disabled={disabled}
