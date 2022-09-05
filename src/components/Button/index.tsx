@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react'
 import { IButton } from './Button.types'
-import './Button.module.scss'
 // import { Spinner } from "@src/components/Spinner";
 
 export const Button = forwardRef<HTMLButtonElement, IButton>(
@@ -23,10 +22,9 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
     },
     ref
   ) => {
-    // const spinnerSize = size === 'sm' ? 'sm' : 'md'
     return (
       <button
-        className="test test-class border border-blue-600"
+        // style={{border: '10px solid #ffffff'}}
         ref={ref}
         disabled={disabled}
         aria-disabled={disabled}
