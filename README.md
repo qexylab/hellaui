@@ -21,6 +21,3 @@ For full documentation, visit [hellaui.pw](https://hellaui.pw).
 You can install the latest version by using:
 
 - `yarn add hellaui`
-
-
-

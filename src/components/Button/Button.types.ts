@@ -1,12 +1,27 @@
-export type ButtonSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs'
-export type ButtonRounding = 'xl' | 'lg' | 'md' | 'sm'
-export type ButtonType = | 'default' | 'primary' | 'success' | 'info' | 'warning' | 'danger'
+import { HTMLAttributes, ReactElement } from 'react'
 
-export interface ButtonInterface {
-  type?: ButtonType //Button Type
-  size?: ButtonSize // Button Size,
-  rounding?: ButtonRounding // Button Rounding
-  displayAsDisabled?: boolean // Remaining active for clicking, the button is displayed in a locked state
-  loading?: boolean // Loading state
+type ButtonSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs'
+type ButtonRounding = 'xl' | 'lg' | 'md' | 'sm'
+type ButtonVariant =
+  | 'default'
+  | 'primary'
+  | 'success'
+  | 'info'
+  | 'warning'
+  | 'danger'
+type ButtonType = 'button' | 'reset' | 'submit'
+
+export interface IButton extends HTMLAttributes<HTMLButtonElement> {
+  variant?: ButtonVariant // Index Type
+  type?: ButtonType // Set the original html type of button
+  size?: ButtonSize // Index Size,
+  rounding?: ButtonRounding // Index Rounding
+  disabled?: boolean // Makes button disabled
+  active?: boolean // Makes button active
+  leftIcon?: ReactElement // Adds icon before button label
+  rightIcon?: ReactElement // Adds icon after button label
+  color?: string // Set the button color
+  loading?: boolean // Shows loading spinner
+  loadingText?: boolean // The label to show in the button when loading is true
   skeleton?: boolean // Skeleton state,
 }

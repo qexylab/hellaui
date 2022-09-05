@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 .test {
-   opacity: 0;
+  color: red !important;
   &-class {
-    background-color: red;
+    background-color: red !important;
     color: red;
     padding: 15px;
   }
