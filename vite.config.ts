@@ -15,8 +15,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
-      formats: ['cjs'],
-      fileName: 'hellaui.cjs'
+      formats: ['cjs', 'es'],
     },
     rollupOptions: {
       plugins: [commonjs(), peerDepsExternal()]

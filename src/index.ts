@@ -1,2 +1,3 @@
-export * from './components/Button'
-export * from './components/Spinner'
+export * from './components/button'
+export * from './components/spinner'
+export * from './components/theme'

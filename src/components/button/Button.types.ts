@@ -1,8 +1,8 @@
 import { HTMLAttributes, ReactElement } from 'react'
 
-type ButtonSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs'
-type ButtonRounding = 'xl' | 'lg' | 'md' | 'sm'
-type ButtonVariant =
+export type ButtonSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs'
+export type ButtonRounding = 'xl' | 'lg' | 'md' | 'sm' | 'xs'
+export type ButtonVariant =
   | 'default'
   | 'primary'
   | 'success'

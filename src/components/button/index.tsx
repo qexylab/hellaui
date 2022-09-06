@@ -1,6 +1,8 @@
 import React, { forwardRef } from 'react'
 import { IButton } from './Button.types'
-// import { Spinner } from "@src/components/Spinner";
+import { getButtonClass } from "@src/components/button/styles";
+import {borderRadiusType, smallBorderRadius} from "@src/components/theme/borderRadius";
+// import { spinner } from "@src/components/spinner";
 
 export const Button = forwardRef<HTMLButtonElement, IButton>(
   (
@@ -22,19 +24,32 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
     },
     ref
   ) => {
+
+    const { bgColor, textColor, textSize, padding } = getButtonClass({variant, size, disabled})
+
     return (
       <button
-        // style={{border: '10px solid #ffffff'}}
+        style={{
+          backgroundColor: bgColor,
+          border: 'none',
+          color: textColor,
+          fontSize: textSize,
+          padding: padding,
+          position: 'relative',
+          display: 'inline-block',
+          borderRadius: skeleton ? '0px' : smallBorderRadius(borderRadiusType.md),
+          appearance: 'none',
+          verticalAlign: 'middle',
+          pointerEvents: loading || disabled || skeleton ? 'none' : "all",
+        }}
         ref={ref}
         disabled={disabled}
         aria-disabled={disabled}
         type={type}
-        data-active={active ? 'true' : undefined}
-        data-color={color ? color : undefined}
         {...props}
       >
         {leftIcon && !loading ? leftIcon : null}
-        {/*{loading && <Spinner size={spinnerSize} />}*/}
+        {/*{loading && <spinner size={spinnerSize} />}*/}
         {loading ? loadingText || <span>{children}</span> : children}
         {rightIcon && !loading ? rightIcon : null}
       </button>
