@@ -1,36 +1,33 @@
-import {SpinnerSize} from "@src/components/spinner/Spinner.types";
-
+import { SpinnerSize } from '@src/components/spinner/Spinner.types'
 
 export const getSpinnerStyle = (size: SpinnerSize) => {
-
-  let
-      height: string = '',
-      width: string = ''
+  let height: string = '',
+    width: string = ''
 
   switch (size) {
-    case "xs":
+    case 'xs':
       height = '10px'
       width = '10px'
       break
-    case "sm":
+    case 'sm':
       height = '12px'
       width = '12px'
       break
-    case "md":
+    case 'md':
       height = '14px'
       width = '14px'
       break
-    case "lg":
+    case 'lg':
       height = '16px'
       width = '16px'
       break
-    case "xl":
+    case 'xl':
       height = '20px'
       width = '20px'
       break
   }
   return {
     height,
-    width,
+    width
   }
 }

@@ -2,7 +2,7 @@ import React, { ForwardedRef, forwardRef, useState } from 'react'
 import { IButton } from './Button.types'
 import { getButtonStyle } from '@src/components/button/Button.style'
 import { borderRadius } from '@src/components/theme/borderRadius'
-import {Spinner} from "@src/components/spinner";
+import { Spinner } from '@src/components/spinner'
 // import { spinner } from "@src/components/spinner";
 
 export const Button = forwardRef<HTMLButtonElement, IButton>(
@@ -74,7 +74,7 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
         {...props}
       >
         {leftIcon && !loading ? leftIcon : null}
-        {loading && <Spinner  size={size}/>}
+        {loading && <Spinner size={size} />}
         {loading ? loadingText || <span>{children}</span> : children}
         {rightIcon && !loading ? rightIcon : null}
       </button>
