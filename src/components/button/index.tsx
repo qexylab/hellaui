@@ -1,7 +1,8 @@
-import React, { forwardRef } from 'react'
+import React, { ForwardedRef, forwardRef, useState } from 'react'
 import { IButton } from './Button.types'
-import { getButtonClass } from "@src/components/button/styles";
-import {borderRadiusType, smallBorderRadius} from "@src/components/theme/borderRadius";
+import { getButtonStyle } from '@src/components/button/Button.style'
+import { borderRadius } from '@src/components/theme/borderRadius'
+import {Spinner} from "@src/components/spinner";
 // import { spinner } from "@src/components/spinner";
 
 export const Button = forwardRef<HTMLButtonElement, IButton>(
@@ -15,32 +16,56 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
       active = true,
       leftIcon,
       rightIcon,
-      color,
+      bgColor,
+      textColor,
       loading = false,
       loadingText = '',
       skeleton = true,
+      plain,
       children,
       ...props
     },
-    ref
+    ref: ForwardedRef<HTMLButtonElement>
   ) => {
-
-    const { bgColor, textColor, textSize, padding } = getButtonClass({variant, size, disabled})
+    const [isHover, setIsHover] = useState(false)
+    const {
+      backgroundColor,
+      hoverBackgroundColor,
+      color,
+      padding,
+      hoverColor,
+      textSize,
+      border,
+      hoverBorder
+    } = getButtonStyle(
+      variant,
+      size,
+      disabled,
+      plain ? plain : undefined,
+      bgColor ? bgColor : undefined,
+      textColor ? textColor : undefined
+    )
 
     return (
       <button
+        onMouseEnter={() => setIsHover(true)}
+        onMouseLeave={() => setIsHover(false)}
+        onFocus={() => {}}
         style={{
-          backgroundColor: bgColor,
-          border: 'none',
-          color: textColor,
+          backgroundColor: isHover ? hoverBackgroundColor : backgroundColor,
+          border: isHover ? hoverBorder : border,
+          color: isHover ? hoverColor : color,
           fontSize: textSize,
+          alignItems: 'center',
           padding: padding,
-          position: 'relative',
-          display: 'inline-block',
-          borderRadius: skeleton ? '0px' : smallBorderRadius(borderRadiusType.md),
-          appearance: 'none',
+          display: 'flex',
+          borderRadius: borderRadius(rounding),
           verticalAlign: 'middle',
-          pointerEvents: loading || disabled || skeleton ? 'none' : "all",
+          transition: 'all 0.175s ease',
+          outline: 'none',
+          appearance: 'none',
+          cursor: disabled || loading ? 'not-allowed' : '',
+          opacity: disabled || loading ? '0.7' : '1'
         }}
         ref={ref}
         disabled={disabled}
@@ -49,7 +74,7 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
         {...props}
       >
         {leftIcon && !loading ? leftIcon : null}
-        {/*{loading && <spinner size={spinnerSize} />}*/}
+        {loading && <Spinner  size={size}/>}
         {loading ? loadingText || <span>{children}</span> : children}
         {rightIcon && !loading ? rightIcon : null}
       </button>

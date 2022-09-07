@@ -15,7 +15,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
-      formats: ['cjs', 'es'],
+      formats: ['cjs', 'es']
     },
     rollupOptions: {
       plugins: [commonjs(), peerDepsExternal()]

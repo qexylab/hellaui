@@ -1,6 +1,6 @@
 {
   "name": "hellaui",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Fully accessible React UI components for your website that use Tailwind CSS",
   "license": "MIT",
   "files": [
