@@ -64,7 +64,7 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
           transition: 'all 0.175s ease',
           outline: 'none',
           appearance: 'none',
-          cursor: disabled || loading ? 'not-allowed' : '',
+          cursor: disabled || loading ? 'not-allowed' : 'pointer',
           opacity: disabled || loading ? '0.7' : '1'
         }}
         ref={ref}
@@ -73,10 +73,14 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
         type={type}
         {...props}
       >
-        {leftIcon && !loading ? leftIcon : null}
+        {leftIcon && !loading ? (
+          <div style={{ marginRight: '5px' }}>{leftIcon}</div>
+        ) : null}
         {loading && <Spinner size={size} />}
         {loading ? loadingText || <span>{children}</span> : children}
-        {rightIcon && !loading ? rightIcon : null}
+        {rightIcon && !loading ? (
+          <div style={{ marginLeft: '5px' }}>{rightIcon}</div>
+        ) : null}
       </button>
     )
   }

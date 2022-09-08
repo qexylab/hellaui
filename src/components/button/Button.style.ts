@@ -15,127 +15,88 @@ export const getButtonStyle = (
     hoverColor: string = '',
     border: string = 'none',
     hoverBorder: string = 'none',
-    textSize: string = '',
+    textSize: string,
     padding: string = '5px 15px'
+
+  const setButtonStyle = (
+    main_color: string,
+    dark_main_color: string,
+    plain_bg_color: string
+  ) => {
+    backgroundColor = bgColor ? bgColor : plain ? plain_bg_color : main_color
+    hoverBackgroundColor = plain ? main_color : dark_main_color
+    color = textColor ? textColor : plain ? main_color : theme_color.white
+    hoverColor = theme_color.white
+    border = `1px solid ${main_color}`
+    hoverBorder = plain
+      ? `1px solid ${main_color}`
+      : `1px solid ${dark_main_color}`
+  }
+
+  const setDefaultButtonStyle = (
+    main_color: string,
+    plain_hover_bg_color: string,
+    hover_border_color: string
+  ) => {
+    backgroundColor = bgColor ? bgColor : 'transparent'
+    hoverBackgroundColor = plain ? 'transparent' : plain_hover_bg_color
+    color = textColor ? textColor : theme_color.white
+    hoverColor = main_color
+    border = `1px solid ${theme_color.white}`
+    hoverBorder = plain
+      ? `1px solid ${main_color}`
+      : `1px solid ${hover_border_color}`
+  }
 
   switch (variant) {
     case 'default':
-      backgroundColor = bgColor ? bgColor : 'transparent'
-      hoverBackgroundColor = plain ? 'transparent' : theme_color.primary_10
-      color = textColor ? textColor : theme_color.white
-      hoverColor = theme_color.primary
-      border = `1px solid ${theme_color.white}`
-      hoverBorder = plain
-        ? `1px solid ${theme_color.primary}`
-        : `1px solid ${theme_color.primary_40}`
+      setDefaultButtonStyle(
+        theme_color.primary,
+        theme_color.primary_10,
+        theme_color.primary_40
+      )
       break
     case 'primary':
-      backgroundColor = bgColor
-        ? bgColor
-        : plain
-        ? theme_color.primary_10
-        : theme_color.primary
-      hoverBackgroundColor = plain
-        ? theme_color.primary
-        : theme_color.dark_primary
-      color = textColor
-        ? textColor
-        : plain
-        ? theme_color.primary
-        : theme_color.white
-      hoverColor = theme_color.white
-      border = `1px solid ${theme_color.primary}`
-      hoverBorder = plain
-        ? `1px solid ${theme_color.primary}`
-        : `1px solid ${theme_color.dark_primary}`
+      setButtonStyle(
+        theme_color.primary,
+        theme_color.dark_primary,
+        theme_color.primary_10
+      )
       break
     case 'success':
-      backgroundColor = bgColor
-        ? bgColor
-        : plain
-        ? theme_color.success_10
-        : theme_color.success
-      hoverBackgroundColor = plain
-        ? theme_color.success
-        : theme_color.dark_success
-      color = textColor
-        ? textColor
-        : plain
-        ? theme_color.success
-        : theme_color.white
-      hoverColor = theme_color.white
-      border = `1px solid ${theme_color.success}`
-      hoverBorder = plain
-        ? `1px solid ${theme_color.success}`
-        : `1px solid ${theme_color.dark_success}`
+      setButtonStyle(
+        theme_color.success,
+        theme_color.dark_success,
+        theme_color.success_10
+      )
       break
     case 'info':
-      backgroundColor = bgColor
-        ? bgColor
-        : plain
-        ? theme_color.info_10
-        : theme_color.info
-      hoverBackgroundColor = plain ? theme_color.info : theme_color.dark_info
-      color = textColor
-        ? textColor
-        : plain
-        ? theme_color.info
-        : theme_color.white
-      hoverColor = theme_color.white
-      border = `1px solid ${theme_color.info}`
-      hoverBorder = plain
-        ? `1px solid ${theme_color.info}`
-        : `1px solid ${theme_color.dark_info}`
+      setButtonStyle(
+        theme_color.info,
+        theme_color.dark_info,
+        theme_color.info_10
+      )
       break
     case 'warning':
-      backgroundColor = bgColor
-        ? bgColor
-        : plain
-        ? theme_color.warning_10
-        : theme_color.warning
-      hoverBackgroundColor = plain
-        ? theme_color.warning
-        : theme_color.dark_warning
-      color = textColor
-        ? textColor
-        : plain
-        ? theme_color.warning
-        : theme_color.white
-      hoverColor = theme_color.white
-      border = `1px solid ${theme_color.warning}`
-      hoverBorder = plain
-        ? `1px solid ${theme_color.warning}`
-        : `1px solid ${theme_color.dark_warning}`
+      setButtonStyle(
+        theme_color.warning,
+        theme_color.dark_warning,
+        theme_color.warning_10
+      )
       break
     case 'danger':
-      backgroundColor = bgColor
-        ? bgColor
-        : plain
-        ? theme_color.danger_10
-        : theme_color.danger
-      hoverBackgroundColor = plain
-        ? theme_color.danger
-        : theme_color.dark_danger
-      color = textColor
-        ? textColor
-        : plain
-        ? theme_color.danger
-        : theme_color.white
-      hoverColor = theme_color.white
-      border = `1px solid ${theme_color.danger}`
-      hoverBorder = plain
-        ? `1px solid ${theme_color.danger}`
-        : `1px solid ${theme_color.dark_danger}`
+      setButtonStyle(
+        theme_color.danger,
+        theme_color.dark_danger,
+        theme_color.danger_10
+      )
       break
     default:
-      backgroundColor = bgColor ? bgColor : 'transparent'
-      hoverBackgroundColor = plain ? 'transparent' : theme_color.primary_10
-      color = textColor ? textColor : theme_color.white
-      hoverColor = theme_color.primary
-      border = `1px solid ${theme_color.white}`
-      hoverBorder = plain
-        ? `1px solid ${theme_color.primary}`
-        : `1px solid ${theme_color.primary_40}`
+      setDefaultButtonStyle(
+        theme_color.primary,
+        theme_color.primary_10,
+        theme_color.primary_40
+      )
       break
   }
 
