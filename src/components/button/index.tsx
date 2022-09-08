@@ -3,6 +3,7 @@ import { IButton } from './Button.types'
 import { getButtonStyle } from '@src/components/button/Button.style'
 import { borderRadius } from '@src/components/theme/borderRadius'
 import { Spinner } from '@src/components/spinner'
+import { Ripple } from '@src/components/ripple'
 
 export const Button = forwardRef<HTMLButtonElement, IButton>(
   (
@@ -26,7 +27,6 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
     },
     ref: ForwardedRef<HTMLButtonElement>
   ) => {
-
     const [isHover, setIsHover] = useState<boolean>(false)
     const [isFocus, setIsFocus] = useState<boolean>(false)
 
@@ -50,15 +50,23 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
 
     return (
       <button
+        ref={ref}
+        disabled={disabled}
+        aria-disabled={disabled}
+        type={type}
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         style={{
-          backgroundColor: isHover || isFocus ? hoverBackgroundColor : backgroundColor,
+          backgroundColor:
+            isHover || isFocus ? hoverBackgroundColor : backgroundColor,
           border: isHover || isFocus ? hoverBorder : border,
           color: isHover || isFocus ? hoverColor : color,
           fontSize: textSize,
+          position: 'relative',
+          overflow: 'hidden',
+          boxShadow: '0 0 5px rgba(0, 0, 0, 0.4)',
           alignItems: 'center',
           padding: padding,
           display: 'flex',
@@ -70,10 +78,6 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
           cursor: disabled || loading ? 'not-allowed' : 'pointer',
           opacity: disabled || loading ? '0.7' : '1'
         }}
-        ref={ref}
-        disabled={disabled}
-        aria-disabled={disabled}
-        type={type}
         {...props}
       >
         {leftIcon && !loading ? (
@@ -81,6 +85,7 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
         ) : null}
         {loading && <Spinner size={size} />}
         {loading ? loadingText || <span>{children}</span> : children}
+        <Ripple color="#dbd7d7" duration={850} />
         {rightIcon && !loading ? (
           <div style={{ marginLeft: '5px' }}>{rightIcon}</div>
         ) : null}
