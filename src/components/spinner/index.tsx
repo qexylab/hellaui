@@ -1,4 +1,5 @@
 import { ISpinner } from './Spinner.types'
+import React from 'react'
 import { forwardRef } from 'react'
 import { getSpinnerStyle } from '@src/components/spinner/Spinner.style'
 

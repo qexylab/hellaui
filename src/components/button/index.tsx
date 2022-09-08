@@ -3,7 +3,6 @@ import { IButton } from './Button.types'
 import { getButtonStyle } from '@src/components/button/Button.style'
 import { borderRadius } from '@src/components/theme/borderRadius'
 import { Spinner } from '@src/components/spinner'
-// import { spinner } from "@src/components/spinner";
 
 export const Button = forwardRef<HTMLButtonElement, IButton>(
   (
@@ -27,7 +26,10 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
     },
     ref: ForwardedRef<HTMLButtonElement>
   ) => {
-    const [isHover, setIsHover] = useState(false)
+
+    const [isHover, setIsHover] = useState<boolean>(false)
+    const [isFocus, setIsFocus] = useState<boolean>(false)
+
     const {
       backgroundColor,
       hoverBackgroundColor,
@@ -50,11 +52,12 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
       <button
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
-        onFocus={() => {}}
+        onFocus={() => setIsFocus(true)}
+        onBlur={() => setIsFocus(false)}
         style={{
-          backgroundColor: isHover ? hoverBackgroundColor : backgroundColor,
-          border: isHover ? hoverBorder : border,
-          color: isHover ? hoverColor : color,
+          backgroundColor: isHover || isFocus ? hoverBackgroundColor : backgroundColor,
+          border: isHover || isFocus ? hoverBorder : border,
+          color: isHover || isFocus ? hoverColor : color,
           fontSize: textSize,
           alignItems: 'center',
           padding: padding,
