@@ -6,7 +6,6 @@ export interface IRipple extends HTMLAttributes<HTMLDivElement> {
 }
 
 export interface newRipple {
-  x: number
-  y: number
-  size: string
+  left: number
+  top: number
 }
