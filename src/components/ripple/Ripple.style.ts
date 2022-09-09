@@ -1,11 +1,11 @@
-import { useLayoutEffect } from 'react'
+import { useEffect } from 'react'
 
 export const useDebouncedRippleCleanUp = (
   rippleCount: number,
   duration: number,
   cleanUpFunction: Function
 ) => {
-  useLayoutEffect(() => {
+  useEffect(() => {
     let bounce: number | undefined = undefined
     if (rippleCount > 0) {
       clearTimeout(bounce)
