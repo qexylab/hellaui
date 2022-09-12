@@ -1,15 +1,23 @@
 import React, { useState, FC } from 'react'
 import { IRipple, newRipple } from '@src/components/ripple/Ripple.types'
-import { useDebouncedRippleCleanUp } from '@src/components/ripple/Ripple.style'
+import {
+  getRippleStyle,
+  useDebouncedRippleCleanUp
+} from '@src/components/ripple/Ripple.style'
 import { useSetAnimation } from '@src/components/utils/useSetAnimation'
 
-export const Ripple: FC<IRipple> = ({ duration = 850, color = '#fff' }) => {
+export const Ripple: FC<IRipple> = ({
+  duration = 850,
+  color = '#dbd7d7',
+  size = 'md'
+}) => {
   const [rippleArray, setRippleArray] = useState<newRipple[]>([])
 
   const animationName = 'ripple'
   const keyframe = `@keyframes ${animationName} { to { opacity: 0; transform: scale(2); }}`
 
   useSetAnimation(animationName, keyframe)
+  const { rippleSize } = getRippleStyle(size)
 
   useDebouncedRippleCleanUp(rippleArray.length, duration, () => {
     setRippleArray([])
@@ -44,11 +52,10 @@ export const Ripple: FC<IRipple> = ({ duration = 850, color = '#fff' }) => {
             <span
               key={'span' + index}
               style={{
-                // Because of the transform: scale(0) and animation we had to subtract 17
-                left: ripple.left - 17,
-                top: ripple.top - 17,
-                width: 35,
-                height: 35,
+                left: ripple.left - rippleSize / 2,
+                top: ripple.top - rippleSize / 2,
+                width: rippleSize,
+                height: rippleSize,
                 transform: 'scale(0)',
                 borderRadius: '50%',
                 position: 'absolute',

@@ -1,4 +1,5 @@
 import { HTMLAttributes, ReactElement } from 'react'
+import { RippleSize } from '@src/components/ripple/Ripple.types'
 
 export type ButtonSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs'
 export type ButtonRounding = 'circle' | 'xl' | 'lg' | 'md' | 'sm' | 'xs'
@@ -26,4 +27,7 @@ export interface IButton extends HTMLAttributes<HTMLButtonElement> {
   loadingText?: string // The label to show in the button when loading is true
   skeleton?: boolean // The skeleton to show before button rendering,
   plain?: boolean // Determine whether it's a plain button
+  rippleEffect?: boolean // Enable or disable ripple's
+  rippleEffectColor?: string // Ripples color
+  rippleEffectSize?: RippleSize // Ripples size
 }

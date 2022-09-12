@@ -1,4 +1,32 @@
 import { useEffect } from 'react'
+import { RippleSize } from '@src/components/ripple/Ripple.types'
+
+export const getRippleStyle = (size: RippleSize) => {
+  let rippleSize
+
+  switch (size) {
+    case 'xs':
+      rippleSize = 15
+      break
+    case 'sm':
+      rippleSize = 25
+      break
+    case 'md':
+      rippleSize = 35
+      break
+    case 'lg':
+      rippleSize = 45
+      break
+    case 'xl':
+      rippleSize = 60
+      break
+    default:
+      rippleSize = 35
+  }
+  return {
+    rippleSize
+  }
+}
 
 export const useDebouncedRippleCleanUp = (
   rippleCount: number,

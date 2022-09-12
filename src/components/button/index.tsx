@@ -23,6 +23,9 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
       skeleton = true,
       plain,
       children,
+      rippleEffect = true,
+      rippleEffectColor,
+      rippleEffectSize = 'xs',
       ...props
     },
     ref: ForwardedRef<HTMLButtonElement>
@@ -85,7 +88,13 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
         ) : null}
         {loading && <Spinner size={size} />}
         {loading ? loadingText || <span>{children}</span> : children}
-        <Ripple color="#dbd7d7" duration={850} />
+        {rippleEffect && (
+          <Ripple
+            color={rippleEffectColor}
+            size={rippleEffectSize}
+            duration={850}
+          />
+        )}
         {rightIcon && !loading ? (
           <div style={{ marginLeft: '5px' }}>{rightIcon}</div>
         ) : null}
