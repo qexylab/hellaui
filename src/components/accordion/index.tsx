@@ -3,6 +3,7 @@ import { IAccordion } from '@src/components/accordion/Accordion.types'
 import { theme_color } from '@src/components/theme'
 import { getAccordionStyle } from '@src/components/accordion/Accordion.style'
 import { Ripple } from '@src/components/ripple'
+import { Chevron } from '@src/components/chevron'
 
 export const Accordion: FC<PropsWithChildren<IAccordion>> = ({
   children,
@@ -45,7 +46,7 @@ export const Accordion: FC<PropsWithChildren<IAccordion>> = ({
           minHeight: 32,
           width: '100%',
           display: 'flex',
-          justifyContent: iconPosition === 'right' ? 'space-between' : '',
+          justifyContent: iconPosition === 'right' ? 'space-between' : 'start',
           alignItems: 'center',
           textAlign: 'left',
           border: 'none',
@@ -88,34 +89,5 @@ export const Accordion: FC<PropsWithChildren<IAccordion>> = ({
         {children}
       </div>
     </div>
-  )
-}
-
-const Chevron: FC<{
-  open: boolean
-  position: 'right' | 'left'
-  textSize: number
-}> = ({ open, position, textSize }) => {
-  return (
-    <svg
-      style={{
-        width: textSize,
-        height: textSize,
-        marginRight: position === 'left' ? '8px' : '0',
-        transition: 'all .3s',
-        transform: open ? 'rotate(180deg)' : 'rotate(0deg)'
-      }}
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth={1.5}
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-      />
-    </svg>
   )
 }
