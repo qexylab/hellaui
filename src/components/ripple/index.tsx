@@ -16,7 +16,7 @@ export const Ripple: FC<IRipple> = ({
   const animationName = 'ripple'
   const keyframe = `@keyframes ${animationName} { to { opacity: 0; transform: scale(2); }}`
 
-  useSetAnimation(animationName, keyframe)
+  useSetAnimation(keyframe)
   const { rippleSize } = getRippleStyle(size)
 
   useDebouncedRippleCleanUp(rippleArray.length, duration, () => {

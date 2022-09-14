@@ -11,7 +11,7 @@ export const Spinner = forwardRef<SVGSVGElement, ISpinner>(
     const animationName = 'spin'
     const keyframe = `@keyframes ${animationName} { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`
 
-    useSetAnimation(animationName, keyframe)
+    useSetAnimation(keyframe)
 
     return (
       <svg
