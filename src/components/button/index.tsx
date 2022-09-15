@@ -32,6 +32,7 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
   ) => {
     const [isHover, setIsHover] = useState<boolean>(false)
     const [isFocus, setIsFocus] = useState<boolean>(false)
+    const [isClick, setIsClick] = useState<boolean>(false)
 
     const {
       backgroundColor,
@@ -59,6 +60,8 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
         type={type}
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
+        onMouseUp={() => setIsClick(true)}
+        onMouseDown={() => setIsClick(false)}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         style={{
@@ -91,8 +94,8 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
         {rippleEffect && (
           <Ripple
             color={rippleEffectColor}
-            size={rippleEffectSize}
-            duration={850}
+            size='xl'
+            duration={450}
           />
         )}
         {rightIcon && !loading ? (

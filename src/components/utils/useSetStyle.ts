@@ -1,22 +1,29 @@
-import {CSSProperties, useEffect} from 'react'
+import { CSSProperties, useEffect } from 'react'
+
+interface StyleObject extends CSSProperties {
+  [key: string]: any,
+}
 
 export const useSetStyle = (
     className: string,
-    css: CSSProperties,
+    css: StyleObject,
     customCss?: string
-): void => {
+) => {
   useEffect(() => {
-
-    const styleSheet = document.styleSheets[0]
     // If the script is launched using a test, then it will skip this hook
+    const styleSheet = document.styleSheets[0]
     if (typeof styleSheet === 'undefined') return
 
-    for (let style in css) {
-      style = setPropertyName(style)
-      console.log(style)
-    }
+    let styleObject: {[key: string]: string | number} = {}
+
+    for (let style in css) styleObject[setPropertyName(style)] = css[style]
+
+    console.log(`.${className}: ${JSON.stringify(styleObject)}`)
+    console.log(`.${className}: ${styleObject}`)
+    styleSheet.insertRule(`.${className} {color: #132143}`, styleSheet.cssRules.length)
+
   })
-  // styleSheet.insertRule(keyframe, styleSheet.cssRules.length)
+
 }
 
 // turn things like 'alignItems' into 'align-items'

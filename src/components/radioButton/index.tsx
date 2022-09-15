@@ -1,7 +1,7 @@
 import React, { forwardRef, useState } from 'react'
 import { IRadioButton } from '@src/components/radioButton/RadioButton.types'
 import { getRadioButtonStyle } from '@src/components/radioButton/RadioButton.style'
-import { useSetStyle } from '@src/components/utils/useSetStyle'
+import {useSetStyle} from "@src/components/utils/useSetStyle";
 
 export const RadioButton = forwardRef<HTMLInputElement, IRadioButton>(
   (
@@ -20,7 +20,12 @@ export const RadioButton = forwardRef<HTMLInputElement, IRadioButton>(
     const [isHover, setIsHover] = useState<boolean>(false)
     const [isFocus, setIsFocus] = useState<boolean>(false)
 
-    useSetStyle('hl-radio', {}, ``)
+    useSetStyle('hl-radio:hover ', {
+      backgroundColor: 'red',
+      padding: '10px 5px',
+      color: 'blue',
+      marginRight: 5,
+    }, ``)
 
     return <div className="hl-radio">testText</div>
   }
