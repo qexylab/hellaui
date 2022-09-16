@@ -65,7 +65,11 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         style={{
-          backgroundColor: isClick ? backgroundColor : isHover || isFocus ? hoverBackgroundColor : backgroundColor,
+          backgroundColor: isClick
+            ? backgroundColor
+            : isHover || isFocus
+            ? hoverBackgroundColor
+            : backgroundColor,
           border: isClick ? border : isHover || isFocus ? hoverBorder : border,
           color: isClick ? color : isHover || isFocus ? hoverColor : color,
           fontSize: textSize,

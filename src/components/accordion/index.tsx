@@ -54,7 +54,11 @@ export const Accordion: FC<PropsWithChildren<IAccordion>> = ({
           textAlign: 'left',
           border: 'none',
           transition: 'all .175s',
-          backgroundColor: isClick ? theme_color.gray : isHover ? theme_color.dark_gray : 'transparent',
+          backgroundColor: isClick
+            ? theme_color.gray
+            : isHover
+            ? theme_color.dark_gray
+            : 'transparent',
           margin: 0,
           padding: 10,
           cursor: 'pointer',
