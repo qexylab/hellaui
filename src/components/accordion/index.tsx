@@ -21,6 +21,7 @@ export const Accordion: FC<PropsWithChildren<IAccordion>> = ({
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isHover, setIsHover] = useState<boolean>(false)
+  const [isClick, setIsClick] = useState<boolean>(false)
 
   const { textSize } = getAccordionStyle(size)
 
@@ -41,6 +42,8 @@ export const Accordion: FC<PropsWithChildren<IAccordion>> = ({
         onClick={() => setIsOpen(!isOpen)}
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
+        onMouseUp={() => setIsClick(false)}
+        onMouseDown={() => setIsClick(true)}
         style={{
           position: 'relative',
           minHeight: 32,
@@ -51,7 +54,7 @@ export const Accordion: FC<PropsWithChildren<IAccordion>> = ({
           textAlign: 'left',
           border: 'none',
           transition: 'all .175s',
-          backgroundColor: isHover ? theme_color.gray : 'transparent',
+          backgroundColor: isClick ? theme_color.gray : isHover ? theme_color.dark_gray : 'transparent',
           margin: 0,
           padding: 10,
           cursor: 'pointer',
