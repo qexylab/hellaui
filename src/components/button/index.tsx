@@ -23,7 +23,7 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
       skeleton = true,
       plain,
       children,
-      rippleEffect = true,
+      rippleEffect = false,
       rippleEffectColor,
       rippleEffectSize = 'xs',
       ...props
@@ -60,15 +60,14 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
         type={type}
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
-        onMouseUp={() => setIsClick(true)}
-        onMouseDown={() => setIsClick(false)}
+        onMouseUp={() => setIsClick(false)}
+        onMouseDown={() => setIsClick(true)}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         style={{
-          backgroundColor:
-            isHover || isFocus ? hoverBackgroundColor : backgroundColor,
-          border: isHover || isFocus ? hoverBorder : border,
-          color: isHover || isFocus ? hoverColor : color,
+          backgroundColor: isClick ? backgroundColor : isHover || isFocus ? hoverBackgroundColor : backgroundColor,
+          border: isClick ? border : isHover || isFocus ? hoverBorder : border,
+          color: isClick ? color : isHover || isFocus ? hoverColor : color,
           fontSize: textSize,
           position: 'relative',
           overflow: 'hidden',
@@ -94,7 +93,7 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
         {rippleEffect && (
           <Ripple
             color={rippleEffectColor}
-            size='xl'
+            size={rippleEffectSize}
             duration={450}
           />
         )}
