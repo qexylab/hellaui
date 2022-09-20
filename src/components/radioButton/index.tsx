@@ -27,12 +27,10 @@ export const RadioButton = forwardRef<HTMLInputElement, IRadioButton>(
     },
     ref: ForwardedRef<HTMLInputElement>
   ) => {
+    const _inputRef = useRef<HTMLInputElement>(inputRef)
     const { minWidth, height, paddingLeft } = getRadioButtonStyle(sizes)
     // const [isHover, setIsHover] = useState<boolean>(false)
-    // const [isFocus, setIsFocus] = useState<boolean>(false)
-
-    const [focusedState, setFocusedState] = useState<boolean>(false)
-    const _inputRef = useRef<HTMLInputElement>(inputRef)
+    const [isFocus, setIsFocus] = useState<boolean>(false)
 
     const onClick = (e: any) => {
       if (!disabled && onChange) {
@@ -41,7 +39,6 @@ export const RadioButton = forwardRef<HTMLInputElement, IRadioButton>(
         const inputClicked = e.target === _inputRef.current
         const isInputToggled = inputClicked && e.target.checked !== _checked
         const isRadioToggled = radioClicked && !e.target.checked
-
         if (isInputToggled || isRadioToggled) {
           const _value = !_checked
           onChange({
@@ -53,7 +50,6 @@ export const RadioButton = forwardRef<HTMLInputElement, IRadioButton>(
             // @ts-ignore
             target: {
               type: 'radio',
-              // name: name,
               value: value,
               checked: _value
             }
@@ -64,16 +60,10 @@ export const RadioButton = forwardRef<HTMLInputElement, IRadioButton>(
     useEffect(() => {
       if (_inputRef.current) _inputRef.current.checked = checked
     }, [checked])
+
     return (
       <>
         <style>{`
-
-.hl-radiobutton-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .hl-radiobutton-icon {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -81,15 +71,9 @@ export const RadioButton = forwardRef<HTMLInputElement, IRadioButton>(
   border-radius: 50%;
   visibility: hidden;
 }
-
 .hl-radiobutton-box.hl-highlight .hl-radiobutton-icon {
   transform: translateZ(0) scale(1.0, 1.0);
   visibility: visible;
-}
-
-.hl-radiobutton {
-  width: 20px;
-  height: 20px;
 }
 .hl-radiobutton .hl-radiobutton-box {
   border: 2px solid #757575;
@@ -124,13 +108,9 @@ export const RadioButton = forwardRef<HTMLInputElement, IRadioButton>(
   background: #ffffff;
   color: #3F51B5;
 }
-.hl-radiobutton.hl-invalid > .hl-radiobutton-box {
-  border-color: #B00020;
-}
 .hl-radiobutton:focus {
   outline: 0 none;
 }
-
 .hl-input-filled .hl-radiobutton .hl-radiobutton-box {
   background-color: #f5f5f5;
 }
@@ -143,7 +123,6 @@ export const RadioButton = forwardRef<HTMLInputElement, IRadioButton>(
 .hl-input-filled .hl-radiobutton .hl-radiobutton-box.hl-highlight:not(.hl-disabled):hover {
   background: #ffffff;
 }
-
 .hl-radiobutton:not(.hl-radiobutton-disabled):hover {
   box-shadow: 0 0 1px 10px rgba(0, 0, 0, 0.04);
 }
@@ -156,29 +135,10 @@ export const RadioButton = forwardRef<HTMLInputElement, IRadioButton>(
 .hl-radiobutton.hl-radiobutton-checked:not(.hl-radiobutton-disabled).hl-radiobutton-focused {
   box-shadow: 0 0 1px 10px rgba(63, 81, 181, 0.12);
 }
-
-.hl-hidden-accessible {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
-.hl-hidden-accessible input,
-.hl-hidden-accessible select {
-  transform: scale(0);
-}
-
 .hl-radiobutton-box.hl-highlight .hl-radiobutton-icon {
   transform: translateZ(0) scale(1.0, 1.0);
   visibility: visible;
-}
-
-        `}</style>
+}`}</style>
         <div
           ref={ref}
           onClick={onClick}
@@ -187,22 +147,37 @@ export const RadioButton = forwardRef<HTMLInputElement, IRadioButton>(
             cursor: 'pointer',
             userSelect: 'none',
             verticalAlign: 'center',
-            marginRight: 10
+            marginRight: 10,
+            height: height,
+            width: minWidth
           }}
-          className={`hl-radiobutton ${checked && 'hl-radiobutton-checked'}
-         ${disabled && 'hl-radiobutton-disabled'} ${
-            focusedState && 'hl-radiobutton-focused'
-          }`}
+          className={`
+                hl-radiobutton 
+                ${checked && 'hl-radiobutton-checked'}
+                ${disabled && 'hl-radiobutton-disabled'} 
+                ${isFocus && 'hl-radiobutton-focused'}
+                `}
         >
-          <div className="hl-hidden-accessible">
+          <div
+            style={{
+              border: 0,
+              clip: 'rect(0 0 0 0)',
+              height: 1,
+              width: 1,
+              margin: -1,
+              overflow: 'hidden',
+              padding: 0,
+              position: 'absolute'
+            }}
+          >
             <input
               ref={_inputRef}
               id={inputId}
               type="radio"
               name={name}
               defaultChecked={checked}
-              onFocus={() => setFocusedState(true)}
-              onBlur={() => setFocusedState(false)}
+              onFocus={() => setIsFocus(true)}
+              onBlur={() => setIsFocus(false)}
               onKeyDown={event => {
                 if (event.code === 'Space') onClick(event)
               }}
@@ -212,9 +187,17 @@ export const RadioButton = forwardRef<HTMLInputElement, IRadioButton>(
             />
           </div>
           <div
-            className={`hl-radiobutton-box ${checked && 'hl-highlight'} ${
-              disabled && 'hl-disabled'
-            } ${focusedState && 'hl-focus'}`}
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
+            className={`
+                  hl-radiobutton-box 
+                  ${checked && 'hl-highlight'} 
+                  ${disabled && 'hl-disabled'} 
+                  ${isFocus && 'hl-focus'}
+                  `}
           >
             <div className="hl-radiobutton-icon" />
           </div>
