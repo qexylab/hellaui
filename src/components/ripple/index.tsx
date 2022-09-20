@@ -9,7 +9,7 @@ import { useSetAnimation } from '@src/components/utils/useSetAnimation'
 export const Ripple: FC<IRipple> = ({
   duration = 850,
   color = '#dbd7d7',
-  size = 'md'
+  sizes = 'md'
 }) => {
   const [rippleArray, setRippleArray] = useState<newRipple[]>([])
 
@@ -17,7 +17,7 @@ export const Ripple: FC<IRipple> = ({
   const keyframe = `@keyframes ${animationName} { to { opacity: 0; transform: scale(2); }}`
 
   useSetAnimation(keyframe)
-  const { rippleSize } = getRippleStyle(size)
+  const { rippleSize } = getRippleStyle(sizes)
 
   useDebouncedRippleCleanUp(rippleArray.length, duration, () => {
     setRippleArray([])

@@ -8,7 +8,7 @@ import { Chevron } from '@src/components/chevron'
 export const Accordion: FC<PropsWithChildren<IAccordion>> = ({
   children,
   width = '100%',
-  size = 'md',
+  sizes = 'md',
   title = 'Title',
   iconPosition = 'right',
   hideTopLine = false,
@@ -17,13 +17,12 @@ export const Accordion: FC<PropsWithChildren<IAccordion>> = ({
   rippleEffectColor,
   rippleEffectSize,
   onClick,
-  ...props
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isHover, setIsHover] = useState<boolean>(false)
   const [isClick, setIsClick] = useState<boolean>(false)
 
-  const { textSize } = getAccordionStyle(size)
+  const { textSize } = getAccordionStyle(sizes)
 
   return (
     <div
@@ -77,7 +76,7 @@ export const Accordion: FC<PropsWithChildren<IAccordion>> = ({
           <Ripple
             color={rippleEffectColor}
             duration={850}
-            size={rippleEffectSize}
+            sizes={rippleEffectSize}
           />
         )}
       </button>

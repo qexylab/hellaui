@@ -5,7 +5,7 @@ export type AccordionSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs'
 
 export interface IAccordion extends HTMLAttributes<HTMLDivElement> {
   width?: string // Accordion width
-  size?: AccordionSize // Accordion size
+  sizes?: AccordionSize // Accordion size
   iconPosition?: 'right' | 'left' // Icon position
   title?: string // Accordion title
   hideTopLine?: boolean // Hide top line

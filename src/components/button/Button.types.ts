@@ -15,7 +15,7 @@ type ButtonType = 'button' | 'reset' | 'submit'
 export interface IButton extends HTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant // Button Type
   type?: ButtonType // Set the original html type of button
-  size?: ButtonSize // Button Size,
+  sizes?: ButtonSize // Button Size,
   rounding?: ButtonRounding // Button Rounding
   disabled?: boolean // Makes button disabled
   active?: boolean // Makes button active

@@ -10,7 +10,7 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
     {
       variant = 'default',
       type = 'button',
-      size = 'md',
+      sizes = 'md',
       rounding = 'md',
       disabled = false,
       active = true,
@@ -45,7 +45,7 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
       hoverBorder
     } = getButtonStyle(
       variant,
-      size,
+      sizes,
       disabled,
       plain ? plain : undefined,
       bgColor ? bgColor : undefined,
@@ -92,12 +92,12 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
         {leftIcon && !loading ? (
           <div style={{ marginRight: '5px' }}>{leftIcon}</div>
         ) : null}
-        {loading && <Spinner size={size} />}
+        {loading && <Spinner sizes={sizes} />}
         {loading ? loadingText || <span>{children}</span> : children}
         {rippleEffect && (
           <Ripple
             color={rippleEffectColor}
-            size={rippleEffectSize}
+            sizes={rippleEffectSize}
             duration={450}
           />
         )}

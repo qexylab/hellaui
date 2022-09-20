@@ -8,7 +8,7 @@ const ACCORDION_TITLE = 'Hella UI'
 
 describe('accordion', () => {
   const Component: FC<{ size?: AccordionSize }> = ({ size = 'md' }) => (
-    <Accordion size={size} width="500px" title={ACCORDION_TITLE}>
+    <Accordion sizes={size} width="500px" title={ACCORDION_TITLE}>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, tempore!
     </Accordion>
   )
@@ -25,7 +25,7 @@ describe('accordion', () => {
     const test_function = jest.fn()
     render(
       <Accordion
-        size="xl"
+        sizes="xl"
         onClick={() => {
           test_function()
         }}

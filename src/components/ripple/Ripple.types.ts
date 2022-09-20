@@ -5,7 +5,7 @@ export type RippleSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs'
 export interface IRipple extends HTMLAttributes<HTMLDivElement> {
   duration?: number
   color?: string
-  size?: RippleSize
+  sizes?: RippleSize
 }
 
 export interface newRipple {

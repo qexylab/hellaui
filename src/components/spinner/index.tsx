@@ -5,8 +5,8 @@ import { getSpinnerStyle } from '@src/components/spinner/Spinner.style'
 import { useSetAnimation } from '@src/components/utils/useSetAnimation'
 
 export const Spinner = forwardRef<SVGSVGElement, ISpinner>(
-  ({ size = 'md', ...props }, ref) => {
-    const { height, width } = getSpinnerStyle(size)
+  ({ sizes = 'md', ...props }, ref) => {
+    const { height, width } = getSpinnerStyle(sizes)
 
     const animationName = 'spin'
     const keyframe = `@keyframes ${animationName} { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`
