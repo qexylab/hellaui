@@ -26,6 +26,8 @@ export interface IButton extends HTMLAttributes<HTMLButtonElement> {
   loading?: boolean // Shows loading spinner
   loadingText?: string // The label to show in the button when loading is true
   skeleton?: boolean // The skeleton to show before button rendering,
+  skeletonWidth?: string // Skeleton width,
+  skeletonHeight?: string // Skeleton height,
   plain?: boolean // Determine whether it's a plain button
   rippleEffect?: boolean // Enable or disable ripple's
   rippleEffectColor?: string // Ripples color

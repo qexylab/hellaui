@@ -1,10 +1,7 @@
 import React, { FC } from 'react'
+import { IChevron } from '@src/components/chevron/Chevron.types'
 
-export const Chevron: FC<{
-  open?: boolean
-  position?: 'right' | 'left'
-  textSize?: number
-}> = ({ open, position, textSize }) => {
+export const Chevron: FC<IChevron> = ({ open, position, textSize }) => {
   return (
     <svg
       style={{
