@@ -1,12 +1,12 @@
 import React, {FC} from 'react';
 import {ITooltip} from "@src/components/tooltip/Tooltip.types";
+import '@src/components/tooltip/Tooltip.css'
 
-const Tooltip: FC<ITooltip> = ({}) => {
+export const Tooltip: FC<ITooltip> = ({}) => {
   return (
-      <div>
+      <div className='test_class'>
         Tooltip
       </div>
   );
 };
 
-export default Tooltip;
