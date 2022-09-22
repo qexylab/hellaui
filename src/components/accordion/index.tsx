@@ -97,3 +97,5 @@ export const Accordion: FC<PropsWithChildren<IAccordion>> = ({
     </div>
   )
 }
+
+Accordion.displayName = 'Accordion'
