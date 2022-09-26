@@ -14,30 +14,25 @@ export const Tooltip: FC<ITooltip> = ({
   tooltipRef,
   tooltipPosition
 }) => {
-  const tooltipElementRef = useRef<HTMLDivElement | null>(null)
-  const container: Element = userContainer || document.body
-  let scrollableParents: Element[] | undefined = undefined
-  const [portalFlexDirection, setPortalFlexDirection] = useState<string>('')
-  const [portalFullWidth, setPortalFullWidth] = useState<boolean>(false)
-  let showTooltipTimer: any
 
-  const hideTooltip = () => onVisibilityChange(false)
+  // Удалить рендерконтент и сделать рефактор кода и еще не используется onVisibilityChange
 
   return visible ? (
-      <Portal targetRef={targetRef}>
-        <div style={{pointerEvents: "none", height: '100%', width: '100%', flex: '0 0 auto' }}/>
-        <div style={{opacity: 0, transitionDelay: '.2s', transitionProperty: 'opacity', alignSelf: 'center', width: "max-content", minWidth: 'max-content', pointerEvents: "initial" }}>
-          <div style={{
-            backgroundColor: theme_color.white_gray,
-            color: theme_color.dark_gray,
-            borderRadius: borderRadius('md'),
-            boxShadow: '0 0 5px rgba(0, 0, 0, 0.4)',
-            padding: '4px 8px',
-            maxWidth: 'min(488px, calc(100vw - 16px))'
-          }}>
-            {renderContent()}
-          </div>
-        </div>
+      <Portal onClick={() => console.log('asd')} targetRef={targetRef}>
+        {/*<div style={{pointerEvents: "none", height: '100%', width: '100%', flex: '0 0 auto' }}/>*/}
+        {/*<div style={{opacity: 0, transitionDelay: '.2s', transitionProperty: 'opacity', alignSelf: 'center', width: "max-content", minWidth: 'max-content', pointerEvents: "initial" }}>*/}
+        {/*  <div style={{*/}
+        {/*    backgroundColor: theme_color.white_gray,*/}
+        {/*    color: theme_color.dark_gray,*/}
+        {/*    borderRadius: borderRadius('md'),*/}
+        {/*    boxShadow: '0 0 5px rgba(0, 0, 0, 0.4)',*/}
+        {/*    padding: '4px 8px',*/}
+        {/*    maxWidth: 'min(488px, calc(100vw - 16px))'*/}
+        {/*  }}>*/}
+        {/*    {renderContent()}*/}
+        {/*  </div>*/}
+        {/*</div>*/}
+        <div>TEXT</div>
       </Portal>
   ) : null
 }
