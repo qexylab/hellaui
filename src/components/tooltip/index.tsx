@@ -1,43 +1,52 @@
-import React, { FC, useEffect, useRef, useState } from 'react'
-import {
-  ITooltip,
-  TooltipPosition
-} from '@src/components/tooltip/Tooltip.types'
+import React, {
+  FC,
+  PropsWithChildren,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from 'react'
+import { ITooltip } from '@src/components/tooltip/Tooltip.types'
 import Portal from '@src/components/portal'
 import { theme_color } from '@src/components/theme'
 import { borderRadius } from '@src/components/theme/borderRadius'
-import { NoSsr } from '@src/components/noSsr'
-import { getScrollbarSize } from '@src/components/utils/getScrollbarSize'
 import { getTooltipStyle } from '@src/components/tooltip/Tooltip.style'
+import { handleRef } from '@src/components/utils/handleRef'
 
-export const Tooltip: FC<ITooltip> = ({
-  visible,
+export const Tooltip: FC<PropsWithChildren<ITooltip>> = ({
+  visible = false,
+  sizes = 'md',
   onVisibilityChange,
-  renderContent,
   targetRef,
-  container: userContainer,
+  container,
   withDelay,
   tooltipRef,
-  tooltipPosition
+  tooltipPosition = 'bottom',
+  children,
+  style
 }) => {
-  const tooltipElementRef = useRef<HTMLDivElement | null>(null)
-  const container: Element = userContainer || document.body
-  let scrollableParents: Element[] | undefined = undefined
   let showTooltipTimer: any
 
+  const tooltipElementRef = useRef<HTMLDivElement | null>(null)
+  const tooltipChildRef = useRef<HTMLDivElement>(null)
   const [portalFlexDirection, setPortalFlexDirection] = useState<string>('')
-  const [portalFullWidth, setPortalFullWidth] = useState<boolean>(false)
 
   const hideTooltip = () => onVisibilityChange(false)
+  const attachRef = (node: HTMLDivElement) =>
+    handleRef(node, tooltipRef, tooltipElementRef)
+
+  let _flexDirection: string,
+    _margin: string,
+    _padding: string,
+    _textSize: string
 
   useEffect(() => {
     return () => hideTooltip()
   }, [])
 
   useEffect(() => {
-    const scrollbarSize = getScrollbarSize()
-    getTooltip(scrollbarSize)
-  }, [renderContent(), targetRef, tooltipPosition, container, visible])
+    getTooltip()
+  }, [children, targetRef, tooltipPosition, visible])
 
   useEffect(() => {
     if (tooltipElementRef.current) tooltipElementRef.current.style.opacity = '1'
@@ -47,7 +56,7 @@ export const Tooltip: FC<ITooltip> = ({
     showTooltipTimer = window.setTimeout(
       () => {
         onVisibilityChange(true)
-        getTooltip(getScrollbarSize())
+        getTooltip()
       },
       withDelay ? 1500 : 0
     )
@@ -58,63 +67,98 @@ export const Tooltip: FC<ITooltip> = ({
     hideTooltip()
   }
 
-  const getTooltip = (scrollbarSize: number) => {
-    const tooltip = tooltipElementRef.current
+  const getTooltip = () => {
     if (!targetRef.current && !tooltipElementRef.current) return
 
-    const { direction, flexDirection, margin, fullWidth } =
-      getTooltipStyle(tooltipPosition)
+    const tooltip = tooltipElementRef.current
+    const tooltipChild = tooltipChildRef.current
 
-    setPortalFlexDirection(flexDirection)
+    if (!tooltip || !tooltipChild) return
+
+    setPortalFlexDirection(_flexDirection)
+
+    // TEST VERSION
+
+    tooltip.style.margin = _margin
+    tooltipChild.style.padding = _padding
+    tooltipChild.style.fontSize = _textSize
   }
 
+  useEffect(() => {
+    targetRef.current?.addEventListener('mouseenter', handleMouseEnter)
+    targetRef.current?.addEventListener('focus', handleMouseEnter)
+    targetRef.current?.addEventListener('mouseleave', handleMouseLeave)
+    targetRef.current?.addEventListener('mousedown', handleMouseLeave)
+    targetRef.current?.addEventListener('blur', handleMouseLeave)
+    return () => {
+      targetRef.current?.removeEventListener('mouseenter', handleMouseEnter)
+      targetRef.current?.removeEventListener('focus', handleMouseEnter)
+      targetRef.current?.removeEventListener('mouseleave', handleMouseLeave)
+      targetRef.current?.removeEventListener('mousedown', handleMouseLeave)
+      targetRef.current?.removeEventListener('blur', handleMouseLeave)
+    }
+  }, [targetRef.current])
+
+  // Сделать норм версию ЮсМемо чтобы он работал как надо TEST VERSION
+
+  useMemo(() => {
+    const { flexDirection, margin, padding, textSize } = getTooltipStyle(
+      tooltipPosition,
+      sizes
+    )
+    _flexDirection = flexDirection
+    _margin = margin
+    _padding = padding
+    _textSize = textSize
+  }, [visible])
+
   return visible ? (
-    <NoSsr>
-      <Portal
-        targetRef={targetRef}
-        onMouseEnter={handleMouseEnter}
-        onFocus={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onMouseDown={handleMouseLeave}
-        onBlur={handleMouseLeave}
-        flexDirection={portalFlexDirection}
-        fullContainerWidth={portalFullWidth}
+    <Portal
+      targetRef={targetRef}
+      container={container}
+      style={{
+        display: 'flex',
+        flexWrap: 'nowrap',
+        flexDirection: portalFlexDirection
+          ? (portalFlexDirection as 'column')
+          : 'row',
+        ...style
+      }}
+    >
+      <div
+        style={{
+          pointerEvents: 'none',
+          height: '100%',
+          width: '100%',
+          flex: '0 0 auto'
+        }}
+      />
+      <div
+        ref={attachRef}
+        style={{
+          opacity: 0,
+          transitionDelay: '.2s',
+          transitionProperty: 'opacity',
+          alignSelf: 'center',
+          width: 'max-content',
+          minWidth: 'max-content',
+          pointerEvents: 'initial'
+        }}
       >
         <div
+          ref={tooltipChildRef}
           style={{
-            pointerEvents: 'none',
-            height: '100%',
-            width: '100%',
-            flex: '0 0 auto'
-          }}
-        />
-        <div
-          style={{
-            opacity: 0,
-            transitionDelay: '.2s',
-            transitionProperty: 'opacity',
-            alignSelf: 'center',
-            width: 'max-content',
-            minWidth: 'max-content',
-            pointerEvents: 'initial'
+            backgroundColor: theme_color.dark_gray,
+            color: theme_color.white,
+            borderRadius: borderRadius('md'),
+            boxShadow: '0 0 5px rgba(0, 0, 0, 0.4)',
+            maxWidth: 'min(488px, calc(100vw - 16px))'
           }}
         >
-          <div
-            style={{
-              backgroundColor: theme_color.white_gray,
-              color: theme_color.dark_gray,
-              borderRadius: borderRadius('md'),
-              boxShadow: '0 0 5px rgba(0, 0, 0, 0.4)',
-              padding: '4px 8px',
-              maxWidth: 'min(488px, calc(100vw - 16px))'
-            }}
-          >
-            {renderContent()}
-          </div>
+          {children}
         </div>
-        <div>TEXT</div>
-      </Portal>
-    </NoSsr>
+      </div>
+    </Portal>
   ) : null
 }
 

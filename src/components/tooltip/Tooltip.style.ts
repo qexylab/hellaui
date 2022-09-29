@@ -1,51 +1,63 @@
-import { TooltipPosition } from '@src/components/tooltip/Tooltip.types'
+import {
+  TooltipPosition,
+  TooltipSize
+} from '@src/components/tooltip/Tooltip.types'
 
-export const getTooltipStyle = (position?: TooltipPosition) => {
-  let direction: TooltipPosition = 'bottom',
-    margin: string = '0',
-    flexDirection: string = 'column',
-    fullWidth: boolean = true
+export const getTooltipStyle = (
+  position: TooltipPosition,
+  size: TooltipSize
+) => {
+  let margin: string,
+    flexDirection: string,
+    textSize: string,
+    padding: string = '4px 8px'
 
-  switch (direction) {
+  switch (position) {
     case 'bottom':
       flexDirection = 'column'
-      fullWidth = false
       margin = '8px 0 0 0'
       break
-    // case 'topPageCenter':
-    //   setPortalFlexDirection('column-reverse')
-    //   setPortalFullWidth(true)
-    //   tooltip.style.margin = '0 0 8px 0'
-    //   break
-    // case 'bottomPageCenter':
-    //   setPortalFlexDirection('column')
-    //   setPortalFullWidth(true)
-    //   tooltip.style.margin = '8px 0 0 0'
-    //   break
-    // case 'left':
-    //   setPortalFlexDirection('row-reverse')
-    //   setPortalFullWidth(false)
-    //   tooltip.style.margin = '0 8px 0 0'
-    //   break
-    // case 'right':
-    //   setPortalFlexDirection('row')
-    //   setPortalFullWidth(false)
-    //   tooltip.style.margin = '0 0 0 8px'
-    //   break
-    // case 'top':
-    //   setPortalFlexDirection('column-reverse')
-    //   setPortalFullWidth(false)
-    //   tooltip.style.margin = '0 0 8px 0'
-    //   break
-    // default:
-    //   setPortalFlexDirection('column')
-    //   setPortalFullWidth(false)
-    //   tooltip.style.margin = '8px 0 0 0'
+    case 'top':
+      flexDirection = 'column-reverse'
+      margin = '0 0 8px 0'
+      break
+    case 'left':
+      flexDirection = 'row-reverse'
+      margin = '0 8px 0 0'
+      break
+    case 'right':
+      flexDirection = 'row'
+      margin = '0 0 0 8px'
+      break
+    default:
+      flexDirection = 'column'
+      margin = '8px 0 0 0'
+  }
+  switch (size) {
+    case 'xs':
+      textSize = '10px'
+      padding = '2px 6px'
+      break
+    case 'sm':
+      textSize = '12px'
+      break
+    case 'md':
+      textSize = '14px'
+      break
+    case 'lg':
+      textSize = '16px'
+      break
+    case 'xl':
+      textSize = '20px'
+      padding = '6px 12px'
+      break
+    default:
+      textSize = '14px'
   }
   return {
-    direction,
     margin,
     flexDirection,
-    fullWidth
+    padding,
+    textSize
   }
 }

@@ -7,8 +7,8 @@ const Portal: FC<PropsWithChildren<IPortal>> = ({
   targetRef,
   container,
   fullContainerWidth,
-  flexDirection = '',
-  children
+  children,
+  style
 }) => {
   const portalContainerRef = useRef<HTMLDivElement>(null)
 
@@ -32,14 +32,13 @@ const Portal: FC<PropsWithChildren<IPortal>> = ({
 
   return createPortal(
     <div
+      ref={portalContainerRef}
       style={{
         pointerEvents: 'none',
-        position: 'fixed',
         overflow: 'visible',
+        position: 'fixed',
         zIndex: 20,
-        display: 'flex',
-        flexWrap: 'nowrap',
-        flexDirection: flexDirection ? flexDirection : 'row'
+        ...style
       }}
     >
       {children}
