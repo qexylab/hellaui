@@ -15,4 +15,5 @@ export interface ITooltip extends HTMLAttributes<HTMLDivElement> {
   withDelay?: boolean // Display tooltip with delay
   tooltipRef?: RefCallback<HTMLDivElement> | RefObject<HTMLDivElement> | null // Tooltip ref
   tooltipPosition?: TooltipPosition // Tooltip position
+  background?: string // Tooltip Background
 }

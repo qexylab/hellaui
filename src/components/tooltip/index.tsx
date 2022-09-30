@@ -2,7 +2,6 @@ import React, {
   FC,
   PropsWithChildren,
   useEffect,
-  useMemo,
   useRef,
   useState
 } from 'react'
@@ -22,8 +21,8 @@ export const Tooltip: FC<PropsWithChildren<ITooltip>> = ({
   withDelay,
   tooltipRef,
   tooltipPosition = 'bottom',
-  children,
-  style
+  background,
+  children
 }) => {
   let showTooltipTimer: any
 
@@ -31,14 +30,8 @@ export const Tooltip: FC<PropsWithChildren<ITooltip>> = ({
   const tooltipChildRef = useRef<HTMLDivElement>(null)
   const [portalFlexDirection, setPortalFlexDirection] = useState<string>('')
 
-  const hideTooltip = () => onVisibilityChange(false)
   const attachRef = (node: HTMLDivElement) =>
     handleRef(node, tooltipRef, tooltipElementRef)
-
-  let _flexDirection: string,
-    _margin: string,
-    _padding: string,
-    _textSize: string
 
   useEffect(() => {
     return () => hideTooltip()
@@ -67,6 +60,8 @@ export const Tooltip: FC<PropsWithChildren<ITooltip>> = ({
     hideTooltip()
   }
 
+  const hideTooltip = () => onVisibilityChange(false)
+
   const getTooltip = () => {
     if (!targetRef.current && !tooltipElementRef.current) return
 
@@ -75,13 +70,15 @@ export const Tooltip: FC<PropsWithChildren<ITooltip>> = ({
 
     if (!tooltip || !tooltipChild) return
 
-    setPortalFlexDirection(_flexDirection)
+    const { flexDirection, margin, padding, textSize } = getTooltipStyle(
+      tooltipPosition,
+      sizes
+    )
+    setPortalFlexDirection(flexDirection)
 
-    // TEST VERSION
-
-    tooltip.style.margin = _margin
-    tooltipChild.style.padding = _padding
-    tooltipChild.style.fontSize = _textSize
+    tooltip.style.margin = margin
+    tooltipChild.style.padding = padding
+    tooltipChild.style.fontSize = textSize
   }
 
   useEffect(() => {
@@ -99,30 +96,17 @@ export const Tooltip: FC<PropsWithChildren<ITooltip>> = ({
     }
   }, [targetRef.current])
 
-  // Сделать норм версию ЮсМемо чтобы он работал как надо TEST VERSION
-
-  useMemo(() => {
-    const { flexDirection, margin, padding, textSize } = getTooltipStyle(
-      tooltipPosition,
-      sizes
-    )
-    _flexDirection = flexDirection
-    _margin = margin
-    _padding = padding
-    _textSize = textSize
-  }, [visible])
-
   return visible ? (
     <Portal
       targetRef={targetRef}
       container={container}
+      className='tooltip expand'
       style={{
         display: 'flex',
         flexWrap: 'nowrap',
         flexDirection: portalFlexDirection
           ? (portalFlexDirection as 'column')
-          : 'row',
-        ...style
+          : 'row'
       }}
     >
       <div
@@ -148,7 +132,7 @@ export const Tooltip: FC<PropsWithChildren<ITooltip>> = ({
         <div
           ref={tooltipChildRef}
           style={{
-            backgroundColor: theme_color.dark_gray,
+            backgroundColor: background ? background : theme_color.dark_gray,
             color: theme_color.white,
             borderRadius: borderRadius('md'),
             boxShadow: '0 0 5px rgba(0, 0, 0, 0.4)',
