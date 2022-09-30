@@ -1,11 +1,10 @@
-import React, {useRef, useState} from 'react'
+import React, { useRef, useState } from 'react'
 import { render } from '@testing-library/react'
 
 import { Tooltip } from '.'
-import {ITooltip} from "@src/components/tooltip/Tooltip.types";
+import { ITooltip } from '@src/components/tooltip/Tooltip.types'
 
 describe('Tooltip', () => {
-
   const TooltipWrapper = ({
     children,
     withDelay
@@ -22,18 +21,12 @@ describe('Tooltip', () => {
         >
           {children}
         </Tooltip>
-        <div ref={divRef}>
-          Test component
-        </div>
+        <div ref={divRef}>Test component</div>
       </div>
     )
   }
 
   it('should render component', () => {
-    render(
-      <TooltipWrapper>
-        asd
-      </TooltipWrapper>
-    )
+    render(<TooltipWrapper>asd</TooltipWrapper>)
   })
 })
