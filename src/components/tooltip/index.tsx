@@ -100,7 +100,6 @@ export const Tooltip: FC<PropsWithChildren<ITooltip>> = ({
     <Portal
       targetRef={targetRef}
       container={container}
-      className='tooltip expand'
       style={{
         display: 'flex',
         flexWrap: 'nowrap',
@@ -121,8 +120,7 @@ export const Tooltip: FC<PropsWithChildren<ITooltip>> = ({
         ref={attachRef}
         style={{
           opacity: 0,
-          transitionDelay: '.2s',
-          transitionProperty: 'opacity',
+          transition: 'opacity .175s ease-out',
           alignSelf: 'center',
           width: 'max-content',
           minWidth: 'max-content',
