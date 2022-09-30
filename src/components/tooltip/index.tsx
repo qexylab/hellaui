@@ -83,16 +83,10 @@ export const Tooltip: FC<PropsWithChildren<ITooltip>> = ({
 
   useEffect(() => {
     targetRef.current?.addEventListener('mouseenter', handleMouseEnter)
-    targetRef.current?.addEventListener('focus', handleMouseEnter)
     targetRef.current?.addEventListener('mouseleave', handleMouseLeave)
-    targetRef.current?.addEventListener('mousedown', handleMouseLeave)
-    targetRef.current?.addEventListener('blur', handleMouseLeave)
     return () => {
       targetRef.current?.removeEventListener('mouseenter', handleMouseEnter)
-      targetRef.current?.removeEventListener('focus', handleMouseEnter)
       targetRef.current?.removeEventListener('mouseleave', handleMouseLeave)
-      targetRef.current?.removeEventListener('mousedown', handleMouseLeave)
-      targetRef.current?.removeEventListener('blur', handleMouseLeave)
     }
   }, [targetRef.current])
 
