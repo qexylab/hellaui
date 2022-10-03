@@ -19,5 +19,8 @@ export const theme_color = {
   dark_warning: 'rgba(167, 119, 48, 1)',
   danger_10: 'rgba(245, 108, 108, 0.1)',
   danger: 'rgba(245, 108, 108, 1)',
-  dark_danger: 'rgba(178, 82, 82, 1)'
+  dark_danger: 'rgba(178, 82, 82, 1)',
+  purple_10: 'rgba(191, 85, 236, 0.1)',
+  purple: 'rgba(191, 85, 236, 1)',
+  dark_purple: 'rgba(142, 68, 173, 1)'
 }
