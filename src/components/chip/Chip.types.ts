@@ -1,5 +1,5 @@
 import { HTMLAttributes, ReactNode } from 'react'
-import {TooltipPosition} from "@src/components/tooltip/Tooltip.types";
+import { TooltipPosition } from '@src/components/tooltip/Tooltip.types'
 
 export type ChipSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs'
 export type ChipRounding = 'circle' | 'xl' | 'lg' | 'md' | 'sm' | 'xs'

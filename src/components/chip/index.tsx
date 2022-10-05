@@ -28,7 +28,7 @@ export const Chip = forwardRef<HTMLDivElement, IChip>(
       badge,
       withTooltip = false,
       rounding = 'md',
-      tooltipPosition= 'bottom',
+      tooltipPosition = 'bottom',
       onClick
     },
     ref: ForwardedRef<HTMLDivElement>
