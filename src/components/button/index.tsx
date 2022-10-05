@@ -1,7 +1,7 @@
 import React, { ForwardedRef, forwardRef, useState } from 'react'
 import { IButton } from './Button.types'
 import { getButtonStyle } from '@src/components/button/Button.style'
-import { borderRadius } from '@src/components/theme/borderRadius'
+import { borderRadius } from '@src/other/theme/borderRadius'
 import { Spinner } from '@src/components/spinner'
 import { Ripple } from '@src/components/ripple'
 import { Skeleton } from '@src/components/skeleton'

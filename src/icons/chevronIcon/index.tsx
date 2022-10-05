@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
-import { IChevron } from '@src/components/chevron/Chevron.types'
+import { IChevronIcon } from '@src/icons/chevronIcon/ChevronIcon.types'
 
-export const Chevron: FC<IChevron> = ({ open, position, textSize }) => {
+export const ChevronIcon: FC<IChevronIcon> = ({ open, position, textSize }) => {
   return (
     <svg
       style={{

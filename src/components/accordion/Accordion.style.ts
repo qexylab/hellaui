@@ -5,22 +5,22 @@ export const getAccordionStyle = (size: AccordionSize) => {
 
   switch (size) {
     case 'xs':
-      textSize = 14
+      textSize = 12
       break
     case 'sm':
-      textSize = 16
+      textSize = 14
       break
     case 'md':
-      textSize = 18
+      textSize = 16
       break
     case 'lg':
-      textSize = 20
+      textSize = 28
       break
     case 'xl':
-      textSize = 24
+      textSize = 22
       break
     default:
-      textSize = 18
+      textSize = 16
   }
   return {
     textSize

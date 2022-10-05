@@ -1,6 +1,6 @@
 import React, { FC, PropsWithChildren, useEffect, useState } from 'react'
 import { INoSsr } from './NoSsr.types'
-import { useEnhancedEffect } from '@src/components/utils/useEnhancedEffect'
+import { useEnhancedEffect } from '@src/other/utils/useEnhancedEffect'
 
 export const NoSsr: FC<PropsWithChildren<INoSsr>> = ({
   defer,

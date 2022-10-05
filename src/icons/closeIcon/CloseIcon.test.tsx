@@ -1,10 +1,10 @@
 import React from 'react'
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
-import { Chevron } from '@src/components/chevron/index'
+import { CloseIcon } from '@src/icons/closeIcon/index'
 
-describe('chevron', () => {
+describe('closeIcon', () => {
   test('should render component', () => {
-    render(<Chevron />)
+    render(<CloseIcon textSize={14} />)
   })
 })

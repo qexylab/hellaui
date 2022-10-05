@@ -1,5 +1,5 @@
 import { ButtonSize, ButtonVariant } from '@src/components/button/Button.types'
-import { theme_color } from '@src/components/theme'
+import { theme_color } from '@src/other/theme'
 
 export const getButtonStyle = (
   variant: ButtonVariant,
@@ -15,7 +15,7 @@ export const getButtonStyle = (
     hoverColor: string = '',
     border: string = 'none',
     hoverBorder: string = 'none',
-    textSize: string,
+    textSize: number,
     padding: string = '5px 15px'
 
   const setButtonStyle = (
@@ -102,24 +102,24 @@ export const getButtonStyle = (
 
   switch (size) {
     case 'xs':
-      textSize = '10px'
+      textSize = 12
       padding = '4px 10px'
       break
     case 'sm':
-      textSize = '12px'
+      textSize = 14
       break
     case 'md':
-      textSize = '14px'
+      textSize = 16
       break
     case 'lg':
-      textSize = '16px'
+      textSize = 18
       break
     case 'xl':
-      textSize = '20px'
+      textSize = 22
       padding = '6px 18px'
       break
     default:
-      textSize = '14px'
+      textSize = 16
   }
 
   return {

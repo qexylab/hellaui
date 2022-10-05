@@ -1,5 +1,5 @@
 import { ChipSize, ChipVariant } from '@src/components/chip/Chip.types'
-import { theme_color } from '@src/components/theme'
+import { theme_color } from '@src/other/theme'
 
 export const getChipStyle = (
   selected?: boolean,
@@ -13,8 +13,8 @@ export const getChipStyle = (
     hoverBackgroundColor: string = '',
     color: string = '',
     border: string = 'none',
-    textSize: string = '14px',
-    padding: string = '2px 5px'
+    textSize: number,
+    padding: string = '6px 12px'
 
   // const badgeAppearance: BadgeVariant = useMemo(() => {
   //   if (selected && !disabled) return 'whiteBlue'
@@ -53,24 +53,24 @@ export const getChipStyle = (
 
   switch (size) {
     case 'xs':
-      textSize = '10px'
-      padding = '4px 10px'
+      textSize = 12
+      padding = '4px 8px'
       break
     case 'sm':
-      textSize = '12px'
+      textSize = 14
       break
     case 'md':
-      textSize = '14px'
+      textSize = 16
       break
     case 'lg':
-      textSize = '16px'
+      textSize = 18
       break
     case 'xl':
-      textSize = '20px'
+      textSize = 22
       padding = '6px 18px'
       break
     default:
-      textSize = '14px'
+      textSize = 16
   }
 
   return {

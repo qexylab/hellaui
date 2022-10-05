@@ -1,9 +1,9 @@
 import React, { FC, PropsWithChildren, useState } from 'react'
 import { IAccordion } from '@src/components/accordion/Accordion.types'
-import { theme_color } from '@src/components/theme'
+import { theme_color } from '@src/other/theme'
 import { getAccordionStyle } from '@src/components/accordion/Accordion.style'
 import { Ripple } from '@src/components/ripple'
-import { Chevron } from '@src/components/chevron'
+import { ChevronIcon } from '@src/icons/chevronIcon'
 
 export const Accordion: FC<PropsWithChildren<IAccordion>> = ({
   children,
@@ -66,11 +66,19 @@ export const Accordion: FC<PropsWithChildren<IAccordion>> = ({
         }}
       >
         {iconPosition === 'left' && (
-          <Chevron textSize={textSize} open={isOpen} position={iconPosition} />
+          <ChevronIcon
+            textSize={textSize}
+            open={isOpen}
+            position={iconPosition}
+          />
         )}
         <span>{title}</span>
         {iconPosition === 'right' && (
-          <Chevron textSize={textSize} open={isOpen} position={iconPosition} />
+          <ChevronIcon
+            textSize={textSize}
+            open={isOpen}
+            position={iconPosition}
+          />
         )}
         {rippleEffect && (
           <Ripple

@@ -4,7 +4,7 @@ import {
   getRippleStyle,
   useDebouncedRippleCleanUp
 } from '@src/components/ripple/Ripple.style'
-import { useSetAnimation } from '@src/components/utils/useSetAnimation'
+import { useSetAnimation } from '@src/other/utils/useSetAnimation'
 
 export const Ripple: FC<IRipple> = ({
   duration = 850,

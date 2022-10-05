@@ -1,4 +1,5 @@
 import React, {
+  ForwardedRef,
   forwardRef,
   useCallback,
   useRef,
@@ -6,8 +7,10 @@ import React, {
 } from 'react'
 import { IChip } from '@src/components/chip/Chip.types'
 import { getChipStyle } from '@src/components/chip/Chip.style'
-import { borderRadius } from '@src/components/theme/borderRadius'
-import { theme_color } from '@src/components/theme'
+import { borderRadius } from '@src/other/theme/borderRadius'
+import { theme_color } from '@src/other/theme'
+import { CloseIcon } from '@src/icons/closeIcon'
+import { Tooltip } from '@src/components/tooltip'
 
 export const Chip = forwardRef<HTMLDivElement, IChip>(
   (
@@ -23,32 +26,33 @@ export const Chip = forwardRef<HTMLDivElement, IChip>(
       iconBefore,
       iconAfter,
       badge,
-      rounding = 'md'
+      withTooltip = false,
+      rounding = 'md',
+      tooltipPosition= 'bottom',
+      onClick
     },
+    ref: ForwardedRef<HTMLDivElement>
   ) => {
     const defaultChip = selected !== undefined
-    const withCloseIcon = !!onRemove
-    // const withBadge = !!badge
 
     const elementRef = useRef<HTMLDivElement>(null)
     const refItems = useRef<HTMLDivElement>(null)
     const [isHover, setIsHover] = useState<boolean>(false)
     const [isFocus, setIsFocus] = useState<boolean>(false)
-    // const [withTooltip, setTooltip] = useState<boolean>(false);
-    // const [tooltipVisible, setTooltipVisible] = useState<boolean>(false);
+    const [tooltipVisible, setTooltipVisible] = useState<boolean>(false)
 
     const {
       // badgeAppearance,
       // backgroundColor,
       hoverBackgroundColor,
-      color,
+      // color,
       // border,
       padding,
       textSize
     } = getChipStyle(selected, variant, sizes, disabled, bgColor, textColor)
 
     const handleClickCloseIcon = useCallback(
-      (e: MouseEvent) => {
+      (e: any) => {
         e.stopPropagation()
         if (!disabled) onRemove?.()
       },
@@ -62,6 +66,7 @@ export const Chip = forwardRef<HTMLDivElement, IChip>(
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         ref={elementRef}
+        onClick={onClick}
         style={{
           display: 'inline-flex',
           alignItems: 'center',
@@ -71,23 +76,30 @@ export const Chip = forwardRef<HTMLDivElement, IChip>(
           pointerEvents: disabled ? 'none' : 'auto',
           cursor: defaultChip && !disabled ? 'pointer' : 'default',
           backgroundColor:
-            isHover || isFocus
-              ? hoverBackgroundColor
-              : selected && !disabled
-              ? theme_color.primary
+            selected && !disabled
+              ? theme_color.dark_purple
               : selected && disabled
-              ? theme_color.primary_40
+              ? theme_color.white_gray
               : variant === 'filled'
-              ? theme_color.primary_10
+              ? theme_color.gray
+              : isHover || isFocus
+              ? hoverBackgroundColor
+              : bgColor
+              ? bgColor
               : 'transparent',
+
           border: `1px solid ${
             disabled && variant !== 'filled'
-              ? theme_color.purple
+              ? theme_color.white_gray
               : variant === 'filled'
               ? 'transparent'
-              : theme_color.primary_40
+              : theme_color.dark_purple
           }`,
-          color: color,
+          color: disabled
+            ? theme_color.white_gray
+            : textColor
+            ? textColor
+            : theme_color.white,
           padding: padding,
           fontSize: textSize,
           boxShadow: '0 0 5px rgba(0, 0, 0, 0.4)',
@@ -102,7 +114,8 @@ export const Chip = forwardRef<HTMLDivElement, IChip>(
             textOverflow: 'ellipsis',
             overflow: 'hidden',
             whiteSpace: 'nowrap',
-            display: 'inline-flex'
+            display: 'inline-flex',
+            alignItems: 'center'
           }}
         >
           {iconBefore && (
@@ -125,7 +138,7 @@ export const Chip = forwardRef<HTMLDivElement, IChip>(
             <div
               style={{
                 display: 'inline-block',
-                marginLeft: withCloseIcon ? 2 : 8
+                marginLeft: 8
               }}
             >
               {iconAfter}
@@ -134,36 +147,24 @@ export const Chip = forwardRef<HTMLDivElement, IChip>(
           {!onRemove && typeof badge !== 'undefined' && <div>999</div>}
           {onRemove && (
             <div
-              onClick={() => (disabled ? void 0 : handleClickCloseIcon)}
+              onClick={disabled ? void 0 : handleClickCloseIcon}
               style={{
                 display: 'inline-block',
-                marginLeft: withCloseIcon ? 2 : 8
+                marginLeft: 8
               }}
             >
-              Сомнительная иконка, надо бы найти получше
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
+              <CloseIcon textSize={textSize} />
             </div>
           )}
-          {/*Можно сделать еще тултип*/}
-          {/*<Tooltip*/}
-          {/*    targetRef={elementRef}*/}
-          {/*    visible={tooltipVisible && withTooltip}*/}
-          {/*    onVisibilityChange={setTooltipVisible}>*/}
-          {/*  {children}*/}
-          {/*</Tooltip>*/}
+          <Tooltip
+            targetRef={elementRef}
+            visible={tooltipVisible && withTooltip}
+            tooltipPosition={tooltipPosition}
+            sizes={sizes}
+            onVisibilityChange={setTooltipVisible}
+          >
+            {children}
+          </Tooltip>
         </div>
       </div>
     )

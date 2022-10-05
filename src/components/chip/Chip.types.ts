@@ -1,4 +1,5 @@
 import { HTMLAttributes, ReactNode } from 'react'
+import {TooltipPosition} from "@src/components/tooltip/Tooltip.types";
 
 export type ChipSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs'
 export type ChipRounding = 'circle' | 'xl' | 'lg' | 'md' | 'sm' | 'xs'
@@ -16,4 +17,6 @@ export interface IChip extends HTMLAttributes<HTMLDivElement> {
   iconBefore?: ReactNode // Icon before text
   iconAfter?: ReactNode // Icon after text
   badge?: number // Badge number
+  withTooltip?: boolean // Chip Tooltip
+  tooltipPosition?: TooltipPosition // Chip Tooltip
 }

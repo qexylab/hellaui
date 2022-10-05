@@ -7,10 +7,10 @@ import React, {
 } from 'react'
 import { ITooltip } from '@src/components/tooltip/Tooltip.types'
 import Portal from '@src/components/portal'
-import { theme_color } from '@src/components/theme'
-import { borderRadius } from '@src/components/theme/borderRadius'
+import { theme_color } from '@src/other/theme'
+import { borderRadius } from '@src/other/theme/borderRadius'
 import { getTooltipStyle } from '@src/components/tooltip/Tooltip.style'
-import { handleRef } from '@src/components/utils/handleRef'
+import { handleRef } from '@src/other/utils/handleRef'
 
 export const Tooltip: FC<PropsWithChildren<ITooltip>> = ({
   visible = false,

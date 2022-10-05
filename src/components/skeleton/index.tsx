@@ -1,8 +1,8 @@
-import { useSetAnimation } from '@src/components/utils/useSetAnimation'
-import { theme_color } from '@src/components/theme'
+import { useSetAnimation } from '@src/other/utils/useSetAnimation'
+import { theme_color } from '@src/other/theme'
 import React, { FC } from 'react'
 import { ISkeleton } from '@src/components/skeleton/Skeleton.types'
-import { borderRadius } from '@src/components/theme/borderRadius'
+import { borderRadius } from '@src/other/theme/borderRadius'
 
 const SkeletonAnimation = (animationName: string): void => {
   const keyframe = `@keyframes ${animationName} { 
