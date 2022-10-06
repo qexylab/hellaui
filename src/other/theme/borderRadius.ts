@@ -1,6 +1,6 @@
 type borderRadiusType = 'circle' | 'xl' | 'lg' | 'md' | 'sm' | 'xs'
 
-export const borderRadius = (borderRadius: borderRadiusType): string => {
+export const borderRadius = (borderRadius?: borderRadiusType): string => {
   switch (borderRadius) {
     case 'xs':
       return '4px'

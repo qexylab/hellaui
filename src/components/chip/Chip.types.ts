@@ -12,6 +12,7 @@ export interface IChip extends HTMLAttributes<HTMLDivElement> {
   variant?: ChipVariant // Chip variant
   bgColor?: string // Set the button background color
   textColor?: string // Set the button background color
+  borderColor?: string // Set the button border color
   selected?: boolean // Selected chip
   onRemove?: () => void // Remove function
   iconBefore?: ReactNode // Icon before text

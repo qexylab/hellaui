@@ -14,7 +14,7 @@ export const getAccordionStyle = (size: AccordionSize) => {
       textSize = 16
       break
     case 'lg':
-      textSize = 28
+      textSize = 18
       break
     case 'xl':
       textSize = 22

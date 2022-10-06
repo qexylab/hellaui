@@ -24,6 +24,8 @@ export const Accordion: FC<PropsWithChildren<IAccordion>> = ({
 
   const { textSize } = getAccordionStyle(sizes)
 
+  console.log(textSize)
+
   return (
     <div
       onClick={onClick}

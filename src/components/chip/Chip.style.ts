@@ -1,83 +1,68 @@
 import { ChipSize, ChipVariant } from '@src/components/chip/Chip.types'
 import { theme_color } from '@src/other/theme'
+import { BadgeVariant } from '@src/components/badge/Badge.types'
+import { useMemo } from 'react'
 
 export const getChipStyle = (
   selected?: boolean,
   variant?: ChipVariant,
   size?: ChipSize,
   disabled?: boolean,
-  bgColor?: string | undefined,
-  textColor?: string | undefined
+  badge?: number
 ) => {
-  let backgroundColor: string = '',
-    hoverBackgroundColor: string = '',
-    color: string = '',
-    border: string = 'none',
-    textSize: number,
-    padding: string = '6px 12px'
+  let hoverBackgroundColor: string, textSize: number, padding: string
 
-  // const badgeAppearance: BadgeVariant = useMemo(() => {
-  //   if (selected && !disabled) return 'whiteBlue'
-  //   if (disabled) {
-  //     if (selected) return 'whiteDisable'
-  //     return 'lightDisable'
-  //   }
-  //   return 'info'
-  // }, [variant, selected, disabled])
-
-  const setChipStyle = (
-    bg_color: string,
-    hover_bg_color: string,
-    text_color: string
-  ) => {
-    backgroundColor = bgColor ? bgColor : bg_color
-    hoverBackgroundColor = hover_bg_color
-    color = textColor ? textColor : text_color
-    if (variant === 'filled')
-      border = textColor ? `1px solid ${bgColor}` : `1px solid ${bg_color}`
-    else
-      border = textColor ? `1px solid ${textColor}` : `1px solid ${text_color}`
-  }
+  const badgeVariant: BadgeVariant = useMemo(() => {
+    if (selected && !disabled) return 'white'
+    if (disabled) {
+      if (selected) return 'whiteDisable'
+      return 'lightDisable'
+    }
+    return 'info'
+  }, [variant, selected, disabled])
 
   switch (variant) {
     case 'outlined':
-      setChipStyle('inherit', theme_color.dark_gray, theme_color.white)
+      hoverBackgroundColor = theme_color.dark_gray
       break
     case 'filled':
-      setChipStyle(theme_color.gray, theme_color.white_gray, theme_color.white)
+      hoverBackgroundColor = theme_color.white_gray
       break
     default:
-      setChipStyle('inherit', theme_color.dark_gray, theme_color.purple)
+      hoverBackgroundColor = theme_color.dark_gray
       break
   }
 
   switch (size) {
     case 'xs':
       textSize = 12
-      padding = '4px 8px'
+      padding = badge ? '4px 4px 4px 8px' : '4px 8px'
       break
     case 'sm':
       textSize = 14
+      padding = badge ? '6px 6px 6px 12px' : '6px 12px'
       break
     case 'md':
       textSize = 16
+      padding = badge ? '6px 6px 6px 12px' : '6px 12px'
       break
     case 'lg':
       textSize = 18
+      padding = badge ? '6px 6px 6px 12px' : '6px 12px'
       break
     case 'xl':
       textSize = 22
-      padding = '6px 18px'
+      padding = badge ? '6px 6px 6px 18px' : '6px 18px'
       break
     default:
       textSize = 16
+      padding = badge ? '6px 6px 6px 12px' : '6px 12px'
+      break
   }
 
   return {
-    backgroundColor,
+    badgeVariant,
     hoverBackgroundColor,
-    color,
-    border,
     padding,
     textSize
   }

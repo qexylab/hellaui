@@ -11,6 +11,7 @@ import { borderRadius } from '@src/other/theme/borderRadius'
 import { theme_color } from '@src/other/theme'
 import { CloseIcon } from '@src/icons/closeIcon'
 import { Tooltip } from '@src/components/tooltip'
+import { Badge } from '@src/components/badge'
 
 export const Chip = forwardRef<HTMLDivElement, IChip>(
   (
@@ -20,6 +21,7 @@ export const Chip = forwardRef<HTMLDivElement, IChip>(
       variant = 'outlined',
       selected,
       textColor,
+      borderColor,
       bgColor,
       onRemove,
       children,
@@ -41,15 +43,8 @@ export const Chip = forwardRef<HTMLDivElement, IChip>(
     const [isFocus, setIsFocus] = useState<boolean>(false)
     const [tooltipVisible, setTooltipVisible] = useState<boolean>(false)
 
-    const {
-      // badgeAppearance,
-      // backgroundColor,
-      hoverBackgroundColor,
-      // color,
-      // border,
-      padding,
-      textSize
-    } = getChipStyle(selected, variant, sizes, disabled, bgColor, textColor)
+    const { badgeVariant, hoverBackgroundColor, padding, textSize } =
+      getChipStyle(selected, variant, sizes, disabled, badge)
 
     const handleClickCloseIcon = useCallback(
       (e: any) => {
@@ -71,21 +66,21 @@ export const Chip = forwardRef<HTMLDivElement, IChip>(
           display: 'inline-flex',
           alignItems: 'center',
           position: 'relative',
-          maxWidth: '190px',
+          maxWidth: '250px',
           userSelect: 'none',
           pointerEvents: disabled ? 'none' : 'auto',
           cursor: defaultChip && !disabled ? 'pointer' : 'default',
           backgroundColor:
             selected && !disabled
-              ? theme_color.dark_purple
+              ? theme_color.dark_primary
               : selected && disabled
               ? theme_color.white_gray
-              : variant === 'filled'
-              ? theme_color.gray
               : isHover || isFocus
               ? hoverBackgroundColor
               : bgColor
               ? bgColor
+              : variant === 'filled'
+              ? theme_color.gray
               : 'transparent',
 
           border: `1px solid ${
@@ -93,12 +88,18 @@ export const Chip = forwardRef<HTMLDivElement, IChip>(
               ? theme_color.white_gray
               : variant === 'filled'
               ? 'transparent'
-              : theme_color.dark_purple
+              : borderColor
+              ? borderColor
+              : theme_color.dark_primary
           }`,
           color: disabled
             ? theme_color.white_gray
             : textColor
             ? textColor
+            : selected
+            ? theme_color.white
+            : variant === 'filled'
+            ? theme_color.white
             : theme_color.white,
           padding: padding,
           fontSize: textSize,
@@ -144,7 +145,16 @@ export const Chip = forwardRef<HTMLDivElement, IChip>(
               {iconAfter}
             </div>
           )}
-          {!onRemove && typeof badge !== 'undefined' && <div>999</div>}
+          {!onRemove && typeof badge !== 'undefined' && (
+            <Badge
+              style={{ marginLeft: 8 }}
+              rounding={rounding}
+              sizes={sizes}
+              variant={badgeVariant}
+            >
+              {badge}
+            </Badge>
+          )}
           {onRemove && (
             <div
               onClick={disabled ? void 0 : handleClickCloseIcon}

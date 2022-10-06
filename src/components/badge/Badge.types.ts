@@ -1,11 +1,14 @@
+import { HTMLAttributes } from 'react'
+
 export type BadgeVariant =
   | 'default'
   | 'info'
   | 'warning'
   | 'success'
   | 'error'
-  | 'grey'
+  | 'gray'
   | 'dark'
+  | 'light'
   | 'lightInactive'
   | 'lightDisable'
   | 'white'
@@ -14,7 +17,10 @@ export type BadgeVariant =
   | 'whiteBlue'
 
 export type BadgeSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs'
+export type BadgeRounding = 'circle' | 'xl' | 'lg' | 'md' | 'sm' | 'xs'
 
-export interface IBadge {
-  sizes: BadgeSize
+export interface IBadge extends HTMLAttributes<HTMLDivElement> {
+  sizes?: BadgeSize // Badge size
+  variant?: BadgeVariant // Badge variant
+  rounding?: BadgeRounding
 }

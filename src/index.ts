@@ -9,6 +9,8 @@ export * from './components/tooltip'
 export * from './components/noSsr'
 export * from './components/hint'
 export * from './components/chip'
+export * from './components/badge'
+export * from './components/link'
 
 // Icons
 export * from './icons/chevronIcon'
