@@ -2,6 +2,7 @@ import { HTMLAttributes, RefCallback, RefObject } from 'react'
 
 export type TooltipPosition = 'bottom' | 'top' | 'left' | 'right'
 export type TooltipSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs'
+export type TooltipRounding = 'circle' | 'xl' | 'lg' | 'md' | 'sm' | 'xs'
 
 export interface ITooltip extends HTMLAttributes<HTMLDivElement> {
   visible: boolean // Visible state
@@ -15,5 +16,6 @@ export interface ITooltip extends HTMLAttributes<HTMLDivElement> {
   withDelay?: boolean // Display tooltip with delay
   tooltipRef?: RefCallback<HTMLDivElement> | RefObject<HTMLDivElement> | null // Tooltip ref
   tooltipPosition?: TooltipPosition // Tooltip position
-  background?: string // Tooltip Background
+  background?: string // Tooltip background
+  rounding?: TooltipRounding // Tooltip rounding
 }

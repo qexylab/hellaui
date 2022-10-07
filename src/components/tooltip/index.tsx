@@ -21,7 +21,8 @@ export const Tooltip: FC<PropsWithChildren<ITooltip>> = ({
   withDelay,
   tooltipRef,
   tooltipPosition = 'bottom',
-  background,
+    background,
+    rounding = 'md',
   children
 }) => {
   let showTooltipTimer: any
@@ -72,7 +73,7 @@ export const Tooltip: FC<PropsWithChildren<ITooltip>> = ({
 
     const { flexDirection, margin, padding, textSize } = getTooltipStyle(
       tooltipPosition,
-      sizes
+      sizes,
     )
     setPortalFlexDirection(flexDirection)
 
@@ -126,7 +127,7 @@ export const Tooltip: FC<PropsWithChildren<ITooltip>> = ({
           style={{
             backgroundColor: background ? background : theme_color.dark_gray,
             color: theme_color.white,
-            borderRadius: borderRadius('md'),
+            borderRadius: borderRadius(rounding),
             boxShadow: '0 0 5px rgba(0, 0, 0, 0.4)',
             maxWidth: 'min(488px, calc(100vw - 16px))'
           }}

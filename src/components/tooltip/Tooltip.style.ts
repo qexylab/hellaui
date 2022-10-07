@@ -2,10 +2,11 @@ import {
   TooltipPosition,
   TooltipSize
 } from '@src/components/tooltip/Tooltip.types'
+import {theme_color} from "@src/other/theme";
 
 export const getTooltipStyle = (
   position: TooltipPosition,
-  size: TooltipSize
+  size: TooltipSize,
 ) => {
   let margin: string,
     flexDirection: string,
@@ -49,7 +50,7 @@ export const getTooltipStyle = (
       break
     case 'xl':
       textSize = '20px'
-      padding = '6px 12px'
+      padding = '5px 10px'
       break
     default:
       textSize = '14px'

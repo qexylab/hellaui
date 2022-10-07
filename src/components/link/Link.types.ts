@@ -8,5 +8,5 @@ export interface ILink extends AnchorHTMLAttributes<HTMLAnchorElement> {
   variant?: LinkVariant // Link variant
   sizes?: LinkSize // Link size
   disabled?: boolean // Disable link
-  link: string // Link
+  href: string // Link
 }

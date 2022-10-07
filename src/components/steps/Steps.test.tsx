@@ -1,10 +1,10 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { Link } from '@src/components/link/index'
+import {Steps} from "@src/components/steps/index";
 
-describe('chip', () => {
+describe('steps', () => {
   test('should render component', () => {
-    render(<Link href="test">test</Link>)
+    render(<Steps activeStep={1}>test</Steps>)
   })
 })

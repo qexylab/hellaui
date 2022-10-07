@@ -10,7 +10,7 @@ import { theme_color } from '@src/other/theme'
 
 export const Link = forwardRef<HTMLAnchorElement, PropsWithChildren<ILink>>(
   (
-    { children, variant = 'default', disabled, sizes = 'md', link },
+    { children, variant = 'default', disabled, sizes = 'md', href },
     ref: ForwardedRef<HTMLAnchorElement>
   ) => {
     const [isHover, setIsHover] = useState<boolean>(false)
@@ -21,7 +21,7 @@ export const Link = forwardRef<HTMLAnchorElement, PropsWithChildren<ILink>>(
 
     return (
       <a
-        href={link}
+        href={href}
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
         onMouseUp={() => setIsClick(false)}

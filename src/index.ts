@@ -11,6 +11,8 @@ export * from './components/hint'
 export * from './components/chip'
 export * from './components/badge'
 export * from './components/link'
+export * from './components/tag'
+export * from './components/steps'
 
 // Icons
 export * from './icons/chevronIcon'

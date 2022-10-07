@@ -4,10 +4,10 @@ export const theme_color = {
   white_gray: 'rgba(100, 100, 100, 1)',
   white: 'rgba(237, 239, 243, 1)',
   black: 'rgba(20, 20, 20, 1)',
-  primary_10: 'rgba(64, 158, 255, 0.1)',
-  primary_40: 'rgba(64, 158, 255, 0.4)',
-  primary_80: 'rgba(64, 158, 255, 0.8)',
-  primary: 'rgba(64, 158, 255, 1)',
+  primary_10: 'rgba(0, 123, 255, 0.1)',
+  primary_40: 'rgba(0, 123, 255, 0.4)',
+  primary_80: 'rgba(0, 123, 255, 0.8)',
+  primary: 'rgba(0, 123, 255, 1)',
   dark_primary: 'rgba(51, 117, 185, 1)',
   success_10: 'rgba(103, 194, 58, 0.1)',
   success_80: 'rgba(103, 194, 58, 0.8)',
@@ -28,5 +28,9 @@ export const theme_color = {
   purple_10: 'rgba(191, 85, 236, 0.1)',
   purple_80: 'rgba(191, 85, 236, 0.8)',
   purple: 'rgba(191, 85, 236, 1)',
-  dark_purple: 'rgba(142, 68, 173, 1)'
+  dark_purple: 'rgba(142, 68, 173, 1)',
+  cyan: 'rgba(64, 224, 208, 1)',
+  pink: 'rgba(255, 105, 180, 1)',
+  indigo: 'rgba(79, 70, 229, 1)',
+  teal: 'rgba(0, 128, 128, 1)'
 }
