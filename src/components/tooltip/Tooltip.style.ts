@@ -2,11 +2,10 @@ import {
   TooltipPosition,
   TooltipSize
 } from '@src/components/tooltip/Tooltip.types'
-import {theme_color} from "@src/other/theme";
 
 export const getTooltipStyle = (
   position: TooltipPosition,
-  size: TooltipSize,
+  size: TooltipSize
 ) => {
   let margin: string,
     flexDirection: string,

@@ -21,8 +21,8 @@ export const Tooltip: FC<PropsWithChildren<ITooltip>> = ({
   withDelay,
   tooltipRef,
   tooltipPosition = 'bottom',
-    background,
-    rounding = 'md',
+  background,
+  rounding = 'md',
   children
 }) => {
   let showTooltipTimer: any
@@ -73,7 +73,7 @@ export const Tooltip: FC<PropsWithChildren<ITooltip>> = ({
 
     const { flexDirection, margin, padding, textSize } = getTooltipStyle(
       tooltipPosition,
-      sizes,
+      sizes
     )
     setPortalFlexDirection(flexDirection)
 

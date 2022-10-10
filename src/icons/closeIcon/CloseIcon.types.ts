@@ -1,5 +1,5 @@
-import { HTMLAttributes } from 'react'
+import {SVGAttributes} from 'react'
 
-export interface ICloseIcon extends HTMLAttributes<HTMLDivElement> {
-  textSize: number
+export interface ICloseIcon extends SVGAttributes<SVGElement> {
+  textSize?: number
 }

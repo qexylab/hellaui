@@ -17,6 +17,8 @@ export * from './components/steps'
 // Icons
 export * from './icons/chevronIcon'
 export * from './icons/closeIcon'
+export * from './icons/warnIcon'
+export * from './icons/checkIcon'
 
 // Other
 export * from './other/theme'

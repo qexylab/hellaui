@@ -3,7 +3,7 @@ import { ITag } from '@src/components/tag/Tag.types'
 import { borderRadius } from '@src/other/theme/borderRadius'
 import { getTagStyle } from '@src/components/tag/Tag.style'
 import { Tooltip } from '@src/components/tooltip'
-import {theme_color} from "@src/other/theme";
+import { theme_color } from '@src/other/theme'
 
 export const Tag: FC<PropsWithChildren<ITag>> = ({
   variant = 'success',
@@ -13,14 +13,11 @@ export const Tag: FC<PropsWithChildren<ITag>> = ({
   iconBefore,
   withTooltip = false,
   tooltipPosition = 'bottom',
-    width = '100%',
-    tooltipBackground,
+  width = '100%',
+  tooltipBackground,
   children
 }) => {
-  const { backgroundColor, padding, textSize } = getTagStyle(
-    variant,
-    sizes
-  )
+  const { backgroundColor, padding, textSize } = getTagStyle(variant, sizes)
   const elementRef = useRef<HTMLDivElement>(null)
   const [tooltipVisible, setTooltipVisible] = useState<boolean>(false)
 
@@ -37,17 +34,19 @@ export const Tag: FC<PropsWithChildren<ITag>> = ({
         display: 'inline-flex',
         alignItems: 'center',
         maxWidth: width,
-        userSelect: 'none',
+        userSelect: 'none'
       }}
     >
       {iconBefore && <div style={{ marginRight: 2 }}>{iconBefore}</div>}
-      <div style={{
-        textOverflow: 'ellipsis',
-        overflow: 'hidden',
-        whiteSpace: 'nowrap',
-        alignItems: 'center'
-      }}>
-          {children}
+      <div
+        style={{
+          textOverflow: 'ellipsis',
+          overflow: 'hidden',
+          whiteSpace: 'nowrap',
+          alignItems: 'center'
+        }}
+      >
+        {children}
       </div>
       {iconAfter && <div style={{ marginLeft: 2 }}>{iconAfter}</div>}
       <Tooltip
@@ -59,7 +58,7 @@ export const Tag: FC<PropsWithChildren<ITag>> = ({
         background={tooltipBackground ? tooltipBackground : backgroundColor}
         rounding={rounding}
       >
-        <div style={{display: "flex", alignItems: "center"}}>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
           {iconBefore && <div style={{ marginRight: 2 }}>{iconBefore}</div>}
           {children}
           {iconAfter && <div style={{ marginLeft: 2 }}>{iconAfter}</div>}
