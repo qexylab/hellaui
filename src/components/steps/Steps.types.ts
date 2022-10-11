@@ -1,5 +1,5 @@
 import { HTMLAttributes } from 'react'
-import {TooltipPosition} from "@src/components/tooltip/Tooltip.types";
+import { TooltipPosition } from '@src/components/tooltip/Tooltip.types'
 
 export type Orientation = 'horizontal' | 'vertical'
 
@@ -11,8 +11,11 @@ export interface ISteps extends HTMLAttributes<HTMLUListElement> {
   hideLastStepLine?: boolean // Disable last step line
 }
 
-
-export interface IStep extends Omit<HTMLAttributes<HTMLLIElement | HTMLButtonElement | HTMLAnchorElement>, 'onClick'> {
+export interface IStep
+  extends Omit<
+    HTMLAttributes<HTMLLIElement | HTMLButtonElement | HTMLAnchorElement>,
+    'onClick'
+  > {
   disabled?: boolean // Disable step
   error?: boolean // Error step
   warning?: boolean // Warning step
@@ -24,5 +27,10 @@ export interface IStep extends Omit<HTMLAttributes<HTMLLIElement | HTMLButtonEle
   withTooltip?: boolean // Tag Tooltip
   tooltipPosition?: TooltipPosition // Tag Tooltip
   tooltipBackground?: string // Tag Tooltip
-  onClick?: (step: { _disabled: boolean; index: number | undefined; _active: boolean; _completed: boolean }) => void // OnClick func
+  onClick?: (step: {
+    _disabled: boolean
+    index: number | undefined
+    _active: boolean
+    _completed: boolean
+  }) => void // OnClick func
 }

@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { ICloseIcon } from '@src/icons/closeIcon/CloseIcon.types'
 
-export const CloseIcon: FC<ICloseIcon> = ({ textSize = 14, style }) => {
+export const CloseIcon: FC<ICloseIcon> = ({ textSize = 30, style }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12,8 +12,7 @@ export const CloseIcon: FC<ICloseIcon> = ({ textSize = 14, style }) => {
       style={{
         height: textSize + 3,
         width: textSize + 3,
-        ...style,
-        cursor: 'pointer'
+        ...style
       }}
     >
       <path
