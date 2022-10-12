@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { ICheckIcon } from '@src/icons/checkIcon/CheckIcon.types'
 
-export const CheckIconSolid: FC<ICheckIcon> = ({ textSize = 30, style }) => {
+export const CheckIconSolid: FC<ICheckIcon> = ({ textSize = 25, style }) => {
   return (
     <svg
       style={{ width: textSize, height: textSize, ...style }}
@@ -19,7 +19,7 @@ export const CheckIconSolid: FC<ICheckIcon> = ({ textSize = 30, style }) => {
   )
 }
 
-export const CheckIconOutline: FC<ICheckIcon> = ({ textSize = 30, style }) => {
+export const CheckIconOutline: FC<ICheckIcon> = ({ textSize = 25, style }) => {
   return (
     <svg
       style={{ width: textSize, height: textSize, ...style }}

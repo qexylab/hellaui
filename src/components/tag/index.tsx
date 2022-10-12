@@ -13,7 +13,7 @@ export const Tag: FC<PropsWithChildren<ITag>> = ({
   iconBefore,
   withTooltip = false,
   tooltipPosition = 'bottom',
-  width = '100%',
+  width,
   tooltipBackground,
   children
 }) => {
@@ -33,7 +33,6 @@ export const Tag: FC<PropsWithChildren<ITag>> = ({
         position: 'relative',
         display: 'inline-flex',
         alignItems: 'center',
-        maxWidth: width,
         userSelect: 'none'
       }}
     >
@@ -43,7 +42,8 @@ export const Tag: FC<PropsWithChildren<ITag>> = ({
           textOverflow: 'ellipsis',
           overflow: 'hidden',
           whiteSpace: 'nowrap',
-          alignItems: 'center'
+          alignItems: 'center',
+          maxWidth: width ? width : 500
         }}
       >
         {children}

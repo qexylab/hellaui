@@ -85,9 +85,8 @@ Steps.displayName = 'Steps'
 
 export const Step: FC<PropsWithChildren<IStep>> = ({
   disabled,
+  variant = 'default',
   active,
-  warning,
-  error,
   completed,
   index = -1,
   hideStepLine,
@@ -95,7 +94,6 @@ export const Step: FC<PropsWithChildren<IStep>> = ({
   tooltipPosition = 'bottom',
   tooltipBackground,
   children,
-  onClick
 }) => {
   const { activeStep, orientation, stepWidth, stepsAmount, lineClamp } =
       useContext(StepsContext),
@@ -106,10 +104,8 @@ export const Step: FC<PropsWithChildren<IStep>> = ({
     _active: boolean = active !== undefined ? active : activeStep === index,
     _completed: boolean = !!completed && !disabled,
     _disabled: boolean = (!_completed && !_active) || !disabled,
-    icon: ReactNode =
-      error || warning ? (
-        <WarnIconTriangle />
-      ) : _completed ? (
+    icon: ReactNode = completed ? (
+      <div>
         <CheckIconSolid
           style={{
             color:
@@ -118,7 +114,21 @@ export const Step: FC<PropsWithChildren<IStep>> = ({
                 : theme_color.primary
           }}
         />
-      ) : (
+      </div>
+    ) : variant === 'error' || variant === 'warning' ? (
+      <div>
+        <WarnIconTriangle
+          style={{
+            color: completed
+              ? theme_color.primary
+              : variant === 'error'
+              ? theme_color.danger
+              : theme_color.warning
+          }}
+        />
+      </div>
+    ) : (
+      <div>
         <CheckIconOutline
           style={{
             color:
@@ -127,14 +137,12 @@ export const Step: FC<PropsWithChildren<IStep>> = ({
                 : theme_color.white_gray
           }}
         />
-      )
+      </div>
+    )
   return (
     <>
       <li
         ref={stepRef}
-        onClick={() => {
-          if (!_disabled) onClick?.({ index, _active, _completed, _disabled })
-        }}
         style={{
           width: stepWidth
             ? `${stepWidth}px`
@@ -148,10 +156,8 @@ export const Step: FC<PropsWithChildren<IStep>> = ({
         <span
           style={{
             display: 'flex',
-            position: 'relative',
             width: '100%',
             height: '100%',
-            flexShrink: 0,
             flexDirection: orientation === 'vertical' ? 'row' : 'column'
           }}
         >
@@ -159,8 +165,7 @@ export const Step: FC<PropsWithChildren<IStep>> = ({
             style={{
               display: 'flex',
               alignItems: 'center',
-              alignSelf: 'stretch',
-              flexDirection: 'row',
+              flexDirection: orientation === 'horizontal' ? 'row' : 'column',
               width: orientation === 'vertical' ? '20px' : '100%',
               margin: orientation === 'vertical' ? '0 8px 0 0' : '0 0 8px 0'
             }}
@@ -171,17 +176,19 @@ export const Step: FC<PropsWithChildren<IStep>> = ({
                 style={{
                   height: orientation === 'vertical' ? '100%' : '2px',
                   width: orientation === 'vertical' ? '2px' : '100%',
-                  backgroundColor: completed
-                    ? theme_color.primary
-                    : error
-                    ? theme_color.danger
-                    : warning
-                    ? theme_color.warning
-                    : disabled
-                    ? theme_color.primary_10
-                    : theme_color.gray,
-                  borderRadius: '1px',
-                  marginRight: 3
+                  backgroundColor: completed ? theme_color.primary :
+                    _disabled && variant === 'default'
+                      ? theme_color.primary_40
+                      : _disabled && variant === 'warning'
+                      ? theme_color.warning_40
+                      : _disabled && variant === 'error'
+                      ? theme_color.danger_40
+                      : variant === 'error'
+                      ? theme_color.danger
+                      : variant === 'warning'
+                      ? theme_color.warning
+                      : theme_color.gray,
+                  borderRadius: '1px'
                 }}
               />
             )}
@@ -200,7 +207,7 @@ export const Step: FC<PropsWithChildren<IStep>> = ({
               style={{
                 lineClamp: lineClamp,
                 overflow: 'hidden',
-                color: disabled ? theme_color.gray : theme_color.white,
+                color: disabled ? theme_color.white_gray : theme_color.white,
                 marginRight: 12
               }}
             >

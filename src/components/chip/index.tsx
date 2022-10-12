@@ -160,7 +160,8 @@ export const Chip = forwardRef<HTMLDivElement, IChip>(
               onClick={disabled ? void 0 : handleClickCloseIcon}
               style={{
                 display: 'inline-block',
-                marginLeft: 8
+                marginLeft: 8,
+                cursor: 'pointer'
               }}
             >
               <CloseIcon textSize={textSize} />

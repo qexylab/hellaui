@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { IWarnIcon } from '@src/icons/warnIcon/WarnIcon.types'
 
-export const WarnIconTriangle: FC<IWarnIcon> = ({ textSize = 30, style }) => {
+export const WarnIconTriangle: FC<IWarnIcon> = ({ textSize = 25, style }) => {
   return (
     <svg
       style={{
@@ -14,7 +14,6 @@ export const WarnIconTriangle: FC<IWarnIcon> = ({ textSize = 30, style }) => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-6 h-6"
     >
       <path
         strokeLinecap="round"
@@ -25,7 +24,7 @@ export const WarnIconTriangle: FC<IWarnIcon> = ({ textSize = 30, style }) => {
   )
 }
 
-export const WarnIconCircle: FC<IWarnIcon> = ({ textSize = 14, style }) => {
+export const WarnIconCircle: FC<IWarnIcon> = ({ textSize = 25, style }) => {
   return (
     <svg
       style={{
@@ -38,7 +37,6 @@ export const WarnIconCircle: FC<IWarnIcon> = ({ textSize = 14, style }) => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-6 h-6"
     >
       <path
         strokeLinecap="round"
