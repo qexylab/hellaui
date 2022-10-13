@@ -1,11 +1,11 @@
 import { HTMLAttributes } from 'react'
 import { TooltipPosition } from '@src/components/tooltip/Tooltip.types'
 
-export type Orientation = 'horizontal' | 'vertical'
+export type StepOrientation = 'horizontal' | 'vertical'
 export type StepType = 'default' | 'error' | 'warning'
 
 export interface ISteps extends HTMLAttributes<HTMLUListElement> {
-  orientation?: Orientation // Steps orientation
+  orientation?: StepOrientation // Steps orientation
   activeStep: number // Active step
   lineClamp?: 1 | 2 | 3 // Number of lines per step, all height steps correspond to the same number of lines
   stepWidth?: number // Step width. If this parameter is not set, then the step width will be adaptive

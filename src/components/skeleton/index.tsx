@@ -27,16 +27,32 @@ export const Skeleton: FC<ISkeleton> = ({
   rounding = 'md'
 }) => {
   const animationName = 'skeleton_animation'
-  SkeletonAnimation(animationName)
   return (
-    <div
-      style={{
-        width: width,
-        height: height,
-        animation: `${animationName} 2s ease infinite`,
-        borderRadius: borderRadius(rounding),
-        boxShadow: '0 0 1px rgba(0, 0, 0, 0.4)'
-      }}
-    />
+    <>
+      <style>{`
+      @keyframes ${animationName} { 
+  0% {
+    background-color: ${theme_color.gray};
+    border-color: ${theme_color.gray};
+  }
+  50% {
+    background-color: ${theme_color.white_gray};
+    border-color: ${theme_color.white_gray};
+  }
+  100% {
+    background-color: ${theme_color.gray};
+    border-color: ${theme_color.gray};
+  }}
+      `}</style>
+      <div
+          style={{
+            width: width,
+            height: height,
+            animation: `${animationName} 2s ease infinite`,
+            borderRadius: borderRadius(rounding),
+            boxShadow: '0 0 1px rgba(0, 0, 0, 0.4)'
+          }}
+      />
+    </>
   )
 }

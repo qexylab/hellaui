@@ -13,6 +13,7 @@ export * from './components/badge'
 export * from './components/link'
 export * from './components/tag'
 export * from './components/steps'
+export * from './components/toggle'
 
 // Icons
 export * from './icons/chevronIcon'
