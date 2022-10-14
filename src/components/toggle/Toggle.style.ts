@@ -5,11 +5,11 @@ export const getToggleStyle = (size: ToggleSize) => {
 
   switch (size) {
     case 'xs':
-      toggleWidth = 28
+      toggleWidth = 16
       toggleHeight = 12
       break
     case 'sm':
-      toggleWidth = 32
+      toggleWidth = 20
       toggleHeight = 16
       break
     case 'md':
@@ -17,12 +17,12 @@ export const getToggleStyle = (size: ToggleSize) => {
       toggleHeight = 20
       break
     case 'lg':
-      toggleWidth = 40
+      toggleWidth = 28
       toggleHeight = 24
       break
     case 'xl':
-      toggleWidth = 48
-      toggleHeight = 28
+      toggleWidth = 36
+      toggleHeight = 32
       break
     default:
       toggleWidth = 36

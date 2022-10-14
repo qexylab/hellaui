@@ -1,8 +1,6 @@
 import React, {ForwardedRef, forwardRef} from 'react';
 import {IToggle} from "@src/components/toggle/Toggle.types";
-import {getToggleStyle} from "@src/components/toggle/Toggle.style";
 import {theme_color} from "@src/other/theme";
-import {useSetStyle} from "@src/other/utils/useSetStyle";
 import {NoSsr} from "@src/components/noSsr";
 import {borderRadius} from "@src/other/theme/borderRadius";
 
@@ -10,16 +8,16 @@ export const Toggle = forwardRef<HTMLInputElement, IToggle>(({
     checked,
     labelPosition = 'right',
     disabled= false,
-    sizes = 'md',
+    // sizes = 'md',
     rounding = 'md',
     onChange,
     onClick,
     children,
     helpText,
-                                                             }, ref: ForwardedRef<HTMLInputElement>) => {
+  }, ref: ForwardedRef<HTMLInputElement>) => {
 
-  const { toggleWidth, toggleHeight } = getToggleStyle(sizes)
-
+  // const { toggleWidth, toggleHeight } = getToggleStyle(sizes)
+  const toggleWidth = 24, toggleHeight = 20
 
   return (
       <NoSsr>
@@ -32,7 +30,7 @@ export const Toggle = forwardRef<HTMLInputElement, IToggle>(({
             left: 4px;
             bottom: 4px;
             background-color: white;
-            border-radius: ${borderRadius(sizes)}px;
+            border-radius: ${borderRadius(rounding)}px;
             transition: .4s;
           }
           
@@ -64,7 +62,7 @@ export const Toggle = forwardRef<HTMLInputElement, IToggle>(({
             bottom: 0,
             backgroundColor: checked ? theme_color.primary : theme_color.white_gray,
             boxShadow: checked ? '0 0 5px rgba(0, 0, 0, 0.4)' : 'rgba(100, 100, 111, 0.2) 0 7 29 0',
-            borderRadius: borderRadius(sizes) + 4,
+            borderRadius: borderRadius(rounding) + 4,
             transition: '.4s',
           }}/>
           {/*{children &&*/}

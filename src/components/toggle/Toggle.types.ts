@@ -8,7 +8,7 @@ export interface IToggle extends InputHTMLAttributes<HTMLInputElement>{
   checked?: boolean // Toggle state
   onChange?: ChangeEventHandler<HTMLInputElement> // Change toggle state event
   labelPosition?: LabelPosition, // Label position
-  sizes?: ToggleSize // Toggle size
+  // sizes?: ToggleSize // Toggle size
   rounding?: ToggleRounding // Toggle rounding
   disabled?: boolean // Disable toggle
   helpText?: ReactNode // Help text at the bottom of the component
