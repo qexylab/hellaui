@@ -11,7 +11,11 @@ import React, {
   useRef,
   useState
 } from 'react'
-import {IStep, ISteps, StepOrientation} from '@src/components/steps/Steps.types'
+import {
+  IStep,
+  ISteps,
+  StepOrientation
+} from '@src/components/steps/Steps.types'
 import { theme_color } from '@src/other/theme'
 import { WarnIconTriangle } from '@src/icons/warnIcon'
 import { CheckIconOutline, CheckIconSolid } from '@src/icons/checkIcon'
@@ -93,7 +97,7 @@ export const Step: FC<PropsWithChildren<IStep>> = ({
   withTooltip = false,
   tooltipPosition = 'bottom',
   tooltipBackground,
-  children,
+  children
 }) => {
   const { activeStep, orientation, stepWidth, stepsAmount, lineClamp } =
       useContext(StepsContext),
@@ -176,18 +180,19 @@ export const Step: FC<PropsWithChildren<IStep>> = ({
                 style={{
                   height: orientation === 'vertical' ? '100%' : '2px',
                   width: orientation === 'vertical' ? '2px' : '100%',
-                  backgroundColor: completed ? theme_color.primary :
-                    _disabled && variant === 'default'
-                      ? theme_color.primary_40
-                      : _disabled && variant === 'warning'
-                      ? theme_color.warning_40
-                      : _disabled && variant === 'error'
-                      ? theme_color.danger_40
-                      : variant === 'error'
-                      ? theme_color.danger
-                      : variant === 'warning'
-                      ? theme_color.warning
-                      : theme_color.gray,
+                  backgroundColor: completed
+                    ? theme_color.primary
+                    : _disabled && variant === 'default'
+                    ? theme_color.primary_40
+                    : _disabled && variant === 'warning'
+                    ? theme_color.warning_40
+                    : _disabled && variant === 'error'
+                    ? theme_color.danger_40
+                    : variant === 'error'
+                    ? theme_color.danger
+                    : variant === 'warning'
+                    ? theme_color.warning
+                    : theme_color.gray,
                   borderRadius: '1px'
                 }}
               />

@@ -1,4 +1,4 @@
-import {ToggleSize} from "@src/components/toggle/Toggle.types";
+import { ToggleSize } from '@src/components/toggle/Toggle.types'
 
 export const getToggleStyle = (size: ToggleSize) => {
   let toggleWidth: number, toggleHeight: number
@@ -30,6 +30,6 @@ export const getToggleStyle = (size: ToggleSize) => {
   }
   return {
     toggleWidth,
-    toggleHeight,
+    toggleHeight
   }
 }

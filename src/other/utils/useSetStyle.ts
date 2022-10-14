@@ -1,11 +1,15 @@
-import { CSSProperties, useEffect } from 'react'
-import {useEnhancedEffect} from "@src/other/utils/useEnhancedEffect";
+import { CSSProperties } from 'react'
+import { useEnhancedEffect } from '@src/other/utils/useEnhancedEffect'
 
 interface StyleObject extends CSSProperties {
   [key: string]: any
 }
 
-export const useSetStyle = (className: string, CSS: StyleObject, customCSS?: string | undefined) => {
+export const useSetStyle = (
+  className: string,
+  CSS: StyleObject,
+  customCSS?: string | undefined
+) => {
   useEnhancedEffect(() => {
     const styleSheet = document.styleSheets[0]
     let style_string: string = ''
