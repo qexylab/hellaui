@@ -4,11 +4,12 @@ import {
   getRippleStyle,
   useDebouncedRippleCleanUp
 } from '@src/components/ripple/Ripple.style'
-import { useSetAnimation } from '@src/other/utils/useSetAnimation'
+import { useSetAnimation } from '@src/other/hooks/useSetAnimation'
+import { theme_color } from '@src/other/theme'
 
 export const Ripple: FC<IRipple> = ({
   duration = 850,
-  color = '#dbd7d7',
+  color = theme_color.white_gray,
   sizes = 'md'
 }) => {
   const [rippleArray, setRippleArray] = useState<newRipple[]>([])

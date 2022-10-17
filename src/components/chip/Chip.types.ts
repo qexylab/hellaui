@@ -1,14 +1,13 @@
 import { HTMLAttributes, ReactNode } from 'react'
 import { TooltipPosition } from '@src/components/tooltip/Tooltip.types'
+import { DefaultRounding, DefaultSize } from '@src/other/utils/defaultTypes'
 
-export type ChipSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs'
-export type ChipRounding = 'circle' | 'xl' | 'lg' | 'md' | 'sm' | 'xs'
 export type ChipVariant = 'outlined' | 'filled'
 
 export interface IChip extends HTMLAttributes<HTMLDivElement> {
-  sizes?: ChipSize // Chip size
+  sizes?: DefaultSize // Chip size
   disabled?: boolean // Disable chip
-  rounding?: ChipRounding // Chip Rounding
+  rounding?: DefaultRounding // Chip Rounding
   variant?: ChipVariant // Chip variant
   bgColor?: string // Set the button background color
   textColor?: string // Set the button background color

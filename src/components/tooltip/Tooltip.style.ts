@@ -1,11 +1,9 @@
-import {
-  TooltipPosition,
-  TooltipSize
-} from '@src/components/tooltip/Tooltip.types'
+import { TooltipPosition } from '@src/components/tooltip/Tooltip.types'
+import { DefaultSize } from '@src/other/utils/defaultTypes'
 
 export const getTooltipStyle = (
   position: TooltipPosition,
-  size: TooltipSize
+  size: DefaultSize
 ) => {
   let margin: string,
     flexDirection: string,

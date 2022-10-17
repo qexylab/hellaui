@@ -1,12 +1,13 @@
-import { ChipSize, ChipVariant } from '@src/components/chip/Chip.types'
+import { ChipVariant } from '@src/components/chip/Chip.types'
 import { theme_color } from '@src/other/theme'
 import { BadgeVariant } from '@src/components/badge/Badge.types'
 import { useMemo } from 'react'
+import { DefaultSize } from '@src/other/utils/defaultTypes'
 
 export const getChipStyle = (
   selected?: boolean,
   variant?: ChipVariant,
-  size?: ChipSize,
+  size?: DefaultSize,
   disabled?: boolean,
   badge?: number
 ) => {

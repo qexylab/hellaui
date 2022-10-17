@@ -1,8 +1,6 @@
 import { HTMLAttributes, ReactElement } from 'react'
-import { RippleSize } from '@src/components/ripple/Ripple.types'
+import { DefaultRounding, DefaultSize } from '@src/other/utils/defaultTypes'
 
-export type ButtonSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs'
-export type ButtonRounding = 'circle' | 'xl' | 'lg' | 'md' | 'sm' | 'xs'
 export type ButtonVariant =
   | 'default'
   | 'primary'
@@ -15,8 +13,8 @@ type ButtonType = 'button' | 'reset' | 'submit'
 export interface IButton extends HTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant // Button Type
   type?: ButtonType // Set the original html type of button
-  sizes?: ButtonSize // Button Size,
-  rounding?: ButtonRounding // Button Rounding
+  sizes?: DefaultSize // Button Size,
+  rounding?: DefaultRounding // Button Rounding
   disabled?: boolean // Makes button disabled
   active?: boolean // Makes button active
   leftIcon?: ReactElement // Adds icon before button label
@@ -31,5 +29,5 @@ export interface IButton extends HTMLAttributes<HTMLButtonElement> {
   plain?: boolean // Determine whether it's a plain button
   rippleEffect?: boolean // Enable or disable ripple's
   rippleEffectColor?: string // Ripples color
-  rippleEffectSize?: RippleSize // Ripples size
+  rippleEffectSize?: DefaultSize // Ripples size
 }

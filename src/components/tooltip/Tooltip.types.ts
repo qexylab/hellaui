@@ -1,12 +1,11 @@
 import { HTMLAttributes, RefCallback, RefObject } from 'react'
+import { DefaultRounding, DefaultSize } from '@src/other/utils/defaultTypes'
 
 export type TooltipPosition = 'bottom' | 'top' | 'left' | 'right'
-export type TooltipSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs'
-export type TooltipRounding = 'circle' | 'xl' | 'lg' | 'md' | 'sm' | 'xs'
 
 export interface ITooltip extends HTMLAttributes<HTMLDivElement> {
   visible: boolean // Visible state
-  sizes?: TooltipSize // Tooltip size
+  sizes?: DefaultSize // Tooltip size
   /*  Callback for changing the visibility of the tooltip
     On hover/focus on the target element, the callback will be called with the value visible=true,
     when the hover/focus is lost on the target element, the callback will be called with the visible=false value.*/
@@ -17,5 +16,5 @@ export interface ITooltip extends HTMLAttributes<HTMLDivElement> {
   tooltipRef?: RefCallback<HTMLDivElement> | RefObject<HTMLDivElement> | null // Tooltip ref
   tooltipPosition?: TooltipPosition // Tooltip position
   background?: string // Tooltip background
-  rounding?: TooltipRounding // Tooltip rounding
+  rounding?: DefaultRounding // Tooltip rounding
 }

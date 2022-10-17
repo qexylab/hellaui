@@ -2,7 +2,7 @@ import { ISpinner } from './Spinner.types'
 import React from 'react'
 import { forwardRef } from 'react'
 import { getSpinnerStyle } from '@src/components/spinner/Spinner.style'
-import { useSetAnimation } from '@src/other/utils/useSetAnimation'
+import { useSetAnimation } from '@src/other/hooks/useSetAnimation'
 
 export const Spinner = forwardRef<SVGSVGElement, ISpinner>(
   ({ sizes = 'md', ...props }, ref) => {

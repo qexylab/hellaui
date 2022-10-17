@@ -1,7 +1,8 @@
-import { LinkSize, LinkVariant } from '@src/components/link/Link.types'
+import { LinkVariant } from '@src/components/link/Link.types'
 import { theme_color } from '@src/other/theme'
+import { DefaultSize } from '@src/other/utils/defaultTypes'
 
-export const getLinkStyle = (variant?: LinkVariant, size?: LinkSize) => {
+export const getLinkStyle = (variant?: LinkVariant, size?: DefaultSize) => {
   let color: string, hoverColor: string, textSize: number
 
   switch (variant) {

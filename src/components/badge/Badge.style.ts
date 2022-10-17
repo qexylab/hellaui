@@ -1,7 +1,8 @@
-import { BadgeSize, BadgeVariant } from '@src/components/badge/Badge.types'
+import { BadgeVariant } from '@src/components/badge/Badge.types'
 import { theme_color } from '@src/other/theme'
+import { DefaultSize } from '@src/other/utils/defaultTypes'
 
-export const getBadgeStyle = (size: BadgeSize, variant: BadgeVariant) => {
+export const getBadgeStyle = (size: DefaultSize, variant: BadgeVariant) => {
   let background: string = theme_color.gray,
     color: string = theme_color.dark_gray,
     textSize: number,

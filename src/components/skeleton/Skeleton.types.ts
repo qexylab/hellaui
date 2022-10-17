@@ -1,7 +1,7 @@
-export type SkeletonRounding = 'circle' | 'xl' | 'lg' | 'md' | 'sm' | 'xs'
+import { DefaultRounding } from '@src/other/utils/defaultTypes'
 
 export interface ISkeleton {
   width: string // Skeleton width
   height: string // Skeleton height
-  rounding: SkeletonRounding // Skeleton rounding
+  rounding: DefaultRounding // Skeleton rounding
 }

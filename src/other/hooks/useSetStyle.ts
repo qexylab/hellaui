@@ -1,5 +1,5 @@
 import { CSSProperties } from 'react'
-import { useEnhancedEffect } from '@src/other/utils/useEnhancedEffect'
+import { useEnhancedEffect } from '@src/other/hooks/useEnhancedEffect'
 
 interface StyleObject extends CSSProperties {
   [key: string]: any

@@ -1,4 +1,4 @@
-import { useEnhancedEffect } from '@src/other/utils/useEnhancedEffect'
+import { useEnhancedEffect } from '@src/other/hooks/useEnhancedEffect'
 
 export const useSetAnimation = (keyframe: string = '') => {
   useEnhancedEffect(() => {

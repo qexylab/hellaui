@@ -1,7 +1,8 @@
-import { TagSize, TagVariant } from '@src/components/tag/Tag.types'
+import { TagVariant } from '@src/components/tag/Tag.types'
 import { theme_color } from '@src/other/theme'
+import { DefaultSize } from '@src/other/utils/defaultTypes'
 
-export const getTagStyle = (variant: TagVariant, size: TagSize) => {
+export const getTagStyle = (variant: TagVariant, size: DefaultSize) => {
   let backgroundColor: string,
     textSize: number,
     padding: string = '2px 4px'

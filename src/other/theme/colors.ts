@@ -1,5 +1,6 @@
 export const theme_color = {
   dark_gray: 'rgba(60, 60, 60, 1)',
+  opacity_black: 'rgba(0,0,0,0.4)',
   gray: 'rgba(80, 80, 80, 1)',
   white_gray: 'rgba(100, 100, 100, 1)',
   white: 'rgba(237, 239, 243, 1)',

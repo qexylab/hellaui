@@ -1,6 +1,6 @@
-import { SpinnerSize } from '@src/components/spinner/Spinner.types'
+import { DefaultSize } from '@src/other/utils/defaultTypes'
 
-export const getSpinnerStyle = (size: SpinnerSize) => {
+export const getSpinnerStyle = (size: DefaultSize) => {
   let height: string = '',
     width: string = ''
 

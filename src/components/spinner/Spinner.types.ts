@@ -1,7 +1,6 @@
 import { HTMLAttributes } from 'react'
-
-export type SpinnerSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs'
+import { DefaultSize } from '@src/other/utils/defaultTypes'
 
 export interface ISpinner extends HTMLAttributes<SVGSVGElement> {
-  sizes?: SpinnerSize // Spinner size
+  sizes?: DefaultSize // Spinner size
 }

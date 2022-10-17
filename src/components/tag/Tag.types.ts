@@ -1,8 +1,7 @@
 import { ReactNode } from 'react'
 import { TooltipPosition } from '@src/components/tooltip/Tooltip.types'
+import { DefaultRounding, DefaultSize } from '@src/other/utils/defaultTypes'
 
-export type TagSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs'
-export type TagRounding = 'circle' | 'xl' | 'lg' | 'md' | 'sm' | 'xs'
 export type TagVariant =
   | 'primary'
   | 'success'
@@ -17,8 +16,8 @@ export type TagVariant =
 
 export interface ITag {
   variant?: TagVariant // Tag variant
-  sizes?: TagSize // Tag size
-  rounding?: TagRounding // Tag rounding
+  sizes?: DefaultSize // Tag size
+  rounding?: DefaultRounding // Tag rounding
   iconBefore?: ReactNode // Icon before
   iconAfter?: ReactNode // Icon after
   withTooltip?: boolean // Tag Tooltip

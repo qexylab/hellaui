@@ -1,11 +1,10 @@
 import { HTMLAttributes } from 'react'
-
-export type RippleSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs'
+import { DefaultSize } from '@src/other/utils/defaultTypes'
 
 export interface IRipple extends HTMLAttributes<HTMLDivElement> {
   duration?: number
   color?: string
-  sizes?: RippleSize
+  sizes?: DefaultSize
 }
 
 export interface newRipple {

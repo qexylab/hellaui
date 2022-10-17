@@ -1,9 +1,10 @@
-import { ButtonSize, ButtonVariant } from '@src/components/button/Button.types'
+import { ButtonVariant } from '@src/components/button/Button.types'
 import { theme_color } from '@src/other/theme'
+import { DefaultSize } from '@src/other/utils/defaultTypes'
 
 export const getButtonStyle = (
   variant: ButtonVariant,
-  size: ButtonSize,
+  size: DefaultSize,
   disabled: boolean,
   plain?: boolean | undefined,
   bgColor?: string | undefined,

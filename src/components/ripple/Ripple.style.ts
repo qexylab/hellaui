@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
-import { RippleSize } from '@src/components/ripple/Ripple.types'
+import { DefaultSize } from '@src/other/utils/defaultTypes'
 
-export const getRippleStyle = (size: RippleSize) => {
+export const getRippleStyle = (size: DefaultSize) => {
   let rippleSize
 
   switch (size) {

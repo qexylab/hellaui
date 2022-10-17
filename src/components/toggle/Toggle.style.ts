@@ -1,6 +1,6 @@
-import { ToggleSize } from '@src/components/toggle/Toggle.types'
+import { DefaultSize } from '@src/other/utils/defaultTypes'
 
-export const getToggleStyle = (size: ToggleSize) => {
+export const getToggleStyle = (size: DefaultSize) => {
   let toggleWidth: number, toggleHeight: number
 
   switch (size) {

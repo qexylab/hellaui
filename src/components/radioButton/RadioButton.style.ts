@@ -1,6 +1,6 @@
-import { RadioButtonSize } from '@src/components/radioButton/RadioButton.types'
+import { DefaultSize } from '@src/other/utils/defaultTypes'
 
-export const getRadioButtonStyle = (size: RadioButtonSize) => {
+export const getRadioButtonStyle = (size: DefaultSize) => {
   let paddingLeft, minWidth, height
 
   switch (size) {
