@@ -1,10 +1,10 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { Toggle } from '@src/components/toggle/index'
+import { Drawer } from '@src/components/drawer/index'
 
-describe('toggle', () => {
+describe('drawer', () => {
   test('should render component', () => {
-    render(<Toggle />)
+    render(<Drawer>Test Chip</Drawer>)
   })
 })

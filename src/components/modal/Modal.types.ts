@@ -11,4 +11,5 @@ export interface IModal extends HTMLAttributes<HTMLDivElement> {
   textColor?: string // Modal text color
   onClose?: () => void // onClose function
   title?: string // Modal title
+  isVisible?: boolean // Visible state
 }

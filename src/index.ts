@@ -15,6 +15,7 @@ export * from './components/tag'
 export * from './components/steps'
 export * from './components/toggle'
 export * from './components/modal'
+export * from './components/drawer'
 
 // Icons
 export * from './icons/chevronIcon'
