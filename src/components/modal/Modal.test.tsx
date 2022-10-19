@@ -5,6 +5,10 @@ import { Modal } from '@src/components/modal/index'
 
 describe('modal', () => {
   test('should render component', () => {
-    render(<Modal>Test Chip</Modal>)
+    render(
+      <Modal isVisible={false} onClose={() => {}}>
+        Test Chip
+      </Modal>
+    )
   })
 })

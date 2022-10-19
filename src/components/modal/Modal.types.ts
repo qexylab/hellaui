@@ -9,7 +9,7 @@ export interface IModal extends HTMLAttributes<HTMLDivElement> {
   displayCloseIcon?: boolean // Display the close icon in the upper right corner
   backgroundColor?: string // Modal background color
   textColor?: string // Modal text color
-  onClose?: () => void // onClose function
+  onClose: () => void // onClose function
   title?: string // Modal title
-  isVisible?: boolean // Visible state
+  isVisible: boolean // Visible state
 }

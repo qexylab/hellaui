@@ -3,7 +3,7 @@ export const theme_color = {
   opacity_black: 'rgba(0,0,0,0.4)',
   gray: 'rgba(80, 80, 80, 1)',
   white_gray: 'rgba(100, 100, 100, 1)',
-  white: 'rgba(237, 239, 243, 1)',
+  white: 'rgba(250, 250, 250, 1)',
   dark_white: 'rgba(180, 180, 180, 1)',
   black: 'rgba(20, 20, 20, 1)',
   primary_10: 'rgba(0, 123, 255, 0.1)',
