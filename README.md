@@ -3,7 +3,7 @@
 </h3>
 
 <p align="center">
-  Fully accessible React UI components for your website that use Tailwind CSS.
+  Fully accessible React UI components for your website.
 </p>
 
 <p align="center">
