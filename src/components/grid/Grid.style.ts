@@ -1,3 +1,1 @@
-export const getGridStyle = () => {
-
-}
+export const getGridStyle = () => {}
