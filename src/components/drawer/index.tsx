@@ -1,5 +1,5 @@
 import React, { forwardRef, useRef, useState } from 'react'
-import { IDrawer } from '@src/components/drawer/Drawer.types'
+import { IDrawer } from './Drawer.types'
 import { createPortal } from 'react-dom'
 import { NoSsr } from '@src/components/noSsr'
 import { CloseIcon } from '@src/icons/closeIcon'

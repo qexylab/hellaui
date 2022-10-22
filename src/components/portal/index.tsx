@@ -1,5 +1,5 @@
 import React, { FC, PropsWithChildren, useEffect, useRef } from 'react'
-import { IPortal } from '@src/components/portal/Portal.types'
+import { IPortal } from './Portal.types'
 import { createPortal } from 'react-dom'
 import observeRect from '@src/other/utils/observeRect'
 

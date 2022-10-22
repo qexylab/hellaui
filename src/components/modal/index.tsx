@@ -1,5 +1,5 @@
 import React, { ForwardedRef, forwardRef, useRef, useState } from 'react'
-import { IModal } from '@src/components/modal/Modal.types'
+import { IModal } from './Modal.types'
 import { createPortal } from 'react-dom'
 import { theme_color } from '@src/other/theme'
 import { borderRadius } from '@src/other/theme/borderRadius'

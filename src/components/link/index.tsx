@@ -4,7 +4,7 @@ import React, {
   PropsWithChildren,
   useState
 } from 'react'
-import { ILink } from '@src/components/link/Link.types'
+import { ILink } from './Link.types'
 import { getLinkStyle } from '@src/components/link/Link.style'
 import { theme_color } from '@src/other/theme'
 

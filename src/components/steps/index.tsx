@@ -11,11 +11,7 @@ import React, {
   useRef,
   useState
 } from 'react'
-import {
-  IStep,
-  ISteps,
-  StepOrientation
-} from '@src/components/steps/Steps.types'
+import { IStep, ISteps, StepOrientation } from './Steps.types'
 import { theme_color } from '@src/other/theme'
 import { WarnIconTriangle } from '@src/icons/warnIcon'
 import { CheckIconOutline, CheckIconSolid } from '@src/icons/checkIcon'

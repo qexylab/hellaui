@@ -1,5 +1,5 @@
 import React, { FC, PropsWithChildren, useState } from 'react'
-import { IAccordion } from '@src/components/accordion/Accordion.types'
+import { IAccordion } from './Accordion.types'
 import { theme_color } from '@src/other/theme'
 import { getAccordionStyle } from '@src/components/accordion/Accordion.style'
 import { Ripple } from '@src/components/ripple'

@@ -1,5 +1,5 @@
 import React, { FC, PropsWithChildren } from 'react'
-import { IBadge } from '@src/components/badge/Badge.types'
+import { IBadge } from './Badge.types'
 import { getBadgeStyle } from '@src/components/badge/Badge.style'
 import { borderRadius } from '@src/other/theme/borderRadius'
 

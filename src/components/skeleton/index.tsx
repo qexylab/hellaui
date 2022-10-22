@@ -1,6 +1,6 @@
 import { theme_color } from '@src/other/theme'
 import React, { FC } from 'react'
-import { ISkeleton } from '@src/components/skeleton/Skeleton.types'
+import { ISkeleton } from './Skeleton.types'
 import { borderRadius } from '@src/other/theme/borderRadius'
 
 export const Skeleton: FC<ISkeleton> = ({

@@ -1,5 +1,5 @@
 import React, { useState, FC } from 'react'
-import { IRipple, newRipple } from '@src/components/ripple/Ripple.types'
+import { IRipple, newRipple } from './Ripple.types'
 import {
   getRippleStyle,
   useDebouncedRippleCleanUp
