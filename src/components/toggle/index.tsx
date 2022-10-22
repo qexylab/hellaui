@@ -15,7 +15,8 @@ export const Toggle = forwardRef<HTMLInputElement, IToggle>(
       onChange,
       onClick,
       children,
-      helpText
+      helpText,
+        ...props
     },
     ref: ForwardedRef<HTMLInputElement>
   ) => {
@@ -65,6 +66,7 @@ export const Toggle = forwardRef<HTMLInputElement, IToggle>(
               width: 0,
               height: 0
             }}
+            {...props}
           />
           <span
             className="hl-toggle-slider"

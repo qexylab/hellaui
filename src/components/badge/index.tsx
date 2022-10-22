@@ -8,7 +8,8 @@ export const Badge: FC<PropsWithChildren<IBadge>> = ({
   variant = 'default',
   sizes = 'md',
   rounding,
-  style
+  style,
+    ...props
 }) => {
   const { padding, textSize, background, color } = getBadgeStyle(sizes, variant)
 
@@ -27,6 +28,7 @@ export const Badge: FC<PropsWithChildren<IBadge>> = ({
         userSelect: 'none',
         ...style
       }}
+      {...props}
     >
       {children}
     </div>

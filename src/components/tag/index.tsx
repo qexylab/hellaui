@@ -15,7 +15,8 @@ export const Tag: FC<PropsWithChildren<ITag>> = ({
   tooltipPosition = 'bottom',
   width,
   tooltipBackground,
-  children
+  children,
+    ...props
 }) => {
   const { backgroundColor, padding, textSize } = getTagStyle(variant, sizes)
   const elementRef = useRef<HTMLDivElement>(null)
@@ -35,6 +36,7 @@ export const Tag: FC<PropsWithChildren<ITag>> = ({
         alignItems: 'center',
         userSelect: 'none'
       }}
+      {...props}
     >
       {iconBefore && <div style={{ marginRight: 2 }}>{iconBefore}</div>}
       <div

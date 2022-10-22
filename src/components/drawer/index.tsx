@@ -23,7 +23,8 @@ export const Drawer = forwardRef<HTMLDivElement, IDrawer>(
       closeOnOutsideClick = false,
       displayCloseIcon = true,
       disableOutsideBackground = false,
-      children
+      children,
+        ...props
     },
     ref
   ) => {
@@ -131,6 +132,7 @@ export const Drawer = forwardRef<HTMLDivElement, IDrawer>(
                   : '325ms cubic-bezier(0, 0, 0.2, 1) 0ms',
                 ...positionStyles
               }}
+              {...props}
             >
               <div
                 ref={ref}

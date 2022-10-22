@@ -22,7 +22,8 @@ export const Modal = forwardRef<HTMLDivElement, IModal>(
       closeOnOutsideClick = false,
       children,
       title,
-      isVisible = false
+      isVisible = false,
+        ...props
     },
     ref: ForwardedRef<HTMLDivElement>
   ) => {
@@ -117,6 +118,7 @@ export const Modal = forwardRef<HTMLDivElement, IModal>(
                   outline: 'none',
                   fontSize: textSize
                 }}
+                {...props}
               >
                 <div
                   ref={ref}

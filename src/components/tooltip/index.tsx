@@ -23,7 +23,8 @@ export const Tooltip: FC<PropsWithChildren<ITooltip>> = ({
   tooltipPosition = 'bottom',
   background,
   rounding = 'md',
-  children
+  children,
+    ...props
 }) => {
   let showTooltipTimer: any
 
@@ -110,6 +111,7 @@ export const Tooltip: FC<PropsWithChildren<ITooltip>> = ({
           width: '100%',
           flex: '0 0 auto'
         }}
+        {...props}
       />
       <div
         ref={attachRef}
