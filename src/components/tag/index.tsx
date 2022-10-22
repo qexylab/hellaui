@@ -17,8 +17,7 @@ export const Tag = forwardRef<HTMLDivElement, ITag>(
       tooltipPosition = 'bottom',
       width,
       tooltipBackground,
-      children,
-      ...props
+      children
     },
     ref: ForwardedRef<HTMLDivElement>
   ) => {
@@ -28,7 +27,7 @@ export const Tag = forwardRef<HTMLDivElement, ITag>(
 
     return (
       <div
-        ref={ref}
+        ref={elementRef}
         style={{
           borderRadius: borderRadius(rounding),
           background: backgroundColor,
@@ -40,10 +39,10 @@ export const Tag = forwardRef<HTMLDivElement, ITag>(
           alignItems: 'center',
           userSelect: 'none'
         }}
-        {...props}
       >
         {iconBefore && <div style={{ marginRight: 2 }}>{iconBefore}</div>}
         <div
+          ref={ref}
           style={{
             textOverflow: 'ellipsis',
             overflow: 'hidden',
@@ -55,21 +54,21 @@ export const Tag = forwardRef<HTMLDivElement, ITag>(
           {children}
         </div>
         {iconAfter && <div style={{ marginLeft: 2 }}>{iconAfter}</div>}
-        {/*<Tooltip*/}
-        {/*    visible={tooltipVisible && withTooltip}*/}
-        {/*    targetRef={ref}*/}
-        {/*    tooltipPosition={tooltipPosition}*/}
-        {/*    onVisibilityChange={setTooltipVisible}*/}
-        {/*    sizes={sizes}*/}
-        {/*    background={tooltipBackground ? tooltipBackground : backgroundColor}*/}
-        {/*    rounding={rounding}*/}
-        {/*>*/}
-        {/*  <div style={{ display: 'flex', alignItems: 'center' }}>*/}
-        {/*    {iconBefore && <div style={{ marginRight: 2 }}>{iconBefore}</div>}*/}
-        {/*    {children}*/}
-        {/*    {iconAfter && <div style={{ marginLeft: 2 }}>{iconAfter}</div>}*/}
-        {/*  </div>*/}
-        {/*</Tooltip>*/}
+        <Tooltip
+          visible={tooltipVisible && withTooltip}
+          targetRef={elementRef}
+          tooltipPosition={tooltipPosition}
+          onVisibilityChange={setTooltipVisible}
+          sizes={sizes}
+          background={tooltipBackground ? tooltipBackground : backgroundColor}
+          rounding={rounding}
+        >
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            {iconBefore && <div style={{ marginRight: 2 }}>{iconBefore}</div>}
+            {children}
+            {iconAfter && <div style={{ marginLeft: 2 }}>{iconAfter}</div>}
+          </div>
+        </Tooltip>
       </div>
     )
   }
