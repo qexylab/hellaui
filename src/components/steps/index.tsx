@@ -38,7 +38,7 @@ export const Steps: FC<PropsWithChildren<ISteps>> = ({
   stepWidth,
   hideLastStepLine = false,
   children,
-    ...props
+  ...props
 }) => {
   const elementRef = useRef<HTMLUListElement>(null)
 
@@ -100,7 +100,7 @@ export const Step: FC<PropsWithChildren<IStep>> = ({
   tooltipPosition = 'bottom',
   tooltipBackground,
   children,
-    ...props
+  ...props
 }) => {
   const { activeStep, orientation, stepWidth, stepsAmount, lineClamp } =
       useContext(StepsContext),

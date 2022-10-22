@@ -24,7 +24,7 @@ export const Drawer = forwardRef<HTMLDivElement, IDrawer>(
       displayCloseIcon = true,
       disableOutsideBackground = false,
       children,
-        ...props
+      ...props
     },
     ref
   ) => {

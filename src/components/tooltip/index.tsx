@@ -24,7 +24,7 @@ export const Tooltip: FC<PropsWithChildren<ITooltip>> = ({
   background,
   rounding = 'md',
   children,
-    ...props
+  ...props
 }) => {
   let showTooltipTimer: any
 

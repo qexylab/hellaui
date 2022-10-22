@@ -206,3 +206,5 @@ export const RadioButton = forwardRef<HTMLInputElement, IRadioButton>(
     )
   }
 )
+
+RadioButton.displayName = 'RadioButton'

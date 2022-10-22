@@ -17,7 +17,7 @@ export const Accordion: FC<PropsWithChildren<IAccordion>> = ({
   rippleEffectColor,
   rippleEffectSize,
   onClick,
-    ...props
+  ...props
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isHover, setIsHover] = useState<boolean>(false)

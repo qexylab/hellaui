@@ -23,7 +23,7 @@ export const Modal = forwardRef<HTMLDivElement, IModal>(
       children,
       title,
       isVisible = false,
-        ...props
+      ...props
     },
     ref: ForwardedRef<HTMLDivElement>
   ) => {

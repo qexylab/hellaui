@@ -32,7 +32,7 @@ export const Chip = forwardRef<HTMLDivElement, IChip>(
       rounding = 'md',
       tooltipPosition = 'bottom',
       onClick,
-        ...props
+      ...props
     },
     ref: ForwardedRef<HTMLDivElement>
   ) => {

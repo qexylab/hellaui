@@ -1,4 +1,4 @@
-import {HTMLAttributes, ReactNode} from 'react'
+import { HTMLAttributes, ReactNode } from 'react'
 import { TooltipPosition } from '@src/components/tooltip/Tooltip.types'
 import { DefaultRounding, DefaultSize } from '@src/other/utils/defaultTypes'
 

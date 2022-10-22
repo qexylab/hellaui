@@ -7,7 +7,7 @@ export const Skeleton: FC<ISkeleton> = ({
   width = '20px',
   height = '50px',
   rounding = 'md',
-    ...props
+  ...props
 }) => {
   const animationName = 'skeleton_animation'
   return (

@@ -9,7 +9,7 @@ export const Badge: FC<PropsWithChildren<IBadge>> = ({
   sizes = 'md',
   rounding,
   style,
-    ...props
+  ...props
 }) => {
   const { padding, textSize, background, color } = getBadgeStyle(sizes, variant)
 

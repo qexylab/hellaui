@@ -16,7 +16,7 @@ export const Toggle = forwardRef<HTMLInputElement, IToggle>(
       onClick,
       children,
       helpText,
-        ...props
+      ...props
     },
     ref: ForwardedRef<HTMLInputElement>
   ) => {

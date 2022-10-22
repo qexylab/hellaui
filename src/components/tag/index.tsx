@@ -1,53 +1,56 @@
-import React, { ForwardedRef, forwardRef, useRef, useState} from 'react'
-import { ITag } from '@src/components/tag/Tag.types'
+import React, { ForwardedRef, forwardRef, useRef, useState } from 'react'
+import { ITag } from './Tag.types'
 import { borderRadius } from '@src/other/theme/borderRadius'
 import { getTagStyle } from '@src/components/tag/Tag.style'
 import { Tooltip } from '@src/components/tooltip'
 import { theme_color } from '@src/other/theme'
 
-export const Tag = forwardRef<HTMLDivElement, ITag>(({
-                                                       variant = 'success',
-                                                       sizes = 'md',
-                                                       rounding = 'xs',
-                                                       iconAfter,
-                                                       iconBefore,
-                                                       withTooltip = false,
-                                                       tooltipPosition = 'bottom',
-                                                       width,
-                                                       tooltipBackground,
-                                                       children,
-                                                       ...props
-                                                     }, ref: ForwardedRef<HTMLDivElement>) => {
+export const Tag = forwardRef<HTMLDivElement, ITag>(
+  (
+    {
+      variant = 'success',
+      sizes = 'md',
+      rounding = 'xs',
+      iconAfter,
+      iconBefore,
+      withTooltip = false,
+      tooltipPosition = 'bottom',
+      width,
+      tooltipBackground,
+      children,
+      ...props
+    },
+    ref: ForwardedRef<HTMLDivElement>
+  ) => {
+    const { backgroundColor, padding, textSize } = getTagStyle(variant, sizes)
+    const elementRef = useRef<HTMLDivElement>(null)
+    const [tooltipVisible, setTooltipVisible] = useState<boolean>(false)
 
-  const { backgroundColor, padding, textSize } = getTagStyle(variant, sizes)
-  const elementRef = useRef<HTMLDivElement>(null)
-  const [tooltipVisible, setTooltipVisible] = useState<boolean>(false)
-
-  return (
+    return (
       <div
-          ref={ref}
-          style={{
-            borderRadius: borderRadius(rounding),
-            background: backgroundColor,
-            color: theme_color.white,
-            padding: padding,
-            fontSize: textSize,
-            position: 'relative',
-            display: 'inline-flex',
-            alignItems: 'center',
-            userSelect: 'none'
-          }}
-          {...props}
+        ref={ref}
+        style={{
+          borderRadius: borderRadius(rounding),
+          background: backgroundColor,
+          color: theme_color.white,
+          padding: padding,
+          fontSize: textSize,
+          position: 'relative',
+          display: 'inline-flex',
+          alignItems: 'center',
+          userSelect: 'none'
+        }}
+        {...props}
       >
         {iconBefore && <div style={{ marginRight: 2 }}>{iconBefore}</div>}
         <div
-            style={{
-              textOverflow: 'ellipsis',
-              overflow: 'hidden',
-              whiteSpace: 'nowrap',
-              alignItems: 'center',
-              maxWidth: width ? width : 500
-            }}
+          style={{
+            textOverflow: 'ellipsis',
+            overflow: 'hidden',
+            whiteSpace: 'nowrap',
+            alignItems: 'center',
+            maxWidth: width ? width : 500
+          }}
         >
           {children}
         </div>
@@ -68,7 +71,8 @@ export const Tag = forwardRef<HTMLDivElement, ITag>(({
         {/*  </div>*/}
         {/*</Tooltip>*/}
       </div>
-  )
-})
+    )
+  }
+)
 
 Tag.displayName = 'Tag'
