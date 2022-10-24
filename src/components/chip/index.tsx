@@ -5,7 +5,7 @@ import React, {
   useRef,
   useState
 } from 'react'
-import { IChip } from '@src/components/chip/Chip.types'
+import { IChip } from './Chip.types'
 import { getChipStyle } from '@src/components/chip/Chip.style'
 import { borderRadius } from '@src/other/theme/borderRadius'
 import { theme_color } from '@src/other/theme'
@@ -31,7 +31,8 @@ export const Chip = forwardRef<HTMLDivElement, IChip>(
       withTooltip = false,
       rounding = 'md',
       tooltipPosition = 'bottom',
-      onClick
+      onClick,
+      ...props
     },
     ref: ForwardedRef<HTMLDivElement>
   ) => {
@@ -109,6 +110,7 @@ export const Chip = forwardRef<HTMLDivElement, IChip>(
           outline: 'none',
           appearance: 'none'
         }}
+        {...props}
       >
         <div
           style={{

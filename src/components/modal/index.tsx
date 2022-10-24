@@ -1,5 +1,5 @@
 import React, { ForwardedRef, forwardRef, useRef, useState } from 'react'
-import { IModal } from '@src/components/modal/Modal.types'
+import { IModal } from './Modal.types'
 import { createPortal } from 'react-dom'
 import { theme_color } from '@src/other/theme'
 import { borderRadius } from '@src/other/theme/borderRadius'
@@ -22,7 +22,8 @@ export const Modal = forwardRef<HTMLDivElement, IModal>(
       closeOnOutsideClick = false,
       children,
       title,
-      isVisible = false
+      isVisible = false,
+      ...props
     },
     ref: ForwardedRef<HTMLDivElement>
   ) => {
@@ -117,6 +118,7 @@ export const Modal = forwardRef<HTMLDivElement, IModal>(
                   outline: 'none',
                   fontSize: textSize
                 }}
+                {...props}
               >
                 <div
                   ref={ref}

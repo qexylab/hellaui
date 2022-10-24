@@ -1,5 +1,5 @@
 import React, { FC, PropsWithChildren, useState } from 'react'
-import { IAccordion } from '@src/components/accordion/Accordion.types'
+import { IAccordion } from './Accordion.types'
 import { theme_color } from '@src/other/theme'
 import { getAccordionStyle } from '@src/components/accordion/Accordion.style'
 import { Ripple } from '@src/components/ripple'
@@ -16,7 +16,8 @@ export const Accordion: FC<PropsWithChildren<IAccordion>> = ({
   rippleEffect = false,
   rippleEffectColor,
   rippleEffectSize,
-  onClick
+  onClick,
+  ...props
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isHover, setIsHover] = useState<boolean>(false)
@@ -36,6 +37,7 @@ export const Accordion: FC<PropsWithChildren<IAccordion>> = ({
         fontSize: textSize,
         background: 'transparent'
       }}
+      {...props}
     >
       <button
         onClick={() => setIsOpen(!isOpen)}

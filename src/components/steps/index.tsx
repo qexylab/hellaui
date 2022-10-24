@@ -11,11 +11,7 @@ import React, {
   useRef,
   useState
 } from 'react'
-import {
-  IStep,
-  ISteps,
-  StepOrientation
-} from '@src/components/steps/Steps.types'
+import { IStep, ISteps, StepOrientation } from './Steps.types'
 import { theme_color } from '@src/other/theme'
 import { WarnIconTriangle } from '@src/icons/warnIcon'
 import { CheckIconOutline, CheckIconSolid } from '@src/icons/checkIcon'
@@ -37,7 +33,8 @@ export const Steps: FC<PropsWithChildren<ISteps>> = ({
   lineClamp = 3,
   stepWidth,
   hideLastStepLine = false,
-  children
+  children,
+  ...props
 }) => {
   const elementRef = useRef<HTMLUListElement>(null)
 
@@ -76,6 +73,7 @@ export const Steps: FC<PropsWithChildren<ISteps>> = ({
           flexDirection: orientation === 'horizontal' ? 'row' : 'column',
           overflowX: orientation === 'horizontal' ? 'scroll' : 'auto'
         }}
+        {...props}
       >
         {steps}
       </ul>
@@ -97,7 +95,8 @@ export const Step: FC<PropsWithChildren<IStep>> = ({
   withTooltip = false,
   tooltipPosition = 'bottom',
   tooltipBackground,
-  children
+  children,
+  ...props
 }) => {
   const { activeStep, orientation, stepWidth, stepsAmount, lineClamp } =
       useContext(StepsContext),
@@ -156,6 +155,7 @@ export const Step: FC<PropsWithChildren<IStep>> = ({
           textAlign: 'left',
           textDecoration: 'none'
         }}
+        {...props}
       >
         <span
           style={{

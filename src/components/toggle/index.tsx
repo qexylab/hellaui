@@ -1,5 +1,5 @@
 import React, { ForwardedRef, forwardRef } from 'react'
-import { IToggle } from '@src/components/toggle/Toggle.types'
+import { IToggle } from './Toggle.types'
 import { theme_color } from '@src/other/theme'
 import { NoSsr } from '@src/components/noSsr'
 import { borderRadius } from '@src/other/theme/borderRadius'
@@ -15,7 +15,8 @@ export const Toggle = forwardRef<HTMLInputElement, IToggle>(
       onChange,
       onClick,
       children,
-      helpText
+      helpText,
+      ...props
     },
     ref: ForwardedRef<HTMLInputElement>
   ) => {
@@ -65,6 +66,7 @@ export const Toggle = forwardRef<HTMLInputElement, IToggle>(
               width: 0,
               height: 0
             }}
+            {...props}
           />
           <span
             className="hl-toggle-slider"

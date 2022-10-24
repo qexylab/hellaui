@@ -4,13 +4,13 @@ import React, {
   PropsWithChildren,
   useState
 } from 'react'
-import { ILink } from '@src/components/link/Link.types'
+import { ILink } from './Link.types'
 import { getLinkStyle } from '@src/components/link/Link.style'
 import { theme_color } from '@src/other/theme'
 
 export const Link = forwardRef<HTMLAnchorElement, PropsWithChildren<ILink>>(
   (
-    { children, variant = 'default', disabled, sizes = 'md', href },
+    { children, variant = 'default', disabled, sizes = 'md', href, ...props },
     ref: ForwardedRef<HTMLAnchorElement>
   ) => {
     const [isHover, setIsHover] = useState<boolean>(false)
@@ -47,6 +47,7 @@ export const Link = forwardRef<HTMLAnchorElement, PropsWithChildren<ILink>>(
           position: 'relative',
           transition: 'all 0.175s ease'
         }}
+        {...props}
       >
         {children}
       </a>

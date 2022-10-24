@@ -5,7 +5,7 @@ import React, {
   useRef,
   useState
 } from 'react'
-import { ITooltip } from '@src/components/tooltip/Tooltip.types'
+import { ITooltip } from './Tooltip.types'
 import Portal from '@src/components/portal'
 import { theme_color } from '@src/other/theme'
 import { borderRadius } from '@src/other/theme/borderRadius'
@@ -23,7 +23,8 @@ export const Tooltip: FC<PropsWithChildren<ITooltip>> = ({
   tooltipPosition = 'bottom',
   background,
   rounding = 'md',
-  children
+  children,
+  ...props
 }) => {
   let showTooltipTimer: any
 
@@ -110,6 +111,7 @@ export const Tooltip: FC<PropsWithChildren<ITooltip>> = ({
           width: '100%',
           flex: '0 0 auto'
         }}
+        {...props}
       />
       <div
         ref={attachRef}

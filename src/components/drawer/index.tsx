@@ -1,5 +1,5 @@
 import React, { forwardRef, useRef, useState } from 'react'
-import { IDrawer } from '@src/components/drawer/Drawer.types'
+import { IDrawer } from './Drawer.types'
 import { createPortal } from 'react-dom'
 import { NoSsr } from '@src/components/noSsr'
 import { CloseIcon } from '@src/icons/closeIcon'
@@ -23,7 +23,8 @@ export const Drawer = forwardRef<HTMLDivElement, IDrawer>(
       closeOnOutsideClick = false,
       displayCloseIcon = true,
       disableOutsideBackground = false,
-      children
+      children,
+      ...props
     },
     ref
   ) => {
@@ -131,6 +132,7 @@ export const Drawer = forwardRef<HTMLDivElement, IDrawer>(
                   : '325ms cubic-bezier(0, 0, 0.2, 1) 0ms',
                 ...positionStyles
               }}
+              {...props}
             >
               <div
                 ref={ref}

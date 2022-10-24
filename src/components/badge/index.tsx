@@ -1,5 +1,5 @@
 import React, { FC, PropsWithChildren } from 'react'
-import { IBadge } from '@src/components/badge/Badge.types'
+import { IBadge } from './Badge.types'
 import { getBadgeStyle } from '@src/components/badge/Badge.style'
 import { borderRadius } from '@src/other/theme/borderRadius'
 
@@ -8,7 +8,8 @@ export const Badge: FC<PropsWithChildren<IBadge>> = ({
   variant = 'default',
   sizes = 'md',
   rounding,
-  style
+  style,
+  ...props
 }) => {
   const { padding, textSize, background, color } = getBadgeStyle(sizes, variant)
 
@@ -27,6 +28,7 @@ export const Badge: FC<PropsWithChildren<IBadge>> = ({
         userSelect: 'none',
         ...style
       }}
+      {...props}
     >
       {children}
     </div>
