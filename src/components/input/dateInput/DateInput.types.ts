@@ -1,4 +1,4 @@
-import {InputHTMLAttributes, ReactNode} from "react";
+import { InputHTMLAttributes, ReactNode } from 'react'
 
 export interface IDateInput extends InputHTMLAttributes<HTMLInputElement> {
   type?: 'date' | 'date-range' // DateInput type

@@ -15,7 +15,7 @@ export const Accordion: FC<PropsWithChildren<IAccordion>> = ({
   hideBottomLine = false,
   rippleEffect = false,
   rippleEffectColor,
-  rippleEffectSize,
+  rippleEffectSize = 'xs',
   onClick,
   ...props
 }) => {

@@ -54,23 +54,23 @@ export const Tag = forwardRef<HTMLDivElement, ITag>(
           {children}
         </div>
         {iconAfter && <div style={{ marginLeft: 2 }}>{iconAfter}</div>}
-        {withTooltip &&
-        <Tooltip
-	        visible={tooltipVisible && withTooltip}
-	        targetRef={elementRef}
-	        tooltipPosition={tooltipPosition}
-	        onVisibilityChange={setTooltipVisible}
-	        sizes={sizes}
-	        background={tooltipBackground ? tooltipBackground : backgroundColor}
-	        rounding={rounding}
-        >
-	        <div style={{ display: 'flex', alignItems: 'center' }}>
-            {iconBefore && <div style={{ marginRight: 2 }}>{iconBefore}</div>}
-            {children}
-            {iconAfter && <div style={{ marginLeft: 2 }}>{iconAfter}</div>}
-	        </div>
-        </Tooltip>
-        }
+        {withTooltip && (
+          <Tooltip
+            visible={tooltipVisible && withTooltip}
+            targetRef={elementRef}
+            tooltipPosition={tooltipPosition}
+            onVisibilityChange={setTooltipVisible}
+            sizes={sizes}
+            background={tooltipBackground ? tooltipBackground : backgroundColor}
+            rounding={rounding}
+          >
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              {iconBefore && <div style={{ marginRight: 2 }}>{iconBefore}</div>}
+              {children}
+              {iconAfter && <div style={{ marginLeft: 2 }}>{iconAfter}</div>}
+            </div>
+          </Tooltip>
+        )}
       </div>
     )
   }

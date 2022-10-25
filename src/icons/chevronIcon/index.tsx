@@ -8,6 +8,7 @@ export const ChevronIcon: FC<IChevronIcon> = ({ open, position, textSize }) => {
         width: textSize,
         height: textSize,
         marginRight: position === 'left' ? 8 : 0,
+        marginLeft: position === 'right' ? 8 : 0,
         transition: 'all .3s',
         transform: open ? 'rotate(180deg)' : 'rotate(0deg)'
       }}

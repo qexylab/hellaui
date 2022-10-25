@@ -102,7 +102,7 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
               display: 'flex',
               borderRadius: borderRadius(rounding),
               verticalAlign: 'middle',
-              transition: 'all 0.175s ease',
+              transition: 'all .175s ease',
               outline: 'none',
               appearance: 'none',
               cursor: disabled || loading ? 'not-allowed' : 'pointer',
