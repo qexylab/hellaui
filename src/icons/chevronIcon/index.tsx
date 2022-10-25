@@ -7,7 +7,7 @@ export const ChevronIcon: FC<IChevronIcon> = ({ open, position, textSize }) => {
       style={{
         width: textSize,
         height: textSize,
-        marginRight: position === 'left' ? '8px' : '0',
+        marginRight: position === 'left' ? 8 : 0,
         transition: 'all .3s',
         transform: open ? 'rotate(180deg)' : 'rotate(0deg)'
       }}

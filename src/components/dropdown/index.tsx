@@ -16,15 +16,17 @@ export const DropDown = forwardRef<HTMLDivElement, IDropDown>(
       title,
       sizes = 'md',
       rounding = 'md',
+        position = 'bottom-right',
       iconPosition = 'right',
       menuWidth,
       menuMaxHeight,
-      children
+      children,
+        style
     },
     ref: ForwardedRef<HTMLDivElement>
   ) => {
     const [isOpen, setIsOpen] = useState<boolean>(false)
-    const { textSize, padding } = getDropDownStyle(sizes)
+    const { textSize, padding, dropdownStyles } = getDropDownStyle(sizes, position)
 
     return (
       <div ref={ref} style={{ position: 'relative', display: 'inline-block' }}>
@@ -32,6 +34,7 @@ export const DropDown = forwardRef<HTMLDivElement, IDropDown>(
           style={{
             display: 'flex',
             alignItems: 'center',
+            cursor: "pointer",
             fontSize: textSize,
             padding: padding
           }}
@@ -57,8 +60,9 @@ export const DropDown = forwardRef<HTMLDivElement, IDropDown>(
         </div>
         <ul
           style={{
-            top: 50,
-            left: 50,
+            top: 25,
+            left: 'auto',
+            right: 0,
             backgroundColor: 'white',
             borderRadius: borderRadius(sizes),
             overflow: 'hidden',
@@ -69,15 +73,17 @@ export const DropDown = forwardRef<HTMLDivElement, IDropDown>(
             fontSize: textSize,
             padding: padding,
             transition: 'all 300ms cubic-bezier(0.325, 0.090, 0.000, 1.280)',
-            transformOrigin: '50% 0',
+            transformOrigin: '100% 0',
             transform: isOpen
-              ? 'translateX(-50%) scale(1)'
-              : 'translateX(-50%) scale(0.9)',
+              ? 'translateX(0) scale(1)'
+              : 'translateX(0) scale(0.9)',
             border: '1px solid red',
             boxShadow: '0 0 20px 0 rgba(178, 194, 212, .3)',
-            minWidth: 200,
+            minWidth: 150,
             width: menuWidth ? menuWidth : 'fit-content',
-            maxHeight: menuMaxHeight ? menuMaxHeight : 'fit-content'
+            maxHeight: menuMaxHeight ? menuMaxHeight : 'fit-content',
+            // ...dropdownStyles,
+            ...style
           }}
         >
           {children}
@@ -92,7 +98,7 @@ DropDown.displayName = 'DropDownMenu'
 export const DropDownItem = forwardRef<
   HTMLLIElement,
   PropsWithChildren<HTMLAttributes<HTMLLIElement>>
->(({ children }, ref: ForwardedRef<HTMLLIElement>) => {
+>(({ children, style }, ref: ForwardedRef<HTMLLIElement>) => {
   return (
     <li
       ref={ref}
@@ -105,7 +111,8 @@ export const DropDownItem = forwardRef<
         justifyContent: 'space-between',
         outline: 'none',
         whiteSpace: 'pre',
-        listStyle: 'none'
+        listStyle: 'none',
+        ...style
       }}
     >
       {children}
