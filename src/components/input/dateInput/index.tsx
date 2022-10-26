@@ -5,7 +5,7 @@ const DateInput = forwardRef<HTMLInputElement, IDateInput>(
   ({ type = 'date', skeleton = false, tooltip = false }) => {
     return (
       <div>
-        <div></div>
+        <div>DateInput</div>
       </div>
     )
   }

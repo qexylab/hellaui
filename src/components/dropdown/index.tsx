@@ -138,6 +138,9 @@ export const DropDownItem = forwardRef<HTMLLIElement, IDropDownItem>(
       rounding = 'md',
       hoverBackgroundColor = 'rgba(255, 255, 255, 0.24)',
       hoverTextColor = theme_color.white,
+      rippleEffect = false,
+      rippleEffectColor,
+      rippleEffectSize = 'xs',
       children,
       style,
       ...props
@@ -177,6 +180,13 @@ export const DropDownItem = forwardRef<HTMLLIElement, IDropDownItem>(
         {...props}
       >
         {children}
+        {rippleEffect && (
+            <Ripple
+                color={rippleEffectColor}
+                sizes={rippleEffectSize}
+                duration={450}
+            />
+        )}
       </li>
     )
   }

@@ -31,4 +31,7 @@ export interface IDropDownItem extends HTMLAttributes<HTMLLIElement> {
   hoverBackgroundColor?: string // Hover background
   hoverTextColor?: string // Hover text color
   rounding?: DefaultRounding // DropDown rounding
+  rippleEffect?: boolean // Enable or disable ripple's
+  rippleEffectColor?: string // Ripples color
+  rippleEffectSize?: DefaultSize // Ripples size
 }
