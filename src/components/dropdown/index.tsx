@@ -21,15 +21,17 @@ export const DropDown = forwardRef<HTMLDivElement, IDropDown>(
       iconPosition = 'right',
       menuWidth,
       menuMaxHeight,
-      backgroundColor = theme_color.gray,
-      textColor = theme_color.white,
-      buttonBackgroundColor = theme_color.gray,
+      backgroundColor = theme_color.dark_gray_2,
+      buttonBackgroundColor = theme_color.dark_gray_2,
+      hoverButtonBackgroundColor = 'rgba(255, 255, 255, 0.24)',
       buttonTextColor = theme_color.white,
+      hoverButtonTextColor = theme_color.white,
       rippleEffect = false,
       rippleEffectColor,
       rippleEffectSize = 'xs',
       children,
-      style
+      style,
+      onClick
     },
     ref: ForwardedRef<HTMLDivElement>
   ) => {
@@ -40,7 +42,8 @@ export const DropDown = forwardRef<HTMLDivElement, IDropDown>(
       position
     )
 
-    const { targetRef, isVisible, setIsVisible } = useOutsideClick(false)
+    const { targetRef, isVisible, setIsVisible } =
+      useOutsideClick<HTMLUListElement>(false)
 
     return (
       <div ref={ref} style={{ position: 'relative', display: 'inline-block' }}>
@@ -53,19 +56,21 @@ export const DropDown = forwardRef<HTMLDivElement, IDropDown>(
             backgroundColor: isClick
               ? buttonBackgroundColor
               : isHover
-              ? theme_color.dark_gray
+              ? hoverButtonBackgroundColor
               : buttonBackgroundColor,
-            color: buttonTextColor,
+            color: isHover ? hoverButtonTextColor : buttonTextColor,
             display: 'flex',
             alignItems: 'center',
             cursor: 'pointer',
             borderRadius: borderRadius(rounding),
             fontSize: textSize,
             padding: padding,
-            transition: 'background .175s ease'
+            fontWeight: 500,
+            transition: 'background .175s ease, color .175s ease'
           }}
           onClick={() => {
             setIsVisible(!isVisible)
+            return onClick
           }}
         >
           {iconPosition === 'left' && (
@@ -94,8 +99,7 @@ export const DropDown = forwardRef<HTMLDivElement, IDropDown>(
         <ul
           ref={targetRef}
           style={{
-            backgroundColor: buttonBackgroundColor,
-            color: textColor,
+            backgroundColor: backgroundColor,
             borderRadius: borderRadius(rounding),
             overflow: 'hidden',
             marginLeft: 0 /* margin left IE, Opera */,
@@ -109,7 +113,7 @@ export const DropDown = forwardRef<HTMLDivElement, IDropDown>(
             transform: isVisible
               ? 'translateX(0) scale(1)'
               : 'translateX(0) scale(0.9)',
-            boxShadow: '0 0 20px 0 rgba(178, 194, 212, .3)',
+            boxShadow: '0 0 5px rgba(0, 0, 0, 0.4)',
             minWidth: 150,
             width: menuWidth ? menuWidth : 'fit-content',
             maxHeight: menuMaxHeight ? menuMaxHeight : 'fit-content',
@@ -129,11 +133,14 @@ DropDown.displayName = 'DropDownMenu'
 export const DropDownItem = forwardRef<HTMLLIElement, IDropDownItem>(
   (
     {
-      backgroundColor = 'inherit',
+      backgroundColor = theme_color.white_black,
       textColor = theme_color.white,
       rounding = 'md',
+      hoverBackgroundColor = 'rgba(255, 255, 255, 0.24)',
+      hoverTextColor = theme_color.white,
       children,
-      style
+      style,
+      ...props
     },
     ref: ForwardedRef<HTMLLIElement>
   ) => {
@@ -151,9 +158,9 @@ export const DropDownItem = forwardRef<HTMLLIElement, IDropDownItem>(
           backgroundColor: isClick
             ? backgroundColor
             : isHover
-            ? theme_color.dark_gray
-            : backgroundColor,
-          color: textColor,
+            ? hoverBackgroundColor
+            : 'inherit',
+          color: isHover ? hoverTextColor : textColor,
           display: 'flex',
           alignItems: 'center',
           userSelect: 'none',
@@ -164,9 +171,10 @@ export const DropDownItem = forwardRef<HTMLLIElement, IDropDownItem>(
           whiteSpace: 'pre',
           listStyle: 'none',
           cursor: 'pointer',
-          transition: 'background .175s ease',
+          transition: 'background .175s ease, color .175s ease',
           ...style
         }}
+        {...props}
       >
         {children}
       </li>

@@ -7,7 +7,7 @@ export type DropDownPosition =
   | 'top-left'
   | 'top-right'
 
-export interface IDropDown extends HTMLAttributes<HTMLDivElement> {
+export interface IDropDown extends HTMLAttributes<HTMLButtonElement> {
   title: string // DropDown title
   position?: DropDownPosition // Dropdown position
   sizes?: DefaultSize // DropDown size
@@ -16,16 +16,19 @@ export interface IDropDown extends HTMLAttributes<HTMLDivElement> {
   menuWidth?: number // Dropdown width
   menuMaxHeight?: number // Dropdown maxHeight
   backgroundColor?: string // Dropdown <ul> background
-  textColor?: string // Dropdown <ul> text color
   buttonBackgroundColor?: string // Dropdown <button> background
+  hoverButtonBackgroundColor?: string // Hover <button> background
   buttonTextColor?: string // Dropdown <button> text color
+  hoverButtonTextColor?: string // Hover <button> text color
   rippleEffect?: boolean // Enable or disable ripple's
   rippleEffectColor?: string // Ripples color
   rippleEffectSize?: DefaultSize // Ripples size
 }
 
-export interface IDropDownItem extends HTMLAttributes<HTMLDivElement> {
+export interface IDropDownItem extends HTMLAttributes<HTMLLIElement> {
   backgroundColor?: string // DropDownItem background
   textColor?: string // DropDownItem text color
+  hoverBackgroundColor?: string // Hover background
+  hoverTextColor?: string // Hover text color
   rounding?: DefaultRounding // DropDown rounding
 }

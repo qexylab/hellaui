@@ -7,9 +7,11 @@ type TypeOut = {
   setIsVisible: Dispatch<SetStateAction<boolean>>
 }
 
-export const useOutsideClick = (initialVisible: boolean): TypeOut => {
+export const useOutsideClick = <T extends HTMLElement = HTMLElement>(
+  initialVisible: boolean
+): TypeOut => {
   const [isVisible, setIsVisible] = useState<boolean>(initialVisible)
-  const targetRef = useRef<HTMLElement>(null)
+  const targetRef = useRef<T>(null)
 
   const handleOutsideClick = (event: any) => {
     if (targetRef.current && !targetRef.current.contains(event.target))

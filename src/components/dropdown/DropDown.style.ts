@@ -8,57 +8,43 @@ export const getDropDownStyle = (
 ) => {
   let textSize: number,
     padding: string = '4px 8px',
-    top,
-    bottom,
     dropdownStyles: CSSProperties
 
   switch (size) {
     case 'xs':
       textSize = 12
       padding = '2px 4px'
-      top = textSize + 6
-      bottom = textSize + 6
       break
     case 'sm':
       textSize = 14
-      top = textSize + 8
-      bottom = textSize + 8
       break
     case 'md':
       textSize = 16
-      top = textSize + 10
-      bottom = textSize + 10
       break
     case 'lg':
       textSize = 18
       padding = '6px 12px'
-      top = textSize + 12
-      bottom = textSize + 12
       break
     case 'xl':
       textSize = 22
       padding = '10px 20px'
-      top = textSize + 18
-      bottom = textSize + 18
       break
     default:
       textSize = 16
-      top = textSize + 10
-      bottom = textSize + 10
   }
 
   switch (position) {
     case 'bottom-left':
       dropdownStyles = {
         left: 0,
-        top: top,
+        top: `calc(100% - ${textSize - 5}px)`,
         transformOrigin: '0 0'
       }
       break
     case 'bottom-right':
       dropdownStyles = {
         left: 'auto',
-        top: top,
+        top: `calc(100% - ${textSize - 5}px)`,
         right: 0,
         transformOrigin: '100% 0'
       }
@@ -68,7 +54,7 @@ export const getDropDownStyle = (
         top: 'auto',
         left: 0,
         transformOrigin: '0 0',
-        bottom: bottom
+        bottom: `calc(100% - ${textSize - 5}px)`
       }
       break
     case 'top-right':
@@ -77,13 +63,13 @@ export const getDropDownStyle = (
         left: 'auto',
         right: 0,
         transformOrigin: '100% 0',
-        bottom: bottom
+        bottom: `calc(100% - ${textSize - 5}px)`
       }
       break
     default:
       dropdownStyles = {
         left: 'auto',
-        top: top,
+        top: `calc(100% - ${textSize - 5}px)`,
         right: 0,
         transformOrigin: '100% 0'
       }
