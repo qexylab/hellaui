@@ -37,14 +37,14 @@ export const getDropDownStyle = (
     case 'bottom-left':
       dropdownStyles = {
         left: 0,
-        top: `calc(100% - ${textSize - 5}px)`,
+        top: 'calc(100% + 5px)',
         transformOrigin: '0 0'
       }
       break
     case 'bottom-right':
       dropdownStyles = {
         left: 'auto',
-        top: `calc(100% - ${textSize - 5}px)`,
+        top: 'calc(100% + 5px)',
         right: 0,
         transformOrigin: '100% 0'
       }
@@ -54,7 +54,7 @@ export const getDropDownStyle = (
         top: 'auto',
         left: 0,
         transformOrigin: '0 0',
-        bottom: `calc(100% - ${textSize - 5}px)`
+        bottom: 'calc(100% + 5px)'
       }
       break
     case 'top-right':
@@ -63,13 +63,13 @@ export const getDropDownStyle = (
         left: 'auto',
         right: 0,
         transformOrigin: '100% 0',
-        bottom: `calc(100% - ${textSize - 5}px)`
+        bottom: 'calc(100% + 5px)'
       }
       break
     default:
       dropdownStyles = {
         left: 'auto',
-        top: `calc(100% - ${textSize - 5}px)`,
+        top: 'calc(100% + 5px)',
         right: 0,
         transformOrigin: '100% 0'
       }

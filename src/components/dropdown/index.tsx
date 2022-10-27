@@ -1,8 +1,4 @@
-import React, {
-  ForwardedRef,
-  forwardRef,
-  useState
-} from 'react'
+import React, { ForwardedRef, forwardRef, useState } from 'react'
 import { IDropDown, IDropDownItem } from './DropDown.types'
 import { ChevronIcon } from '@src/icons/chevronIcon'
 import { getDropDownStyle } from '@src/components/dropdown/DropDown.style'
@@ -128,7 +124,7 @@ export const DropDown = forwardRef<HTMLDivElement, IDropDown>(
   }
 )
 
-DropDown.displayName = 'DropDownMenu'
+DropDown.displayName = 'DropDown'
 
 export const DropDownItem = forwardRef<HTMLLIElement, IDropDownItem>(
   (
@@ -181,11 +177,11 @@ export const DropDownItem = forwardRef<HTMLLIElement, IDropDownItem>(
       >
         {children}
         {rippleEffect && (
-            <Ripple
-                color={rippleEffectColor}
-                sizes={rippleEffectSize}
-                duration={450}
-            />
+          <Ripple
+            color={rippleEffectColor}
+            sizes={rippleEffectSize}
+            duration={450}
+          />
         )}
       </li>
     )

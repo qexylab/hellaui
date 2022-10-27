@@ -1,10 +1,10 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import DateInput from '@src/components/input/dateInput/index'
+import { SelectInput } from '@src/components/input'
 
-describe('dateInput', () => {
+describe('selectInput', () => {
   test('should render component', () => {
-    render(<DateInput>test</DateInput>)
+    render(<SelectInput value="">test</SelectInput>)
   })
 })
