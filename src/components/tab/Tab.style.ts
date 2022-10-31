@@ -1,7 +1,6 @@
-import {DefaultSize} from "@src/other/utils/defaultTypes";
+import { DefaultSize } from '@src/other/utils/defaultTypes'
 
 export const getTabStyle = (size: DefaultSize) => {
-
   let textSize, height
 
   switch (size) {
@@ -19,7 +18,7 @@ export const getTabStyle = (size: DefaultSize) => {
       break
     case 'lg':
       textSize = 18
-        height = 48
+      height = 48
       break
     case 'xl':
       textSize = 22
@@ -33,6 +32,6 @@ export const getTabStyle = (size: DefaultSize) => {
 
   return {
     textSize,
-    height,
+    height
   }
 }

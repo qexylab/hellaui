@@ -1,7 +1,7 @@
-import {HTMLAttributes, ReactNode, RefObject} from "react";
-import {DefaultRounding, DefaultSize} from "@src/other/utils/defaultTypes";
+import { HTMLAttributes, ReactNode, RefObject } from 'react'
+import { DefaultRounding, DefaultSize } from '@src/other/utils/defaultTypes'
 
-export type TabWithRefProps = TabProps & { ref: RefObject<HTMLButtonElement> };
+export type TabWithRefProps = TabProps & { ref: RefObject<HTMLButtonElement> }
 
 export interface TabProps {
   content: ReactNode // Tab content
