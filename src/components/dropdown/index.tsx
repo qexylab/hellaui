@@ -27,7 +27,8 @@ export const DropDown = forwardRef<HTMLDivElement, IDropDown>(
       rippleEffectSize = 'xs',
       children,
       style,
-      onClick
+      onClick,
+      ...props
     },
     ref: ForwardedRef<HTMLDivElement>
   ) => {
@@ -62,12 +63,14 @@ export const DropDown = forwardRef<HTMLDivElement, IDropDown>(
             fontSize: textSize,
             padding: padding,
             fontWeight: 500,
-            transition: 'background .175s ease, color .175s ease'
+            transition: 'background .175s ease, color .175s ease',
+            ...style
           }}
           onClick={() => {
             setIsVisible(!isVisible)
             return onClick
           }}
+          {...props}
         >
           {iconPosition === 'left' && (
             <ChevronIcon
@@ -113,8 +116,7 @@ export const DropDown = forwardRef<HTMLDivElement, IDropDown>(
             minWidth: 150,
             width: menuWidth ? menuWidth : 'fit-content',
             maxHeight: menuMaxHeight ? menuMaxHeight : 'fit-content',
-            ...dropdownStyles,
-            ...style
+            ...dropdownStyles
           }}
         >
           {children}

@@ -15,8 +15,8 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
       rounding = 'md',
       disabled = false,
       active = true,
-      leftIcon,
-      rightIcon,
+      beforeIcon,
+      afterIcon,
       bgColor,
       textColor,
       loading = false,
@@ -29,6 +29,7 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
       rippleEffect = false,
       rippleEffectColor,
       rippleEffectSize = 'xs',
+      onClick,
       ...props
     },
     ref: ForwardedRef<HTMLButtonElement>
@@ -66,6 +67,7 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
         ) : (
           <button
             ref={ref}
+            onClick={loading ? () => {} : onClick}
             disabled={disabled}
             aria-disabled={disabled}
             type={type}
@@ -105,13 +107,13 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
               transition: 'all .175s ease',
               outline: 'none',
               appearance: 'none',
-              cursor: disabled || loading ? 'not-allowed' : 'pointer',
+              cursor: disabled ? 'not-allowed' : loading ? 'auto' : 'pointer',
               opacity: disabled || loading ? '0.7' : '1'
             }}
             {...props}
           >
-            {leftIcon && !loading ? (
-              <div style={{ marginRight: '5px' }}>{leftIcon}</div>
+            {beforeIcon && !loading ? (
+              <div style={{ marginRight: '5px' }}>{beforeIcon}</div>
             ) : null}
             {loading && <Spinner sizes={sizes} />}
             {loading ? loadingText || <span>{children}</span> : children}
@@ -122,8 +124,8 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
                 duration={450}
               />
             )}
-            {rightIcon && !loading ? (
-              <div style={{ marginLeft: '5px' }}>{rightIcon}</div>
+            {afterIcon && !loading ? (
+              <div style={{ marginLeft: '5px' }}>{afterIcon}</div>
             ) : null}
           </button>
         )}
