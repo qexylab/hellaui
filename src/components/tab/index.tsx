@@ -1,7 +1,7 @@
 import React, {
   createRef,
   FC,
-  PropsWithChildren,
+  PropsWithChildren, useLayoutEffect,
   useMemo,
   useRef,
   useState
@@ -23,20 +23,18 @@ export const Tab: FC<PropsWithChildren<ITab>> = ({
 }) => {
   const tablistRef = useRef<HTMLDivElement>(null)
   const underlineRef = useRef<HTMLDivElement>(null)
+  const [visibilityMap, _] = useState<{
+    [index: string]: boolean
+  }>(
+      tabs.reduce<{ [index: string]: boolean }>((initialMap, _, index) => {
+        initialMap[index] = true
+        return initialMap
+      }, {})
+  )
 
   const { textSize, height, padding, offset } = getTabStyle(sizes)
 
-  const getTabIndex = (id: string) =>
-    tabsWithRef.findIndex(item => item.id === id)
-
-  const [visibilityMap, setVisibilityMap] = useState<{
-    [index: string]: boolean
-  }>(
-    tabs.reduce<{ [index: string]: boolean }>((initialMap, _, index) => {
-      initialMap[index] = true
-      return initialMap
-    }, {})
-  )
+  const getTabIndex = (id: string) => tabsWithRef.findIndex(item => item.id === id)
 
   const tabsWithRef: TabWithRefProps[] = useMemo(() => {
     return tabs.map((tab: TabProps) => ({
@@ -44,6 +42,38 @@ export const Tab: FC<PropsWithChildren<ITab>> = ({
       ref: createRef<HTMLButtonElement>()
     }))
   }, [tabs])
+
+  const styleUnderline = (left: number, width: number) => {
+    if (underlineRef.current) {
+      underlineRef.current.style.left = left + 'px';
+      underlineRef.current.style.width = width + 'px';
+      if (width) {
+        underlineRef.current.style.display = 'flex';
+      } else {
+        underlineRef.current.style.display = 'none';
+      }
+    }
+  };
+
+  const setUnderline = () => {
+    const activeTabRef = tabsWithRef.filter((tab) => tab.id === activeTab)?.[0]?.ref.current;
+    const left = parseFloat(underlineRef.current?.style.left || '0');
+    const underlineWidth = parseFloat(underlineRef.current?.style.width || '0');
+
+    if (activeTabRef && tablistRef.current) {
+      // The getBoundingClientRect method is used, which gives precision to hundredths of a pixel
+      const activeTabWidth = activeTabRef.getBoundingClientRect().width;
+      const activeTabLeft =
+          activeTabRef.getBoundingClientRect().left -
+          tablistRef.current.getBoundingClientRect().left +
+          tablistRef.current.scrollLeft;
+
+      if (activeTabLeft !== left || activeTabWidth !== underlineWidth) styleUnderline(activeTabLeft, activeTabWidth);
+
+    }
+  };
+
+  useLayoutEffect(() => setUnderline(), [tabsWithRef, activeTab, sizes, visibilityMap]);
 
   return (
     <div
@@ -65,15 +95,12 @@ export const Tab: FC<PropsWithChildren<ITab>> = ({
       }}
       {...props}
     >
-      {tabsWithRef.map((item: TabWithRefProps, index) => {
+      {tabsWithRef.map((item: TabWithRefProps) => {
         const { id, ref, icon, content, badge, disabled } = item
         const tabNumber = getTabIndex(id)
         const overflowMenuHidden =
           tabNumber === tabsWithRef.length - 1 ||
           !(visibilityMap[tabNumber] && !visibilityMap[tabNumber + 1])
-        // const tabsForMenu = modelAllTabs.slice(tabNumber + 1);
-        // const tabIndex = overflowMenuHidden || !tabsForMenu?.filter((item) => item.id === activeTab).length ? -1 : 0;
-        // const overflowRef = overflowMenuRefs[tabNumber] ? overflowMenuRefs[tabNumber].ref : null;
         const needsOffset = tabNumber !== 0 && visibilityMap[tabNumber - 1]
         return (
           <div
@@ -91,8 +118,7 @@ export const Tab: FC<PropsWithChildren<ITab>> = ({
               tabIndex={id === activeTab ? 0 : -1}
               aria-selected={id === activeTab}
               onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
-                console.log(event.currentTarget)
-                onChange(event.currentTarget.id)
+                onChange(item.id)
                 event.currentTarget.blur()
               }}
               style={{
@@ -158,7 +184,6 @@ export const Tab: FC<PropsWithChildren<ITab>> = ({
                   height: height
                 }}
               >
-                {/*StyledOverflowMenu*/}
               </div>
             ) : null}
           </div>
