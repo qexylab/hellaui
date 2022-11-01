@@ -61,7 +61,9 @@ export const getDrawerStyle = (
         right: 0,
         left: 0,
         margin: '0 auto',
-        transform: visibleState ? 'none' : `translateY(${height ? height : drawerHeight}px)`,
+        transform: visibleState
+          ? 'none'
+          : `translateY(${height ? height : drawerHeight}px)`,
         width: '100vw',
         height: height ? height : drawerHeight,
         borderRadius: borderRadius
@@ -80,7 +82,9 @@ export const getDrawerStyle = (
         right: 0,
         left: 0,
         margin: '0 auto',
-        transform: visibleState ? 'none' : `translateY(-${height ? height : drawerHeight}px)`,
+        transform: visibleState
+          ? 'none'
+          : `translateY(-${height ? height : drawerHeight}px)`,
         width: '100vw',
         height: height ? height : drawerHeight,
         borderRadius: borderRadius
@@ -97,7 +101,9 @@ export const getDrawerStyle = (
       positionStyles = {
         left: 0,
         top: 0,
-        transform: visibleState ? 'none' : `translateX(${width ? width : drawerWidth}px)`,
+        transform: visibleState
+          ? 'none'
+          : `translateX(${width ? width : drawerWidth}px)`,
         height: '100vh',
         width: width ? width : drawerWidth,
         borderRadius: borderRadius
@@ -114,7 +120,9 @@ export const getDrawerStyle = (
       positionStyles = {
         right: 0,
         top: 0,
-        transform: visibleState ? 'none' : `translateX(${width ? width : drawerWidth}px)`,
+        transform: visibleState
+          ? 'none'
+          : `translateX(${width ? width : drawerWidth}px)`,
         height: '100vh',
         width: width ? width : drawerWidth,
         borderRadius: borderRadius
@@ -131,7 +139,9 @@ export const getDrawerStyle = (
       positionStyles = {
         right: 0,
         top: 0,
-        transform: visibleState ? 'none' : `translateX(${width ? width : drawerWidth}px)`,
+        transform: visibleState
+          ? 'none'
+          : `translateX(${width ? width : drawerWidth}px)`,
         height: '100vh',
         width: width ? width : drawerWidth,
         borderRadius: borderRadius
