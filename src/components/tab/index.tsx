@@ -17,6 +17,7 @@ export const Tab: FC<PropsWithChildren<ITab>> = ({
   underline = false,
   activeTab,
   onChange,
+    selected,
   children,
   ...props
 }) => {
@@ -90,6 +91,7 @@ export const Tab: FC<PropsWithChildren<ITab>> = ({
               tabIndex={id === activeTab ? 0 : -1}
               aria-selected={id === activeTab}
               onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+                console.log(event.currentTarget)
                 onChange(event.currentTarget.id)
                 event.currentTarget.blur()
               }}
