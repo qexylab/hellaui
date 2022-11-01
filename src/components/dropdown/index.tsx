@@ -45,6 +45,7 @@ export const DropDown = forwardRef<HTMLDivElement, IDropDown>(
     return (
       <div ref={ref} style={{ position: 'relative', display: 'inline-block' }}>
         <button
+            ref={targetRef}
           onMouseEnter={() => setIsHover(true)}
           onMouseLeave={() => setIsHover(false)}
           onMouseUp={() => setIsClick(false)}
@@ -96,7 +97,6 @@ export const DropDown = forwardRef<HTMLDivElement, IDropDown>(
           )}
         </button>
         <ul
-          ref={targetRef}
           style={{
             backgroundColor: backgroundColor,
             borderRadius: borderRadius(rounding),
@@ -106,7 +106,7 @@ export const DropDown = forwardRef<HTMLDivElement, IDropDown>(
             opacity: isVisible ? 1 : 0,
             visibility: isVisible ? 'visible' : 'hidden',
             position: 'absolute',
-            zIndex: isVisible ? 10 : -1,
+            zIndex: isVisible? 10 : -1,
             fontSize: textSize,
             transition: 'all .175s cubic-bezier(0.325, 0.090, 0.000, 1.280)',
             transform: isVisible
@@ -166,7 +166,6 @@ export const DropDownItem = forwardRef<HTMLLIElement, IDropDownItem>(
           alignItems: 'center',
           userSelect: 'none',
           width: '100%',
-          padding: '6px 12px',
           justifyContent: 'space-between',
           outline: 'none',
           whiteSpace: 'pre',

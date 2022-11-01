@@ -7,7 +7,7 @@ type TypeOut = {
   setIsVisible: Dispatch<SetStateAction<boolean>>
 }
 
-export const useOutsideClick = <T extends HTMLElement = HTMLElement>(
+export const useOutsideClick = <T extends HTMLElement>(
   initialVisible: boolean
 ): TypeOut => {
   const [isVisible, setIsVisible] = useState<boolean>(initialVisible)
