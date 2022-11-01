@@ -6,7 +6,9 @@ export const getDrawerStyle = (
   size: DefaultSize,
   position: DrawerPosition,
   visibleState: boolean,
-  rounding: DefaultRounding
+  rounding: DefaultRounding,
+  width?: number,
+  height?: number
 ) => {
   let textSize,
     drawerWidth,
@@ -59,9 +61,9 @@ export const getDrawerStyle = (
         right: 0,
         left: 0,
         margin: '0 auto',
-        transform: visibleState ? 'none' : `translateY(${drawerHeight}px)`,
+        transform: visibleState ? 'none' : `translateY(${height ? height : drawerHeight}px)`,
         width: '100vw',
-        height: drawerHeight,
+        height: height ? height : drawerHeight,
         borderRadius: borderRadius
       }
       break
@@ -78,9 +80,9 @@ export const getDrawerStyle = (
         right: 0,
         left: 0,
         margin: '0 auto',
-        transform: visibleState ? 'none' : `translateY(-${drawerHeight}px)`,
+        transform: visibleState ? 'none' : `translateY(-${height ? height : drawerHeight}px)`,
         width: '100vw',
-        height: drawerHeight,
+        height: height ? height : drawerHeight,
         borderRadius: borderRadius
       }
       break
@@ -95,9 +97,9 @@ export const getDrawerStyle = (
       positionStyles = {
         left: 0,
         top: 0,
-        transform: visibleState ? 'none' : `translateX(-${drawerWidth}px)`,
+        transform: visibleState ? 'none' : `translateX(${width ? width : drawerWidth}px)`,
         height: '100vh',
-        width: drawerWidth,
+        width: width ? width : drawerWidth,
         borderRadius: borderRadius
       }
       break
@@ -112,9 +114,9 @@ export const getDrawerStyle = (
       positionStyles = {
         right: 0,
         top: 0,
-        transform: visibleState ? 'none' : `translateX(${drawerWidth}px)`,
+        transform: visibleState ? 'none' : `translateX(${width ? width : drawerWidth}px)`,
         height: '100vh',
-        width: drawerWidth,
+        width: width ? width : drawerWidth,
         borderRadius: borderRadius
       }
       break
@@ -129,9 +131,9 @@ export const getDrawerStyle = (
       positionStyles = {
         right: 0,
         top: 0,
-        transform: visibleState ? 'none' : `translateX(${drawerWidth}px)`,
+        transform: visibleState ? 'none' : `translateX(${width ? width : drawerWidth}px)`,
         height: '100vh',
-        width: drawerWidth,
+        width: width ? width : drawerWidth,
         borderRadius: borderRadius
       }
       break

@@ -5,6 +5,8 @@ export type DrawerPosition = 'bottom' | 'left' | 'right' | 'top'
 
 export interface IDrawer extends HTMLAttributes<HTMLDivElement> {
   sizes?: DefaultSize // Drawer size
+  width?: number // Drawer custom width
+  height?: number // Drawer custom height
   rounding?: DefaultRounding // Drawer rounding
   title?: string // Drawer title
   isVisible: boolean // Visible state
