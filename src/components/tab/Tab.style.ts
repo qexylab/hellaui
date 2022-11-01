@@ -1,7 +1,7 @@
 import { DefaultSize } from '@src/other/utils/defaultTypes'
 
 export const getTabStyle = (size: DefaultSize) => {
-  let textSize, height, padding, offset
+  let textSize: number, height: number, padding: string, offset: number
 
   switch (size) {
     case 'xs':
@@ -37,6 +37,7 @@ export const getTabStyle = (size: DefaultSize) => {
     default:
       textSize = 16
       height = 40
+      offset = -40
       padding = '0 12px'
       break
   }

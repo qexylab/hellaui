@@ -26,6 +26,7 @@ export const Badge: FC<PropsWithChildren<IBadge>> = ({
         background: background,
         color: color,
         userSelect: 'none',
+        transition: 'background .175s ease, color .175s ease',
         ...style
       }}
       {...props}

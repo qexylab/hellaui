@@ -19,4 +19,15 @@ export interface ITab extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   sizes?: DefaultSize // Tab size
   rounding?: DefaultRounding // Tab rounding
   underline?: boolean // Displaying a gray bar at the bottom
+  selectlineColor?: string // Underline color
+}
+
+export interface ITabButton
+  extends Omit<HTMLAttributes<HTMLButtonElement>, 'onChange'> {
+  id: string
+  activeTab: string
+  onChange: (id: string) => void
+  height: number
+  itemID: string
+  disabled?: boolean
 }

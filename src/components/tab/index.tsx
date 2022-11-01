@@ -1,15 +1,19 @@
 import React, {
   createRef,
   FC,
-  PropsWithChildren, useLayoutEffect,
+  ForwardedRef,
+  forwardRef,
+  PropsWithChildren,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState
 } from 'react'
-import { ITab, TabProps, TabWithRefProps } from './Tab.types'
+import { ITab, ITabButton, TabProps, TabWithRefProps } from './Tab.types'
 import { getTabStyle } from '@src/components/tab/Tab.style'
 import { theme_color } from '@src/other/theme'
 import { Badge } from '@src/components/badge'
+import { borderRadius } from '@src/other/theme/borderRadius'
 
 export const Tab: FC<PropsWithChildren<ITab>> = ({
   tabs,
@@ -17,24 +21,26 @@ export const Tab: FC<PropsWithChildren<ITab>> = ({
   underline = false,
   activeTab,
   onChange,
-    selected,
+  selected,
+  selectlineColor = theme_color.indigo,
   children,
   ...props
 }) => {
   const tablistRef = useRef<HTMLDivElement>(null)
   const underlineRef = useRef<HTMLDivElement>(null)
-  const [visibilityMap, _] = useState<{
+  const [visibilityMap] = useState<{
     [index: string]: boolean
   }>(
-      tabs.reduce<{ [index: string]: boolean }>((initialMap, _, index) => {
-        initialMap[index] = true
-        return initialMap
-      }, {})
+    tabs.reduce<{ [index: string]: boolean }>((initialMap, _, index) => {
+      initialMap[index] = true
+      return initialMap
+    }, {})
   )
 
   const { textSize, height, padding, offset } = getTabStyle(sizes)
 
-  const getTabIndex = (id: string) => tabsWithRef.findIndex(item => item.id === id)
+  const getTabIndex = (id: string) =>
+    tabsWithRef.findIndex(item => item.id === id)
 
   const tabsWithRef: TabWithRefProps[] = useMemo(() => {
     return tabs.map((tab: TabProps) => ({
@@ -45,35 +51,39 @@ export const Tab: FC<PropsWithChildren<ITab>> = ({
 
   const styleUnderline = (left: number, width: number) => {
     if (underlineRef.current) {
-      underlineRef.current.style.left = left + 'px';
-      underlineRef.current.style.width = width + 'px';
+      underlineRef.current.style.left = left + 'px'
+      underlineRef.current.style.width = width + 'px'
       if (width) {
-        underlineRef.current.style.display = 'flex';
+        underlineRef.current.style.display = 'flex'
       } else {
-        underlineRef.current.style.display = 'none';
+        underlineRef.current.style.display = 'none'
       }
     }
-  };
+  }
 
   const setUnderline = () => {
-    const activeTabRef = tabsWithRef.filter((tab) => tab.id === activeTab)?.[0]?.ref.current;
-    const left = parseFloat(underlineRef.current?.style.left || '0');
-    const underlineWidth = parseFloat(underlineRef.current?.style.width || '0');
+    const activeTabRef = tabsWithRef.filter(tab => tab.id === activeTab)?.[0]
+      ?.ref.current
+    const left = parseFloat(underlineRef.current?.style.left || '0')
+    const underlineWidth = parseFloat(underlineRef.current?.style.width || '0')
 
     if (activeTabRef && tablistRef.current) {
       // The getBoundingClientRect method is used, which gives precision to hundredths of a pixel
-      const activeTabWidth = activeTabRef.getBoundingClientRect().width;
+      const activeTabWidth = activeTabRef.getBoundingClientRect().width
       const activeTabLeft =
-          activeTabRef.getBoundingClientRect().left -
-          tablistRef.current.getBoundingClientRect().left +
-          tablistRef.current.scrollLeft;
+        activeTabRef.getBoundingClientRect().left -
+        tablistRef.current.getBoundingClientRect().left +
+        tablistRef.current.scrollLeft
 
-      if (activeTabLeft !== left || activeTabWidth !== underlineWidth) styleUnderline(activeTabLeft, activeTabWidth);
-
+      if (activeTabLeft !== left || activeTabWidth !== underlineWidth)
+        styleUnderline(activeTabLeft, activeTabWidth)
     }
-  };
+  }
 
-  useLayoutEffect(() => setUnderline(), [tabsWithRef, activeTab, sizes, visibilityMap]);
+  useLayoutEffect(
+    () => setUnderline(),
+    [tabsWithRef, activeTab, sizes, visibilityMap]
+  )
 
   return (
     <div
@@ -85,9 +95,9 @@ export const Tab: FC<PropsWithChildren<ITab>> = ({
         flex: '1 1 auto',
         flexWrap: 'wrap',
         alignItems: 'center',
-        width: '100%',
+        width: 'fit-content',
         boxShadow: `inset 0 -2px 0 0 ${
-          underline ? theme_color.gray : 'transparent'
+          underline ? theme_color.dark_gray_2 : 'transparent'
         }`,
         overflow: 'hidden',
         height: height,
@@ -111,30 +121,14 @@ export const Tab: FC<PropsWithChildren<ITab>> = ({
               marginLeft: needsOffset ? offset : 0
             }}
           >
-            <button
+            <TabButton
+              disabled={disabled}
               ref={ref}
-              role="tab"
-              type="button"
-              tabIndex={id === activeTab ? 0 : -1}
-              aria-selected={id === activeTab}
-              onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
-                onChange(item.id)
-                event.currentTarget.blur()
-              }}
-              style={{
-                position: 'relative',
-                display: 'inline-flex',
-                alignItems: 'center',
-                height: height,
-                padding: 0,
-                background: 'transparent',
-                appearance: 'none',
-                border: 'none',
-                color:
-                  id === activeTab ? theme_color.white : theme_color.white_gray,
-                userSelect: 'none',
-                cursor: 'pointer'
-              }}
+              id={id}
+              activeTab={activeTab}
+              onChange={onChange}
+              height={height}
+              itemID={item.id}
             >
               <span
                 tabIndex={-1}
@@ -147,14 +141,23 @@ export const Tab: FC<PropsWithChildren<ITab>> = ({
                   padding: padding
                 }}
               >
-                {icon && icon}
+                {icon && (
+                  <div
+                    style={{
+                      marginRight: 8
+                    }}
+                  >
+                    {icon}
+                  </div>
+                )}
                 <div
                   style={{
                     height: '100%',
                     display: 'inline-flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    whiteSpace: 'nowrap'
+                    whiteSpace: 'nowrap',
+                    fontSize: textSize
                   }}
                 >
                   {content}
@@ -162,7 +165,7 @@ export const Tab: FC<PropsWithChildren<ITab>> = ({
                 {typeof badge !== 'undefined' && (
                   <Badge
                     data-badge
-                    sizes="md"
+                    sizes="sm"
                     variant={
                       id === activeTab
                         ? 'info'
@@ -170,12 +173,15 @@ export const Tab: FC<PropsWithChildren<ITab>> = ({
                         ? 'lightDisable'
                         : 'lightInactive'
                     }
+                    style={{
+                      marginLeft: 8
+                    }}
                   >
                     {badge}
                   </Badge>
                 )}
               </span>
-            </button>
+            </TabButton>
             {tabNumber !== tabsWithRef.length - 1 ? (
               <div
                 style={{
@@ -183,8 +189,7 @@ export const Tab: FC<PropsWithChildren<ITab>> = ({
                   width: `${height}px`,
                   height: height
                 }}
-              >
-              </div>
+              />
             ) : null}
           </div>
         )
@@ -196,7 +201,7 @@ export const Tab: FC<PropsWithChildren<ITab>> = ({
           position: 'absolute',
           bottom: 0,
           display: 'flex',
-          backgroundColor: theme_color.indigo,
+          backgroundColor: selectlineColor,
           height: 2,
           transition: 'all 0.2s ease-out'
         }}
@@ -206,3 +211,60 @@ export const Tab: FC<PropsWithChildren<ITab>> = ({
 }
 
 Tab.displayName = 'Tab'
+
+const TabButton = forwardRef<HTMLButtonElement, ITabButton>(
+  (
+    { id, activeTab, onChange, height, itemID, disabled, children },
+    ref: ForwardedRef<HTMLButtonElement>
+  ) => {
+    const [isHover, setIsHover] = useState<boolean>(false)
+    const [isClick, setIsClick] = useState<boolean>(false)
+    return (
+      <button
+        ref={ref}
+        role="tab"
+        type="button"
+        tabIndex={id === activeTab ? 0 : -1}
+        aria-selected={id === activeTab}
+        onMouseEnter={() => setIsHover(true)}
+        onMouseLeave={() => setIsHover(false)}
+        onMouseUp={() => setIsClick(false)}
+        onMouseDown={() => setIsClick(true)}
+        onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+          onChange(itemID)
+          event.currentTarget.blur()
+        }}
+        style={{
+          position: 'relative',
+          display: 'inline-flex',
+          alignItems: 'center',
+          height: height,
+          padding: 0,
+          background: disabled
+            ? 'transparent'
+            : isHover
+            ? theme_color.dark_gray_2
+            : 'transparent',
+          appearance: 'none',
+          border: 'none',
+          color: isClick
+            ? theme_color.indigo
+            : isHover
+            ? theme_color.white_gray_2
+            : id === activeTab
+            ? theme_color.white
+            : theme_color.white_gray,
+          userSelect: 'none',
+          cursor: 'pointer',
+          borderTopLeftRadius: borderRadius('md'),
+          borderTopRightRadius: borderRadius('md'),
+          transition: 'background .175s ease, color .175s ease'
+        }}
+      >
+        {children}
+      </button>
+    )
+  }
+)
+
+TabButton.displayName = 'TabButton'
