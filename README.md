@@ -14,7 +14,7 @@
 
 ### Documentation
 
-For full documentation, visit [hellaui.pw](https://hellaui.pw).
+For full documentation, visit [hellaui.com](https://hellaui.com).
 
 ### Installing the latest version
 
