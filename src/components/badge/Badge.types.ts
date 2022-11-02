@@ -3,7 +3,7 @@ import { DefaultRounding, DefaultSize } from '@src/other/utils/defaultTypes'
 
 export type BadgeVariant =
   | 'default'
-  | 'info'
+  | 'primary'
   | 'warning'
   | 'success'
   | 'error'
@@ -15,7 +15,6 @@ export type BadgeVariant =
   | 'white'
   | 'whiteInactive'
   | 'whiteDisable'
-  | 'whiteBlue'
 
 export interface IBadge extends HTMLAttributes<HTMLDivElement> {
   sizes?: DefaultSize // Badge size

@@ -19,7 +19,7 @@ export const getChipStyle = (
       if (selected) return 'whiteDisable'
       return 'lightDisable'
     }
-    return 'info'
+    return 'primary'
   }, [variant, selected, disabled])
 
   switch (variant) {

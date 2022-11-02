@@ -4,7 +4,6 @@ import React, {
   ForwardedRef,
   forwardRef,
   PropsWithChildren,
-  useLayoutEffect,
   useMemo,
   useRef,
   useState
@@ -14,6 +13,7 @@ import { getTabStyle } from '@src/components/tab/Tab.style'
 import { theme_color } from '@src/other/theme'
 import { Badge } from '@src/components/badge'
 import { borderRadius } from '@src/other/theme/borderRadius'
+import { useEnhancedEffect } from '@src/other/hooks/useEnhancedEffect'
 
 export const Tab: FC<PropsWithChildren<ITab>> = ({
   tabs,
@@ -80,7 +80,7 @@ export const Tab: FC<PropsWithChildren<ITab>> = ({
     }
   }
 
-  useLayoutEffect(
+  useEnhancedEffect(
     () => setUnderline(),
     [tabsWithRef, activeTab, sizes, visibilityMap]
   )
@@ -168,7 +168,7 @@ export const Tab: FC<PropsWithChildren<ITab>> = ({
                     sizes="sm"
                     variant={
                       id === activeTab
-                        ? 'info'
+                        ? 'primary'
                         : disabled
                         ? 'lightDisable'
                         : 'lightInactive'

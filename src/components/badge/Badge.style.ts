@@ -13,20 +13,20 @@ export const getBadgeStyle = (size: DefaultSize, variant: BadgeVariant) => {
       background = theme_color.gray
       color = theme_color.white
       break
-    case 'info':
-      background = theme_color.primary_40
+    case 'primary':
+      background = theme_color.primary
       color = theme_color.white
       break
     case 'warning':
-      background = theme_color.warning_10
+      background = theme_color.warning
       color = theme_color.white
       break
     case 'success':
-      background = theme_color.success_10
+      background = theme_color.success
       color = theme_color.white
       break
     case 'error':
-      background = theme_color.danger_10
+      background = theme_color.danger
       color = theme_color.white
       break
     case 'gray':
@@ -51,7 +51,7 @@ export const getBadgeStyle = (size: DefaultSize, variant: BadgeVariant) => {
       background = theme_color.white_gray
       break
     case 'lightInactive':
-      color = theme_color.dark_gray
+      color = theme_color.dark_gray_2
       break
     case 'lightDisable':
       background = theme_color.white_gray
