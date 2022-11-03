@@ -16,10 +16,9 @@ export interface IButton extends HTMLAttributes<HTMLButtonElement> {
   sizes?: DefaultSize // Button Size,
   rounding?: DefaultRounding // Button Rounding
   disabled?: boolean // Makes button disabled
-  active?: boolean // Makes button active
   beforeIcon?: ReactElement // Adds icon before button label
   afterIcon?: ReactElement // Adds icon after button label
-  bgColor?: string // Set the button background color
+  backgroundColor?: string // Set the button background color
   textColor?: string // Set the button background color
   loading?: boolean // Shows loading spinner
   loadingText?: string // The label to show in the button when loading is true

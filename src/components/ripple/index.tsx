@@ -4,7 +4,6 @@ import {
   getRippleStyle,
   useDebouncedRippleCleanUp
 } from '@src/components/ripple/Ripple.style'
-import { useSetAnimation } from '@src/other/hooks/useSetAnimation'
 import { theme_color } from '@src/other/theme'
 
 export const Ripple: FC<IRipple> = ({
@@ -15,9 +14,7 @@ export const Ripple: FC<IRipple> = ({
   const [rippleArray, setRippleArray] = useState<newRipple[]>([])
 
   const animationName = 'ripple'
-  const keyframe = `@keyframes ${animationName} { to { opacity: 0; transform: scale(2); }}`
 
-  useSetAnimation(keyframe)
   const { rippleSize } = getRippleStyle(sizes)
 
   useDebouncedRippleCleanUp(rippleArray.length, duration, () => {
@@ -47,6 +44,7 @@ export const Ripple: FC<IRipple> = ({
         right: 0
       }}
     >
+      <style>{`@keyframes ${animationName} { to { opacity: 0; transform: scale(2); }}`}</style>
       {rippleArray.length > 0 &&
         rippleArray.map((ripple: newRipple, index) => {
           return (

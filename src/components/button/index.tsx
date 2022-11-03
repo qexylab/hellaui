@@ -14,10 +14,9 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
       sizes = 'md',
       rounding = 'md',
       disabled = false,
-      active = true,
       beforeIcon,
       afterIcon,
-      bgColor,
+      backgroundColor,
       textColor,
       loading = false,
       loadingText = '',
@@ -35,11 +34,10 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
     ref: ForwardedRef<HTMLButtonElement>
   ) => {
     const [isHover, setIsHover] = useState<boolean>(false)
-    const [isFocus, setIsFocus] = useState<boolean>(false)
     const [isClick, setIsClick] = useState<boolean>(false)
 
     const {
-      backgroundColor,
+      _backgroundColor,
       hoverBackgroundColor,
       color,
       padding,
@@ -52,7 +50,7 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
       sizes,
       disabled,
       plain ? plain : undefined,
-      bgColor ? bgColor : undefined,
+      backgroundColor ? backgroundColor : undefined,
       textColor ? textColor : undefined
     )
 
@@ -75,26 +73,31 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
             onMouseLeave={() => setIsHover(false)}
             onMouseUp={() => setIsClick(false)}
             onMouseDown={() => setIsClick(true)}
-            onFocus={() => setIsFocus(true)}
-            onBlur={() => setIsFocus(false)}
             style={{
               backgroundColor:
                 disabled || loading
-                  ? backgroundColor
+                  ? _backgroundColor
                   : isClick
-                  ? backgroundColor
-                  : isHover || isFocus
+                  ? _backgroundColor
+                  : isHover
                   ? hoverBackgroundColor
-                  : backgroundColor,
+                  : _backgroundColor,
               border:
                 disabled || loading
                   ? border
                   : isClick
                   ? border
-                  : isHover || isFocus
+                  : isHover
                   ? hoverBorder
                   : border,
-              color: isClick ? color : isHover || isFocus ? hoverColor : color,
+              color:
+                disabled || loading
+                  ? color
+                  : isClick
+                  ? color
+                  : isHover
+                  ? hoverColor
+                  : color,
               fontSize: textSize,
               position: 'relative',
               overflow: 'hidden',

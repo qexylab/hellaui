@@ -10,7 +10,7 @@ export const getButtonStyle = (
   bgColor?: string | undefined,
   textColor?: string | undefined
 ) => {
-  let backgroundColor: string = '',
+  let _backgroundColor: string = '',
     hoverBackgroundColor: string = '',
     color: string = '',
     hoverColor: string = '',
@@ -24,7 +24,7 @@ export const getButtonStyle = (
     dark_main_color: string,
     plain_bg_color: string
   ) => {
-    backgroundColor = bgColor ? bgColor : plain ? plain_bg_color : main_color
+    _backgroundColor = bgColor ? bgColor : plain ? plain_bg_color : main_color
     hoverBackgroundColor = plain ? main_color : dark_main_color
     color = textColor ? textColor : plain ? main_color : theme_color.white
     hoverColor = theme_color.white
@@ -39,7 +39,7 @@ export const getButtonStyle = (
     plain_hover_bg_color: string,
     hover_border_color: string
   ) => {
-    backgroundColor = bgColor ? bgColor : 'transparent'
+    _backgroundColor = bgColor ? bgColor : 'transparent'
     hoverBackgroundColor = plain ? 'transparent' : plain_hover_bg_color
     color = textColor ? textColor : theme_color.white
     hoverColor = main_color
@@ -124,7 +124,7 @@ export const getButtonStyle = (
   }
 
   return {
-    backgroundColor,
+    _backgroundColor,
     hoverBackgroundColor,
     color,
     padding,
