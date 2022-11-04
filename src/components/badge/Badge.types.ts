@@ -7,7 +7,6 @@ export type BadgeVariant =
   | 'warning'
   | 'success'
   | 'error'
-  | 'gray'
   | 'dark'
   | 'light'
   | 'lightInactive'

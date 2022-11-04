@@ -18,15 +18,15 @@ export const Chip = forwardRef<HTMLDivElement, IChip>(
     {
       sizes = 'md',
       disabled,
-      variant = 'outlined',
+      variant = 'filled',
       selected,
       textColor,
       borderColor,
       bgColor,
       onRemove,
       children,
-      iconBefore,
-      iconAfter,
+      beforeIcon,
+      afterIcon,
       badge,
       withTooltip = false,
       rounding = 'md',
@@ -121,9 +121,9 @@ export const Chip = forwardRef<HTMLDivElement, IChip>(
             alignItems: 'center'
           }}
         >
-          {iconBefore && (
+          {beforeIcon && (
             <div style={{ display: 'inline-block', marginRight: 8 }}>
-              {iconBefore}
+              {beforeIcon}
             </div>
           )}
           <div
@@ -137,14 +137,14 @@ export const Chip = forwardRef<HTMLDivElement, IChip>(
           >
             {children}
           </div>
-          {!onRemove && iconAfter && (
+          {!onRemove && afterIcon && (
             <div
               style={{
                 display: 'inline-block',
                 marginLeft: 8
               }}
             >
-              {iconAfter}
+              {afterIcon}
             </div>
           )}
           {!onRemove && typeof badge !== 'undefined' && (

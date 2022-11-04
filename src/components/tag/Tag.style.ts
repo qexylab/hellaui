@@ -5,7 +5,7 @@ import { DefaultSize } from '@src/other/utils/defaultTypes'
 export const getTagStyle = (variant: TagVariant, size: DefaultSize) => {
   let backgroundColor: string,
     textSize: number,
-    padding: string = '2px 4px'
+    padding: string = '2px 6px'
 
   switch (variant) {
     case 'primary':
@@ -32,9 +32,6 @@ export const getTagStyle = (variant: TagVariant, size: DefaultSize) => {
     case 'gray':
       backgroundColor = theme_color.gray
       break
-    case 'purple':
-      backgroundColor = theme_color.cyan
-      break
     case 'danger':
       backgroundColor = theme_color.danger
       break
@@ -45,7 +42,7 @@ export const getTagStyle = (variant: TagVariant, size: DefaultSize) => {
   switch (size) {
     case 'xs':
       textSize = 10
-      padding = '1px 2px'
+      padding = '1px 4px'
       break
     case 'sm':
       textSize = 12
@@ -58,7 +55,7 @@ export const getTagStyle = (variant: TagVariant, size: DefaultSize) => {
       break
     case 'xl':
       textSize = 20
-      padding = '2px 6px'
+      padding = '2px 8px'
       break
     default:
       textSize = 14

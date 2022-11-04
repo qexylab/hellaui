@@ -12,7 +12,6 @@ export type TagVariant =
   | 'indigo'
   | 'teal'
   | 'gray'
-  | 'purple'
 
 export interface ITag extends HTMLAttributes<HTMLDivElement> {
   variant?: TagVariant // Tag variant

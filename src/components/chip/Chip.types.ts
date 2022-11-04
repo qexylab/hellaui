@@ -14,8 +14,8 @@ export interface IChip extends HTMLAttributes<HTMLDivElement> {
   borderColor?: string // Set the button border color
   selected?: boolean // Selected chip
   onRemove?: () => void // Remove function
-  iconBefore?: ReactNode // Icon before text
-  iconAfter?: ReactNode // Icon after text
+  beforeIcon?: ReactNode // Icon before text
+  afterIcon?: ReactNode // Icon after text
   badge?: number // Badge number
   withTooltip?: boolean // Chip Tooltip
   tooltipPosition?: TooltipPosition // Chip Tooltip
