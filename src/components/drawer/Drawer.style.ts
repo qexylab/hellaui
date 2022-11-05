@@ -103,7 +103,7 @@ export const getDrawerStyle = (
         top: 0,
         transform: visibleState
           ? 'none'
-          : `translateX(${width ? width : drawerWidth}px)`,
+          : `translateX(-${width ? width : drawerWidth}px)`,
         height: '100vh',
         width: width ? width : drawerWidth,
         borderRadius: borderRadius

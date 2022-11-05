@@ -67,7 +67,6 @@ export const Chip = forwardRef<HTMLDivElement, IChip>(
           display: 'inline-flex',
           alignItems: 'center',
           position: 'relative',
-          maxWidth: '250px',
           userSelect: 'none',
           pointerEvents: disabled ? 'none' : 'auto',
           cursor: defaultChip && !disabled ? 'pointer' : 'default',

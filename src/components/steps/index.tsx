@@ -70,8 +70,7 @@ export const Steps: FC<PropsWithChildren<ISteps>> = ({
         style={{
           display: 'flex',
           scrollBehavior: 'smooth',
-          flexDirection: orientation === 'horizontal' ? 'row' : 'column',
-          overflowX: orientation === 'horizontal' ? 'scroll' : 'auto'
+          flexDirection: orientation === 'horizontal' ? 'row' : 'column'
         }}
         {...props}
       >

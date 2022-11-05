@@ -17,7 +17,8 @@ export const Tag = forwardRef<HTMLDivElement, ITag>(
       tooltipPosition = 'bottom',
       width,
       tooltipBackground,
-      children
+      children,
+      ...props
     },
     ref: ForwardedRef<HTMLDivElement>
   ) => {
@@ -39,6 +40,7 @@ export const Tag = forwardRef<HTMLDivElement, ITag>(
           alignItems: 'center',
           userSelect: 'none'
         }}
+        {...props}
       >
         {iconBefore && <div style={{ marginRight: 2 }}>{iconBefore}</div>}
         <div

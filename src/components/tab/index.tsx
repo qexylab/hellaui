@@ -21,6 +21,7 @@ export const Tab: FC<PropsWithChildren<ITab>> = ({
   underline = false,
   activeTab,
   onChange,
+  hoverBackgroundColor = theme_color.dark_gray_2,
   selected,
   selectlineColor = theme_color.indigo,
   children,
@@ -123,6 +124,7 @@ export const Tab: FC<PropsWithChildren<ITab>> = ({
           >
             <TabButton
               disabled={disabled}
+              hoverBackgroundColor={hoverBackgroundColor}
               ref={ref}
               id={id}
               activeTab={activeTab}
@@ -214,7 +216,16 @@ Tab.displayName = 'Tab'
 
 const TabButton = forwardRef<HTMLButtonElement, ITabButton>(
   (
-    { id, activeTab, onChange, height, itemID, disabled, children },
+    {
+      id,
+      hoverBackgroundColor,
+      activeTab,
+      onChange,
+      height,
+      itemID,
+      disabled,
+      children
+    },
     ref: ForwardedRef<HTMLButtonElement>
   ) => {
     const [isHover, setIsHover] = useState<boolean>(false)
@@ -243,7 +254,7 @@ const TabButton = forwardRef<HTMLButtonElement, ITabButton>(
           background: disabled
             ? 'transparent'
             : isHover
-            ? theme_color.dark_gray_2
+            ? hoverBackgroundColor
             : 'transparent',
           appearance: 'none',
           border: 'none',

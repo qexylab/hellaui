@@ -15,6 +15,7 @@ export interface ITab extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   tabs: TabProps[] // Tab array
   activeTab: string // Active tab id
   selected?: string // Selected tab item
+  hoverBackgroundColor?: string // Hover background color
   onChange: (id: string) => void // Callback for changing the active tab
   sizes?: DefaultSize // Tab size
   rounding?: DefaultRounding // Tab rounding
@@ -25,6 +26,7 @@ export interface ITab extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
 export interface ITabButton
   extends Omit<HTMLAttributes<HTMLButtonElement>, 'onChange'> {
   id: string
+  hoverBackgroundColor?: string
   activeTab: string
   onChange: (id: string) => void
   height: number

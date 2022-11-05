@@ -49,7 +49,6 @@ export const Toggle = forwardRef<HTMLInputElement, IToggle>(
             alignItems: 'center',
             justifyContent: 'space-between',
             width: toggleWidth * 2 + 8,
-            // width: "fit-content",
             height: toggleHeight + 8,
             cursor: disabled ? 'default' : 'pointer',
             userSelect: 'none'
@@ -86,16 +85,6 @@ export const Toggle = forwardRef<HTMLInputElement, IToggle>(
               transition: '.4s'
             }}
           />
-          {/*{children &&*/}
-          {/*<div style={{display: "flex", flexDirection: "column", margin: labelPosition === 'right' ? '0 0 0 8px' : '0 8px 0 0', color: disabled ? theme_color.gray : theme_color.white}}>*/}
-          {/*  {children}*/}
-          {/*  {helpText &&*/}
-          {/*  <div style={{ marginTop: 4, color: disabled ? theme_color.gray : theme_color.white_gray }}>*/}
-          {/*    {helpText}*/}
-          {/*  </div>*/}
-          {/*  }*/}
-          {/*</div>*/}
-          {/*}*/}
         </label>
       </NoSsr>
     )
