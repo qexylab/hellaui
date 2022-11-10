@@ -9,7 +9,7 @@ export const Accordion: FC<PropsWithChildren<IAccordion>> = ({
   children,
   width = '100%',
   sizes = 'md',
-  title = 'Title',
+  title = '',
   iconPosition = 'right',
   hideTopLine = false,
   hideBottomLine = false,

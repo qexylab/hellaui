@@ -9,7 +9,7 @@ export interface IChip extends HTMLAttributes<HTMLDivElement> {
   disabled?: boolean // Disable chip
   rounding?: DefaultRounding // Chip Rounding
   variant?: ChipVariant // Chip variant
-  bgColor?: string // Set the button background color
+  backgroundColor?: string // Set the button background color
   textColor?: string // Set the button background color
   borderColor?: string // Set the button border color
   selected?: boolean // Selected chip

@@ -22,7 +22,7 @@ export const Chip = forwardRef<HTMLDivElement, IChip>(
       selected,
       textColor,
       borderColor,
-      bgColor,
+      backgroundColor,
       onRemove,
       children,
       beforeIcon,
@@ -77,8 +77,8 @@ export const Chip = forwardRef<HTMLDivElement, IChip>(
               ? theme_color.white_gray
               : isHover || isFocus
               ? hoverBackgroundColor
-              : bgColor
-              ? bgColor
+              : backgroundColor
+              ? backgroundColor
               : variant === 'filled'
               ? theme_color.gray
               : 'transparent',

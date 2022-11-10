@@ -9,9 +9,9 @@ export type BadgeVariant =
   | 'error'
   | 'dark'
   | 'light'
+  | 'white'
   | 'lightInactive'
   | 'lightDisable'
-  | 'white'
   | 'whiteInactive'
   | 'whiteDisable'
 

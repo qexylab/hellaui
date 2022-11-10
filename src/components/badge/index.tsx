@@ -7,7 +7,7 @@ export const Badge: FC<PropsWithChildren<IBadge>> = ({
   children,
   variant = 'default',
   sizes = 'md',
-  rounding,
+  rounding = 'md',
   style,
   ...props
 }) => {

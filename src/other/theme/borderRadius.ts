@@ -15,6 +15,6 @@ export const borderRadius = (borderRadius?: borderRadiusType): number => {
     case 'circle':
       return 9999
     default:
-      return 6
+      return 8
   }
 }
