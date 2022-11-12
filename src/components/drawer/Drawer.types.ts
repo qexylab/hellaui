@@ -17,5 +17,5 @@ export interface IDrawer extends HTMLAttributes<HTMLDivElement> {
   displayCloseIcon?: boolean // Display the close icon in the upper right corner
   backgroundColor?: string // Drawer background color
   textColor?: string // Drawer text color
-  disableOutsideBackground?: boolean
+  disableOutsideBackground?: boolean // Disable page dimming when Drawer is opened
 }

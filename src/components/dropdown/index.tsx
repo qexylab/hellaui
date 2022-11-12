@@ -7,7 +7,7 @@ import { theme_color } from '@src/other/theme'
 import { Ripple } from '@src/components/ripple'
 import { useOutsideClick } from '@src/other/hooks/useOutsideClick'
 
-export const DropDown = forwardRef<HTMLDivElement, IDropDown>(
+export const Dropdown = forwardRef<HTMLDivElement, IDropDown>(
   (
     {
       title,
@@ -126,9 +126,9 @@ export const DropDown = forwardRef<HTMLDivElement, IDropDown>(
   }
 )
 
-DropDown.displayName = 'DropDown'
+Dropdown.displayName = 'Dropdown'
 
-export const DropDownItem = forwardRef<HTMLLIElement, IDropDownItem>(
+export const DropdownItem = forwardRef<HTMLLIElement, IDropDownItem>(
   (
     {
       backgroundColor = theme_color.white_black,
@@ -189,4 +189,4 @@ export const DropDownItem = forwardRef<HTMLLIElement, IDropDownItem>(
   }
 )
 
-DropDownItem.displayName = 'DropDownItem'
+DropdownItem.displayName = 'DropdownItem'
