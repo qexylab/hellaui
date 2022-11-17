@@ -1,18 +1,20 @@
 import { HTMLAttributes } from 'react'
 import { DefaultRounding, DefaultSize } from '@src/other/utils/defaultTypes'
 
-export type DropDownPosition =
+export type DropdownPosition =
   | 'bottom-left'
   | 'bottom-right'
   | 'top-left'
   | 'top-right'
 
+type DropdownIconPosition = 'right' | 'left'
+
 export interface IDropDown extends HTMLAttributes<HTMLButtonElement> {
   title: string // DropDown title
-  position?: DropDownPosition // Dropdown position
+  position?: DropdownPosition // Dropdown position
   sizes?: DefaultSize // DropDown size
   rounding?: DefaultRounding // DropDown rounding
-  iconPosition?: 'right' | 'left' // Icon position
+  iconPosition?: DropdownIconPosition // Icon position
   menuWidth?: number // Dropdown width
   menuMaxHeight?: number // Dropdown maxHeight
   backgroundColor?: string // Dropdown <ul> background

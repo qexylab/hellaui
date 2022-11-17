@@ -11,14 +11,14 @@ import React, {
   useRef,
   useState
 } from 'react'
-import { IStep, ISteps, StepOrientation } from './Steps.types'
+import { IStep, ISteps, StepsOrientation } from './Steps.types'
 import { theme_color } from '@src/other/theme'
 import { WarnIconTriangle } from '@src/icons/warnIcon'
 import { CheckIconOutline, CheckIconSolid } from '@src/icons/checkIcon'
 import { Tooltip } from '@src/components/tooltip'
 
 const StepsContext = createContext<{
-  orientation: StepOrientation
+  orientation: StepsOrientation
   activeStep: number
   lineClamp: 1 | 2 | 3
   stepsAmount: number

@@ -22,8 +22,7 @@ export const Tab: FC<PropsWithChildren<ITab>> = ({
   activeTab,
   onChange,
   hoverBackgroundColor = theme_color.dark_gray_2,
-  selected,
-  selectlineColor = theme_color.indigo,
+  selectLineColor = theme_color.indigo,
   children,
   ...props
 }) => {
@@ -40,7 +39,7 @@ export const Tab: FC<PropsWithChildren<ITab>> = ({
 
   const { textSize, height, padding, offset } = getTabStyle(sizes)
 
-  const getTabIndex = (id: string) =>
+  const getTabIndex = (id: number) =>
     tabsWithRef.findIndex(item => item.id === id)
 
   const tabsWithRef: TabWithRefProps[] = useMemo(() => {
@@ -167,7 +166,7 @@ export const Tab: FC<PropsWithChildren<ITab>> = ({
                 {typeof badge !== 'undefined' && (
                   <Badge
                     data-badge
-                    sizes="sm"
+                    sizes={sizes}
                     variant={
                       id === activeTab
                         ? 'primary'
@@ -203,7 +202,7 @@ export const Tab: FC<PropsWithChildren<ITab>> = ({
           position: 'absolute',
           bottom: 0,
           display: 'flex',
-          backgroundColor: selectlineColor,
+          backgroundColor: selectLineColor,
           height: 2,
           transition: 'all 0.2s ease-out'
         }}
@@ -214,7 +213,7 @@ export const Tab: FC<PropsWithChildren<ITab>> = ({
 
 Tab.displayName = 'Tab'
 
-const TabButton = forwardRef<HTMLButtonElement, ITabButton>(
+const TabButton = forwardRef<HTMLButtonElement, PropsWithChildren<ITabButton>>(
   (
     {
       id,

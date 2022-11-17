@@ -1,11 +1,11 @@
 import { HTMLAttributes, ReactNode, RefObject } from 'react'
-import { DefaultRounding, DefaultSize } from '@src/other/utils/defaultTypes'
+import { DefaultSize } from '@src/other/utils/defaultTypes'
 
 export type TabWithRefProps = TabProps & { ref: RefObject<HTMLButtonElement> }
 
 export interface TabProps {
   content: ReactNode // Tab content
-  id: string // Tab id
+  id: number // Tab id
   icon?: ReactNode // Icon before content
   badge?: number // Badge after content
   disabled?: boolean // Disable tab state
@@ -13,23 +13,22 @@ export interface TabProps {
 
 export interface ITab extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   tabs: TabProps[] // Tab array
-  activeTab: string // Active tab id
-  selected?: string // Selected tab item
+  activeTab: number // Active tab id
+  // selected?: string // Selected tab item
   hoverBackgroundColor?: string // Hover background color
-  onChange: (id: string) => void // Callback for changing the active tab
+  onChange: (id: number) => void // Callback for changing the active tab
   sizes?: DefaultSize // Tab size
-  rounding?: DefaultRounding // Tab rounding
+  // rounding?: DefaultRounding // Tab rounding
   underline?: boolean // Displaying a gray bar at the bottom
-  selectlineColor?: string // Underline color
+  selectLineColor?: string // Underline color
 }
 
-export interface ITabButton
-  extends Omit<HTMLAttributes<HTMLButtonElement>, 'onChange'> {
-  id: string
+export interface ITabButton {
+  id: number
   hoverBackgroundColor?: string
-  activeTab: string
-  onChange: (id: string) => void
+  activeTab: number
+  onChange: (id: number) => void
   height: number
-  itemID: string
+  itemID: number
   disabled?: boolean
 }

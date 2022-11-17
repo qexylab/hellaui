@@ -15,7 +15,7 @@ export const Drawer = forwardRef<HTMLDivElement, IDrawer>(
       width,
       height,
       rounding = 'md',
-      title= '',
+      title = '',
       container,
       position = 'right',
       onClose,
