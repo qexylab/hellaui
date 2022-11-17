@@ -1,10 +1,10 @@
 import { DefaultSize } from '@src/other/utils/defaultTypes'
-import { DropDownPosition } from '@src/components/dropdown/Dropdown.types'
+import { DropdownPosition } from '@src/components/dropdown/Dropdown.types'
 import { CSSProperties } from 'react'
 
 export const getDropDownStyle = (
   size: DefaultSize,
-  position: DropDownPosition
+  position: DropdownPosition
 ) => {
   let textSize: number,
     padding: string = '4px 8px',

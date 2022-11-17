@@ -6,7 +6,7 @@ import { Tab } from '@src/components/tab/index'
 describe('tab', () => {
   test('should render component', () => {
     render(
-      <Tab onChange={() => {}} activeTab={'1'} tabs={[]}>
+      <Tab onChange={() => {}} activeTab={1} tabs={[]}>
         Test Chip
       </Tab>
     )
