@@ -5,6 +5,6 @@ import { Toggle } from '@src/components/toggle/index'
 
 describe('toggle', () => {
   test('should render component', () => {
-    render(<Toggle />)
+    render(<Toggle checked={false} onChange={() => {}} />)
   })
 })

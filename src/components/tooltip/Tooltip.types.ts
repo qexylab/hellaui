@@ -13,7 +13,7 @@ export interface ITooltip extends HTMLAttributes<HTMLDivElement> {
   targetRef: RefObject<HTMLElement> // Ref to the element relative to which the tooltip is positioned
   container?: Element // The container in which the tooltip will be rendered via React.createPortal. By default, the tooltip is rendered in document.body
   withDelay?: boolean // Display tooltip with delay
-  tooltipRef?: RefCallback<HTMLDivElement> | RefObject<HTMLDivElement> | null // Tooltip ref
+  tooltipRef?: RefCallback<HTMLDivElement> | RefObject<HTMLDivElement> // Tooltip ref
   tooltipPosition?: TooltipPosition // Tooltip position
   background?: string // Tooltip background
   rounding?: DefaultRounding // Tooltip rounding

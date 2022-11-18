@@ -11,8 +11,8 @@ export const Tag = forwardRef<HTMLDivElement, ITag>(
       variant = 'success',
       sizes = 'md',
       rounding = 'xs',
-      iconAfter,
-      iconBefore,
+      afterIcon,
+      beforeIcon,
       withTooltip = false,
       tooltipPosition = 'bottom',
       width,
@@ -42,7 +42,7 @@ export const Tag = forwardRef<HTMLDivElement, ITag>(
         }}
         {...props}
       >
-        {iconBefore && <div style={{ marginRight: 2 }}>{iconBefore}</div>}
+        {beforeIcon && <div style={{ marginRight: 2 }}>{beforeIcon}</div>}
         <div
           ref={ref}
           style={{
@@ -55,7 +55,7 @@ export const Tag = forwardRef<HTMLDivElement, ITag>(
         >
           {children}
         </div>
-        {iconAfter && <div style={{ marginLeft: 2 }}>{iconAfter}</div>}
+        {afterIcon && <div style={{ marginLeft: 2 }}>{afterIcon}</div>}
         {withTooltip && (
           <Tooltip
             visible={tooltipVisible && withTooltip}
@@ -67,9 +67,9 @@ export const Tag = forwardRef<HTMLDivElement, ITag>(
             rounding={rounding}
           >
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              {iconBefore && <div style={{ marginRight: 2 }}>{iconBefore}</div>}
+              {beforeIcon && <div style={{ marginRight: 2 }}>{beforeIcon}</div>}
               {children}
-              {iconAfter && <div style={{ marginLeft: 2 }}>{iconAfter}</div>}
+              {afterIcon && <div style={{ marginLeft: 2 }}>{afterIcon}</div>}
             </div>
           </Tooltip>
         )}

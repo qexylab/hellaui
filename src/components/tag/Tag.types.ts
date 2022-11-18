@@ -17,10 +17,10 @@ export interface ITag extends HTMLAttributes<HTMLDivElement> {
   variant?: TagVariant // Tag variant
   sizes?: DefaultSize // Tag size
   rounding?: DefaultRounding // Tag rounding
-  iconBefore?: ReactNode // Icon before
-  iconAfter?: ReactNode // Icon after
+  beforeIcon?: ReactNode // Icon before
+  afterIcon?: ReactNode // Icon after
   withTooltip?: boolean // Tag Tooltip
   tooltipPosition?: TooltipPosition // Tag Tooltip
   tooltipBackground?: string // Tag Tooltip
-  width?: string // Tag width. The default is 100% content
+  width?: number // Tag width. The default is 100% content
 }
