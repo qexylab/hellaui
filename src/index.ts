@@ -18,6 +18,8 @@ export * from './components/modal'
 export * from './components/drawer'
 export * from './components/dropdown'
 export * from './components/input' // Not work
+export * from './components/checkbox'
+export * from './components/breadcrumbs'
 export * from './components/tab'
 
 // Icons
@@ -25,6 +27,8 @@ export * from './icons/chevronIcon'
 export * from './icons/closeIcon'
 export * from './icons/warnIcon'
 export * from './icons/checkIcon'
+export * from './icons/minusIcon'
+export * from './icons/successIcon'
 
 // Other
 export * from './other/theme'
