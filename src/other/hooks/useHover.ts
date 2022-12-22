@@ -1,18 +1,20 @@
-import {MutableRefObject, useEffect, useRef, useState} from "react";
+import { MutableRefObject, useEffect, useRef, useState } from 'react'
 
 interface Option {
-  onEnter?: () => void;
-  onLeave?: () => void;
+  onEnter?: () => void
+  onLeave?: () => void
 }
 
-export const useHover = <T extends HTMLElement>(targetRef: T, option: Option): boolean => {
-
+export const useHover = <T extends HTMLElement>(
+  targetRef: T,
+  option: Option
+): boolean => {
   const { onEnter, onLeave } = option || {}
 
-  const onEnterRef = useRef(onEnter);
-  const onLeaveRef = useRef(onLeave);
-  onEnterRef.current = onEnter;
-  onLeaveRef.current = onLeave;
+  const onEnterRef = useRef(onEnter)
+  const onLeaveRef = useRef(onLeave)
+  onEnterRef.current = onEnter
+  onLeaveRef.current = onLeave
 
   const [hoverState, setHoverState] = useState<boolean>(false)
 
@@ -29,8 +31,8 @@ export const useHover = <T extends HTMLElement>(targetRef: T, option: Option): b
     targetRef.addEventListener('mouseenter', onMouseEnter)
     targetRef.addEventListener('mouseleave', onMouseLeave)
     return () => {
-      targetRef.removeEventListener('mouseenter', onMouseEnter);
-      targetRef.removeEventListener('mouseleave', onMouseLeave);
+      targetRef.removeEventListener('mouseenter', onMouseEnter)
+      targetRef.removeEventListener('mouseleave', onMouseLeave)
     }
   }, [])
 

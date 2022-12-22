@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react'
+import { HTMLAttributes, ReactNode } from 'react'
 import { DefaultRounding, DefaultSize } from '@src/other/utils/defaultTypes'
 
 export type DropdownPosition =
@@ -9,8 +9,9 @@ export type DropdownPosition =
 
 type DropdownIconPosition = 'right' | 'left'
 
-export interface IDropDown extends HTMLAttributes<HTMLButtonElement> {
-  title: string // DropDown title
+export interface IDropDown
+  extends Omit<HTMLAttributes<HTMLButtonElement>, 'title'> {
+  title: string | ReactNode // DropDown title
   position?: DropdownPosition // Dropdown position
   sizes?: DefaultSize // DropDown size
   rounding?: DefaultRounding // DropDown rounding

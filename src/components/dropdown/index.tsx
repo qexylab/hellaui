@@ -80,7 +80,7 @@ export const Dropdown = forwardRef<HTMLDivElement, IDropDown>(
               position={iconPosition}
             />
           )}
-          <span>{title}</span>
+          {typeof title === 'string' ? <span>{title}</span> : <>{title}</>}
           {iconPosition === 'right' && (
             <ChevronIcon
               textSize={textSize}
