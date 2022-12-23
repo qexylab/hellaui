@@ -1,4 +1,4 @@
-import { MutableRefObject, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 interface Option {
   onEnter?: () => void
@@ -38,10 +38,10 @@ export const useHover = <T extends HTMLElement>(
 
   return hoverState
 }
-
-const ref = useRef<HTMLSelectElement>(null)
-
-const hover = useHover(ref, {
-  onEnter: () => {},
-  onLeave: () => {}
-})
+//
+// const ref = useRef<HTMLElement>(null)
+//
+// const hover = useHover(ref, {
+//   onEnter: () => {},
+//   onLeave: () => {}
+// })
